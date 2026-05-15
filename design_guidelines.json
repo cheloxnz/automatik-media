@@ -1,0 +1,116 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 5 (Jewel & Luxury) mixed with Archetype 7 (Electric & Neon) accents",
+  "typography": {
+    "heading_font": "Cabinet Grotesk, sans-serif",
+    "body_font": "Manrope, sans-serif",
+    "mono_font": "JetBrains Mono, monospace",
+    "heading_scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-bold",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl tracking-tight font-semibold",
+      "h3": "text-2xl sm:text-3xl tracking-tight font-medium"
+    }
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#111816",
+    "surface_glass": "rgba(17, 24, 22, 0.4)",
+    "primary": "#9EFF00",
+    "primary_hover": "#7CFF4F",
+    "text_main": "#FFFFFF",
+    "text_muted": "#A1A1AA",
+    "border": "rgba(255, 255, 255, 0.1)"
+  },
+  "spacing_strategy": {
+    "section_padding": "py-24 sm:py-32",
+    "container": "max-w-7xl mx-auto px-6",
+    "bento_gap": "gap-6 sm:gap-8"
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]",
+    "neon_glow": "shadow-[0_0_20px_rgba(158,255,0,0.3)]",
+    "hover_lift": "transition-transform hover:-translate-y-1 hover:shadow-lg",
+    "tracing_beam": "use framer-motion to create shimmering border effect on key cards"
+  },
+  "media_urls": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_990b7577-7a34-4de2-bd3d-b0129aaa80c1/artifacts/p6kfrgkw_d7ac7b2c-d6fe-4a78-b85c-090880d5dfb3.jpg",
+      "description": "Automatik Media logo",
+      "category": "navbar, footer"
+    },
+    "hero_video": {
+      "url": "https://customer-assets.emergentagent.com/job_990b7577-7a34-4de2-bd3d-b0129aaa80c1/artifacts/q8ox84ni_Presentaci%C3%B3n%20Automatik%20Media.mp4",
+      "description": "Hero section featured video",
+      "category": "hero"
+    },
+    "final_cta_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/990b7577-7a34-4de2-bd3d-b0129aaa80c1/images/5f3c8bca7f3d29ee82015097544679d65072faef19e220b09419ef67ab0fac14.png",
+      "description": "Dark cinematic abstract background with neon green glow",
+      "category": "final_cta_section_background"
+    }
+  },
+  "components_and_sections": {
+    "navbar": {
+      "style": "Sticky, glassmorphism (backdrop-blur-xl bg-black/60), z-50",
+      "elements": "Logo on left, Links center, CTA 'Agendar Reunión' on right."
+    },
+    "hero": {
+      "layout": "2-column grid on desktop (text left, video right)",
+      "video_integration": "Video element rendered in a glassmorphic container with rounded corners and subtle green neon shadow. Auto-play, loop, muted.",
+      "floating_elements": "Framer motion animated small glass cards overlapping the video (WhatsApp notification, AI Chat Bubble, Analytics metric).",
+      "background": "Dark with react-tsparticles (subtle green/white particles).",
+      "ctas": "Primary 'Agendar Reunión' (green bg, black text) -> Calendly. Secondary 'Ver Cómo Funciona' (outline white, glass)."
+    },
+    "problem_section": {
+      "layout": "Staggered 5-card grid layout. Asymmetrical.",
+      "cards": "Dark surface, border-white/10, red or muted icon to signify pain points. Hover border shifts to white/30."
+    },
+    "services_section": {
+      "layout": "10-card Bento Grid",
+      "style": "Glassmorphism with hover green glow. Use Phosphor Icons. 2 or 3 column spans depending on the text length to create an irregular, artistic bento box."
+    },
+    "how_it_works": {
+      "layout": "Vertical timeline or alternating zig-zag steps",
+      "style": "Futuristic connecting lines (SVG dashed lines with moving gradient via Framer Motion). Numbered steps with green glowing circles."
+    },
+    "automation_system": {
+      "layout": "Centered visual diagram",
+      "style": "Central 'AI Engine' pulsing, connected via SVG glowing paths to outer nodes (WhatsApp, CRM, etc). Use lucide-react or phosphor icons."
+    },
+    "results_section": {
+      "layout": "4-column grid for stats",
+      "style": "Large green typography for numbers, animated via react-countup or framer-motion when scrolled into view."
+    },
+    "psychology_section": {
+      "layout": "5 elegant cards in a horizontal scrolling or masonry layout",
+      "style": "Minimalist, 1px border, high contrast white text, deep black background."
+    },
+    "testimonials": {
+      "layout": "Masonry or Slider",
+      "style": "Elegant avatars: Circular div with glassmorphism, white text initials. 5 stars rating. High-end tone."
+    },
+    "final_cta": {
+      "layout": "Full width, cinematic height (min-h-[60vh]), centered content.",
+      "background": "Use final_cta_bg image with absolute positioning and bg-black/60 overlay to ensure text readability.",
+      "buttons": "'Agendar Reunión' (Calendly redirect) and 'Hablar por WhatsApp' (wa.me link)."
+    },
+    "whatsapp_floating": {
+      "style": "Fixed bottom right. Green glowing WhatsApp icon. Hover state expands to show 'Hablar con nosotros'."
+    }
+  },
+  "animations": {
+    "scroll": "Use framer-motion whileInView for staggered fade-in up.",
+    "cursor": "Custom glowing cursor (div following mouse coords with mix-blend-mode and blur, tracking neon green)."
+  },
+  "instructions_to_main_agent": [
+    "Install and use 'framer-motion' for all scroll and floating animations.",
+    "Install and use 'lucide-react' or '@phosphor-icons/react' for icons.",
+    "Install and use 'react-tsparticles' for the hero background particles.",
+    "Implement the 'data-testid' attributes strictly on all interactive elements.",
+    "Do NOT use 'Inter' font. Use Google Fonts 'Cabinet Grotesk' (or similar like Space Grotesk/Outfit if unavailable via standard means, but prefer Cabinet Grotesk via import) and 'Manrope'.",
+    "Hero section MUST have the video clearly visible and auto-playing in a premium container on the right side.",
+    "For the Testimonials, use Initials (e.g., 'DR' for Doctor) in a sleek circle instead of placeholder photos.",
+    "Ensure the green color (#9EFF00) is used as an accent and CTA trigger, not as a large background block, to maintain the luxury feel.",
+    "All copy must be in Spanish as provided in the problem statement."
+  ]
+}
