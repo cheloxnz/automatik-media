@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { FINAL_CTA_BG, openCalendly, openWhatsApp } from "../lib/site";
+import SlotsCounter from "./SlotsCounter";
 
 const FinalCTA = () => {
   return (
@@ -24,10 +25,9 @@ const FinalCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="inline-flex items-center gap-2 rounded-full border border-[#9EFF00]/30 bg-[#9EFF00]/[0.04] px-4 py-1.5 text-[11px] uppercase tracking-[0.25em] text-[#9EFF00] mb-8"
+          className="mb-8 flex justify-center"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#9EFF00] animate-pulse" />
-          Cupos limitados este mes
+          <SlotsCounter />
         </motion.div>
 
         <motion.h2

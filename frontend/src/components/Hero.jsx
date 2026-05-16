@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, MessageSquare, BarChart3, Sparkles, ArrowDown } from "lucide-react";
 import { HERO_VIDEO_URL, openCalendly } from "../lib/site";
+import VideoModal from "./VideoModal";
 
 const Particles = () => {
   const dots = useMemo(() => {
@@ -49,6 +50,7 @@ const FloatCard = ({ children, className = "", delay = 0, ...rest }) => (
 const Hero = () => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -137,10 +139,7 @@ const Hero = () => {
               </span>
             </button>
             <button
-              onClick={() => {
-                const el = document.getElementById("proceso");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => setModalOpen(true)}
               data-testid="hero-cta-howitworks"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-7 py-3.5 text-[14px] font-medium text-white hover:bg-white/[0.06] hover:border-white/30 transition"
             >
@@ -299,6 +298,8 @@ const Hero = () => {
         <span>scroll</span>
         <ArrowDown size={14} className="animate-bounce text-[#9EFF00]" />
       </div>
+
+      <VideoModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 };

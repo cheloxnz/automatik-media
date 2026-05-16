@@ -1,0 +1,48 @@
+{
+  "summary": "Iteration 2 testing — both backend & frontend. Backend: 9/9 pytest cases passed for /api/ root and /api/leads (POST + GET, validation, sort, limit, no _id leak). Frontend: All 17 review-request items validated via Playwright. VideoModal (open via 'Ver Cómo Funciona', ESC/outside/close button, Calendly CTA), Exit-Intent popup (trigger, all fields, valid submit→submitted state, localStorage persistence), SlotsCounter (number + '/ 8'), WhatsAppFloat (bottom-24/right-6 with 96px clearance from Emergent badge, opens wa.me/5491168754798), SEO (title, description, og:title, og:image, favicon, JSON-LD), all 9 sections render, no console errors. Previous WhatsApp z-index/overlap bug confirmed FIXED.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Exit-intent empty submit",
+        "issue": "Both name and email <input> have HTML5 'required' attribute, so an empty-form submit is blocked by the browser's native validation popup BEFORE the React handler runs. As a result, the JS-side 'exit-form-error' message (the testid required by the spec) is never rendered for the empty-submit case. The error element is only reachable if the user bypasses native validation (e.g. inputting only one of the two required fields, but the second 'required' input still blocks). Functional impact is low — users do get feedback via the native tooltip — but it diverges from the spec ('empty submit shows error data-testid=exit-form-error'). Suggested fix: remove the 'required' attr from these inputs (since the JS handler already validates), or replace JS check with field-level error states.",
+        "affected_selectors": ["[data-testid=\"exit-form-error\"]", "[data-testid=\"exit-input-name\"]", "[data-testid=\"exit-input-email\"]"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_leads_api.py",
+    "/app/test_reports/pytest/leads_results.xml"
+  ],
+  "action_items": [
+    "(Optional/Low) Remove HTML 'required' from exit-intent name + email inputs so the JS exit-form-error testid is actually exercised on empty submit, per spec wording.",
+    "(Code review) In /app/backend/server.py the `logger` variable is referenced inside create_lead (line ~95) but defined later in the module (line ~127). It works because logger is resolved at call-time, not import-time, but it's a maintainability smell — move logging.basicConfig + logger = logging.getLogger() above the route definitions."
+  ],
+  "critical_code_review_comments": [
+    "server.py: `logger` is referenced inside the /api/leads POST handler before its declaration site lower in the file. Currently safe (lazy lookup) but fragile — move logger setup above the routes.",
+    "ExitIntentPopup.jsx: The `required` HTML attr on the email + name inputs makes the JS-level `error` state (and the spec-mandated [data-testid=exit-form-error]) effectively unreachable for the empty-submit case. Choose one validation strategy.",
+    "VideoModal.jsx: ESC handler + outside-click + close button + scroll lock + autoplay-fallback are all implemented correctly. Good cleanup in useEffect return.",
+    "SlotsCounter.jsx: Random-decrement scarcity counter is well-contained, persisted by day in localStorage. Floor of 2 prevents reaching zero. Looks good.",
+    "WhatsAppFloat.jsx: New wrapper class 'fixed bottom-24 right-6 z-50' confirmed visually — measured 96px bottom clearance, no longer overlaps the Emergent badge. Previous iteration_1 HIGH bug is RESOLVED.",
+    "index.html: Title, meta description, og:title, og:image, twitter card, favicon, apple-touch-icon, JSON-LD ProfessionalService all present and correct.",
+    "Backend: POST /api/leads broadly catches Exception and returns 500 with a generic Spanish message — this also swallows the original error stack from the client (good for prod UX). Pydantic 422 validation still bubbles through correctly (verified). MongoDB _id properly excluded from GET /api/leads via projection {\"_id\": 0}."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_leads_api.py (new)"
+  ],
+  "success_rate": {
+    "backend": "100% (9/9 pytest)",
+    "frontend": "100% on all required acceptance criteria; one low-priority spec-vs-implementation mismatch on exit-form-error reachability"
+  },
+  "test_credentials": "N/A — landing page, no auth",
+  "seed_data_creation": "Several TEST_-prefixed leads were inserted into MongoDB 'leads' collection by the pytest suite (TEST_Carlos Tester, TEST_First, TEST_Second, TEST_Limit_0..5, TEST_Minimal) and one from the UI run (TEST UI User / TEST_ui@example.com). All emails prefixed with TEST_ for easy cleanup by main agent if desired.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend /api/leads is fully verified by /app/backend/tests/test_leads_api.py — reuse it for regression. For UI exit-intent re-tests, always run `localStorage.removeItem('am_exit_popup_v1')` (and 'am_slots_v1' to randomize slots) before reload. To trigger exit-intent on desktop without real mouse movement, dispatch a 'mouseout' event on `document` with clientY=0 and relatedTarget=null. WhatsApp float now sits at bottom-24/right-6 with 96px clearance from the Emergent badge (verified by getBoundingClientRect).",
+  "rca of the issue": "N/A — no critical bugs. Previous iteration_1 WhatsApp overlap bug RESOLVED by changing wrapper class to `fixed bottom-24 right-6 z-50` in WhatsAppFloat.jsx. Click on the float now correctly opens https://api.whatsapp.com/send/?phone=5491168754798&...."
+}

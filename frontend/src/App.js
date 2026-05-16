@@ -14,6 +14,7 @@ import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import CursorGlow from "./components/CursorGlow";
+import ExitIntentPopup from "./components/ExitIntentPopup";
 
 const Landing = () => {
   return (
@@ -35,6 +36,7 @@ const Landing = () => {
       <FinalCTA />
       <Footer />
       <WhatsAppFloat />
+      <ExitIntentPopup />
     </main>
   );
 };
