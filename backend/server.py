@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, status, BackgroundTasks
+from fastapi import FastAPI, APIRouter, HTTPException, Request, status
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -23,12 +23,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
-from notifications import (  # noqa: E402
-    send_telegram_notification,
-    format_booking_message,
-    format_trial_handoff_message,
-)
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
@@ -141,24 +135,13 @@ async def list_leads(limit: int = 200):
 
 
 @api_router.post("/events", response_model=Event, status_code=201)
-async def track_event(payload: EventCreate, background: BackgroundTasks):
+async def track_event(payload: EventCreate):
     """Lightweight event tracking for A/B testing (variant exposure & CTA clicks)."""
     try:
         ev = Event(**payload.model_dump())
         doc = ev.model_dump()
         doc['created_at'] = doc['created_at'].isoformat()
         await db.events.insert_one(doc)
-
-        # Notify on hot events
-        if ev.name in ("trial_with_expert", "exit_click"):
-            try:
-                background.add_task(
-                    send_telegram_notification,
-                    format_trial_handoff_message({**(ev.metadata or {}), "event": ev.name, "variant": ev.variant or ""}),
-                )
-            except Exception:  # noqa: BLE001
-                pass
-
         return ev
     except Exception as e:
         logger.exception("Failed to track event")
@@ -263,7 +246,7 @@ def _extract_calendly_booking(webhook_payload: Dict[str, Any]) -> Dict[str, Any]
 
 
 @api_router.post("/webhooks/calendly", status_code=status.HTTP_200_OK)
-async def calendly_webhook(request: Request, background: BackgroundTasks):
+async def calendly_webhook(request: Request):
     """Receive invitee.created (and invitee.canceled) from Calendly.
     Verifies HMAC-SHA256 signature only if CALENDLY_WEBHOOK_SIGNING_KEY is set."""
     raw = await request.body()
@@ -325,13 +308,6 @@ async def calendly_webhook(request: Request, background: BackgroundTasks):
         booking.get("invitee_email"),
         booking.get("event_start_time_raw"),
     )
-
-    # Fire telegram notification in background (no-op if env vars missing)
-    try:
-        background.add_task(send_telegram_notification, format_booking_message(booking))
-    except Exception:  # noqa: BLE001
-        pass
-
     return {"status": "received", "id": booking["id"]}
 
 
