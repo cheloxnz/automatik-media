@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import CursorGlow from "./components/CursorGlow";
 import ExitIntentPopup from "./components/ExitIntentPopup";
+import TrialIntentModal from "./components/TrialIntentModal";
 
 const Landing = () => {
   return (
@@ -39,6 +40,7 @@ const Landing = () => {
       <Footer />
       <WhatsAppFloat />
       <ExitIntentPopup />
+      <TrialIntentModal />
     </main>
   );
 };

@@ -27,3 +27,31 @@ export const openWhatsApp = () => {
 export const openInmoBotTrial = () => {
   window.open(INMOBOT_SIGNUP_URL, "_blank", "noopener,noreferrer");
 };
+
+// One-two punch: ask the user if they also want personal WhatsApp onboarding
+// while opening the InmoBot trial. Dispatches a global event that the
+// TrialIntentModal listens to. Components should call this instead of
+// directly opening the trial.
+export const TRIAL_INTENT_EVENT = "automatik:trial-intent";
+
+export const requestInmoBotTrial = (origin = "unknown") => {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(
+    new CustomEvent(TRIAL_INTENT_EVENT, { detail: { origin } })
+  );
+};
+
+export const TRIAL_WHATSAPP_MESSAGE =
+  "Hola! Acabo de empezar mi trial de InmoBot desde Automatik Media. ¿Me ayudás a configurarlo para mi negocio?";
+
+export const openInmoBotPlusWhatsApp = () => {
+  // Open WhatsApp first (more likely to be blocked otherwise), then trial.
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    TRIAL_WHATSAPP_MESSAGE
+  )}`;
+  window.open(waUrl, "_blank", "noopener,noreferrer");
+  // Small delay so both popups pass the browser popup-allowance
+  setTimeout(() => {
+    window.open(INMOBOT_SIGNUP_URL, "_blank", "noopener,noreferrer");
+  }, 120);
+};

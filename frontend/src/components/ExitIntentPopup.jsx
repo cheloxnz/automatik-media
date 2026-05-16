@@ -9,7 +9,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import axios from "axios";
-import { CALENDLY_URL, INMOBOT_SIGNUP_URL } from "../lib/site";
+import { CALENDLY_URL, requestInmoBotTrial } from "../lib/site";
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND}/api`;
@@ -62,7 +62,7 @@ const VARIANTS = {
     ctaLabel: "Probar InmoBot gratis",
     ctaIcon: Bot,
     action: () => {
-      window.open(INMOBOT_SIGNUP_URL, "_blank", "noopener,noreferrer");
+      requestInmoBotTrial("exit_intent_B");
     },
   },
 };

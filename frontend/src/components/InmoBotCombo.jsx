@@ -8,7 +8,7 @@ import {
   Zap,
   CheckCircle2,
 } from "lucide-react";
-import { openInmoBotTrial } from "../lib/site";
+import { requestInmoBotTrial } from "../lib/site";
 
 const features = [
   { icon: MessageCircle, label: "Respuesta < 1 min", sub: "24/7 WhatsApp" },
@@ -126,7 +126,7 @@ const InmoBotCombo = () => {
 
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={openInmoBotTrial}
+                  onClick={() => requestInmoBotTrial("combo_section")}
                   data-testid="combo-cta-trial"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#9EFF00] text-black px-6 py-3.5 text-[14px] font-semibold hover:bg-[#b8ff3a] transition shadow-[0_0_30px_rgba(158,255,0,0.35)]"
                 >

@@ -1,0 +1,23 @@
+{
+  "summary": "Frontend-only iteration 5 testing: TrialIntentModal 'one-two punch' fully verified. All 12 acceptance criteria pass: modal hidden initially, opens on combo-cta-trial AND exit-intent-cta (variant B), correct title ('configure el bot'), recommended badge, with-expert opens BOTH wa.me/5491168754798 (text contains 'trial de InmoBot') AND inmobot-ia.com/signup with full UTM params (campaign=combo) in correct order (~120ms apart), self-serve opens ONLY the signup URL, Escape/X-button/backdrop all close without opening tabs, body overflow:hidden while open and restored on close. /api/events POSTs verified with variant='trial_intent': trial_intent_view (on every open, includes origin metadata: combo_section / exit_intent_B), trial_with_expert, trial_self_serve. Regression: 10 sections render (hero, problema, servicios, combo, proceso, sistema, resultados, psychology-section, testimonials-section, final-cta-section), no horizontal overflow at 390px viewport, no console errors. Variant A code-inspected: still directly opens CALENDLY_URL (no TrialIntentModal), unchanged from iter-4.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "TrialIntentModal.jsx is well-scoped (~230 lines), uses CustomEvent dispatch pattern cleanly decoupling triggers from the modal. Good a11y: aria-label on close, Escape handler, backdrop click closes.",
+    "openInmoBotPlusWhatsApp uses 120ms delay between window.open calls to avoid popup blocker — works in headless tests via window.open patch; real browsers may still block the 2nd popup if user gesture chain breaks. Acceptable trade-off, but worth monitoring real-world conversion telemetry for the 2nd popup-blocked rate.",
+    "Minor: track() in TrialIntentModal silently swallows axios errors which is intentional fire-and-forget — consistent with ExitIntentPopup pattern."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a (not tested)", "frontend": "100%" },
+  "test_credentials": "none required",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "TrialIntentModal opens via window event 'automatik:trial-intent'. To test, patch window.open via page.add_init_script to capture popups. For exit-intent variant B testing, set localStorage am_ab_variant_v1='B' and remove am_exit_popup_v2 in init script BEFORE goto, then dispatch a synthetic mouseout with clientY<=0 and null relatedTarget. Events endpoint POST /api/events accepts any name string with variant='trial_intent'."
+}
