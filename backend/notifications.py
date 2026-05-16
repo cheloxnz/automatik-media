@@ -25,10 +25,13 @@ _TELEGRAM_API = "https://api.telegram.org"
 
 
 def _escape_md(text: str) -> str:
-    """Escape MarkdownV2 reserved chars."""
+    """Escape MarkdownV2 reserved chars. Backslash must be handled FIRST
+    so it does not double-escape the backslashes we insert for other chars."""
     if not text:
         return ""
-    for ch in r"_*[]()~`>#+-=|{}.!\\":
+    # Escape backslash first
+    text = text.replace("\\", "\\\\")
+    for ch in r"_*[]()~`>#+-=|{}.!":
         text = text.replace(ch, f"\\{ch}")
     return text
 
