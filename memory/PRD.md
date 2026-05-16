@@ -50,3 +50,12 @@ Premium high-ticket landing page for luxury AI marketing agency "Automatik Media
 - SlotsCounter: live scarcity widget in final CTA section (decrements randomly, persisted per day, floor of 2/8)
 - WhatsAppFloat repositioned to `bottom-24 right-6 z-50` (clears Emergent badge)
 - Test results: 100% backend (9/9 pytest), 100% frontend acceptance criteria
+
+## Iteration 3 (Dec 2025) — A/B Test on Exit-Intent + Form Removal
+- Removed the lead-capture form from the exit-intent popup per user request
+- Implemented A/B test with random 50/50 assignment per device, persisted in localStorage `am_ab_variant_v1`:
+  - Variant A: "Auditoría gratuita" → opens Calendly
+  - Variant B: "Checklist gratuito" → opens WhatsApp with prefilled message
+- Backend `POST /api/events` + `GET /api/events/stats` for event tracking and aggregated CR% per variant (no UI dashboard — query via curl)
+- Both variants track `exit_view` on open and `exit_click` on CTA click
+- All tests pass: 16/16 backend pytest, 100% frontend acceptance

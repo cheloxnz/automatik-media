@@ -89,11 +89,13 @@ const getOrAssignVariant = () => {
 const fireEvent = (name, variant) => {
   // Fire and forget — never blocks the user
   try {
-    axios.post(
-      `${API}/events`,
-      { name, variant, metadata: { url: window.location.pathname } },
-      { timeout: 4000 }
-    );
+    axios
+      .post(
+        `${API}/events`,
+        { name, variant, metadata: { url: window.location.pathname } },
+        { timeout: 4000 }
+      )
+      .catch(() => {});
   } catch {}
 };
 
