@@ -59,3 +59,22 @@ Premium high-ticket landing page for luxury AI marketing agency "Automatik Media
 - Backend `POST /api/events` + `GET /api/events/stats` for event tracking and aggregated CR% per variant (no UI dashboard — query via curl)
 - Both variants track `exit_view` on open and `exit_click` on CTA click
 - All tests pass: 16/16 backend pytest, 100% frontend acceptance
+
+## Iteration 4 (Dec 2025) — InmoBot Combo + Calendly Webhook
+- New "Combo Premium" section (`#combo`) showcasing InmoBot bundled with Automatik Media (7-day free trial). Includes WhatsApp-style chat mock, feature grid, two CTAs:
+  - Trial → `https://inmobot-ia.com/signup?utm_source=automatikmedia&utm_medium=landing&utm_campaign=combo`
+  - Learn more → `https://inmobot-ia.com/inicio?utm_source=automatikmedia&utm_medium=landing`
+- Services WhatsApp Bots card now tagged "Powered by InmoBot"
+- Navbar: replaced "Sistema IA" link with "Combo"
+- A/B Variant B switched from Checklist → InmoBot trial (with UTM tracking on signup URL)
+- Backend `POST /api/webhooks/calendly`: HMAC-SHA256 signature verification gated by env var `CALENDLY_WEBHOOK_SIGNING_KEY`. If not set, webhook accepts and logs a warning. Stores in `calendly_bookings` collection with idempotency on `(invitee_uuid, event_uuid)`. Also fires a `calendly_booking` event for stats.
+- 100% backend (26/26 pytest) and 100% frontend.
+
+## Important note about Calendly free plan
+- The user's Calendly account (cheloxnz/30min) is on the FREE plan, which does NOT support webhooks. To activate booking notifications:
+  1. Upgrade to Calendly Standard plan
+  2. Generate a Personal Access Token
+  3. Create a webhook subscription pointing to `https://premium-lead-system.preview.emergentagent.com/api/webhooks/calendly` for event `invitee.created`
+  4. Copy the signing key into `/app/backend/.env` as `CALENDLY_WEBHOOK_SIGNING_KEY=...`
+  5. Restart backend: `sudo supervisorctl restart backend`
+- After that, choose a notification channel (Resend/Telegram/Twilio) to forward bookings.

@@ -259,7 +259,7 @@ async def calendly_webhook(request: Request):
             raise HTTPException(status_code=400, detail="Missing Calendly-Webhook-Signature header")
         try:
             _verify_calendly_signature(sig_header, raw, signing_key)
-        except Exception as e:  # noqa: BLE001
+        except ValueError as e:
             logger.warning("Calendly signature verification failed: %s", e)
             raise HTTPException(status_code=400, detail="Invalid signature") from e
     else:
