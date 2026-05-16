@@ -78,3 +78,12 @@ Premium high-ticket landing page for luxury AI marketing agency "Automatik Media
   4. Copy the signing key into `/app/backend/.env` as `CALENDLY_WEBHOOK_SIGNING_KEY=...`
   5. Restart backend: `sudo supervisorctl restart backend`
 - After that, choose a notification channel (Resend/Telegram/Twilio) to forward bookings.
+
+## Iteration 5 (Dec 2025) — One-Two Punch (Trial + Expert handoff)
+- Created `TrialIntentModal.jsx`: intercepts every "Probar InmoBot" click site-wide and offers two paths:
+  - Variant 1 (recommended): opens BOTH wa.me/5491168754798 (with prefilled "Hola! Acabo de empezar mi trial de InmoBot...") AND inmobot-ia.com/signup
+  - Variant 2: only opens the signup
+- `lib/site.js`: added `requestInmoBotTrial(origin)`, `openInmoBotPlusWhatsApp()`, custom event `automatik:trial-intent`
+- Combo section CTA + Exit-intent Variant B now route through the modal
+- Events tracked: trial_intent_view, trial_with_expert, trial_self_serve (all with variant='trial_intent')
+- Tests: 100% frontend acceptance, regression on all prior sections OK
