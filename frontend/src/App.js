@@ -9,7 +9,9 @@ import InmoBotCombo from "./components/InmoBotCombo";
 import HowItWorks from "./components/HowItWorks";
 import Automation from "./components/Automation";
 import Results from "./components/Results";
+import ValueCalculator from "./components/ValueCalculator";
 import Psychology from "./components/Psychology";
+import SuccessCases from "./components/SuccessCases";
 import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
@@ -17,6 +19,8 @@ import WhatsAppFloat from "./components/WhatsAppFloat";
 import CursorGlow from "./components/CursorGlow";
 import ExitIntentPopup from "./components/ExitIntentPopup";
 import TrialIntentModal from "./components/TrialIntentModal";
+import CountdownBanner from "./components/CountdownBanner";
+import Analytics from "./components/Analytics";
 
 const Landing = () => {
   return (
@@ -25,7 +29,9 @@ const Landing = () => {
       className="relative bg-[#050505] text-white antialiased selection:bg-[#9EFF00] selection:text-black"
       style={{ scrollBehavior: "smooth" }}
     >
+      <Analytics />
       <CursorGlow />
+      <CountdownBanner />
       <Navbar />
       <Hero />
       <Problem />
@@ -34,7 +40,9 @@ const Landing = () => {
       <HowItWorks />
       <Automation />
       <Results />
+      <ValueCalculator />
       <Psychology />
+      <SuccessCases />
       <Testimonials />
       <FinalCTA />
       <Footer />

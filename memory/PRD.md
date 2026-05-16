@@ -87,3 +87,24 @@ Premium high-ticket landing page for luxury AI marketing agency "Automatik Media
 - Combo section CTA + Exit-intent Variant B now route through the modal
 - Events tracked: trial_intent_view, trial_with_expert, trial_self_serve (all with variant='trial_intent')
 - Tests: 100% frontend acceptance, regression on all prior sections OK
+
+## Iteration 6 (Dec 2025) — Full conversion stack
+- **Sticky countdown banner** (`CountdownBanner.jsx`): evergreen 72h timer per visitor (resets on expiry), CTA opens TrialIntentModal, dismissible. Navbar offsets with `--am-banner-h` CSS var.
+- **Value calculator** (`ValueCalculator.jsx`): interactive sliders (ticket, cierres, leads) → projects +30% conversion and monthly/annual revenue lift. Section anchored at `#calculadora`.
+- **Success cases** (`SuccessCases.jsx`): 4 industry-specific case cards with before/after metrics + quote. Anchored at `#casos`.
+- **Analytics** (`Analytics.jsx`): conditionally injects GA4 + Meta Pixel scripts based on env vars `REACT_APP_GA4_MEASUREMENT_ID` and `REACT_APP_META_PIXEL_ID`. Exports `trackEvent(name, params)` helper.
+- **SEO**: `/public/robots.txt` + `/public/sitemap.xml` for automatik-media.com.
+- **Telegram notifications** (`backend/notifications.py`): one-way bot notifications via Telegram Bot API. No-op when `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` env vars missing. Triggered by `POST /api/webhooks/calendly` (booking received) and `POST /api/events` with name in {trial_with_expert, exit_click}. Sent in background tasks so the request response is never delayed.
+- Navbar links updated: Combo, Servicios, Proceso, Calculadora, Casos
+
+## Required env vars (all optional)
+```
+# /app/backend/.env
+CALENDLY_WEBHOOK_SIGNING_KEY=...   # paid Calendly plan only
+TELEGRAM_BOT_TOKEN=...             # from @BotFather
+TELEGRAM_CHAT_ID=...               # from /api/getUpdates
+
+# /app/frontend/.env
+REACT_APP_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+REACT_APP_META_PIXEL_ID=...
+```
