@@ -41,3 +41,12 @@ Premium high-ticket landing page for luxury AI marketing agency "Automatik Media
 - P2: Add cookie/consent banner if running ads to EU traffic
 - P2: Add Spanish meta description + structured data (LocalBusiness)
 - P2: Lightbox/modal version of "Ver Cómo Funciona" with embedded preview video
+
+## Iteration 2 (Dec 2025) — SEO + Lead Capture + Conversion Boosters
+- SEO: title, description, keywords, OG, Twitter, favicon (logo), JSON-LD ProfessionalService schema
+- Backend: `POST /api/leads` + `GET /api/leads` with Pydantic EmailStr validation, stored in MongoDB `leads` collection (UUID id, ISO timestamps, no _id leak)
+- VideoModal: "Ver Cómo Funciona" opens cinematic modal with controls + ESC/outside/close + Calendly CTA inside
+- ExitIntentPopup: triggered on mouse-leave from top (desktop) / 25s (mobile); 4-field form posting to /api/leads source="exit_intent_popup"; localStorage flag prevents re-showing
+- SlotsCounter: live scarcity widget in final CTA section (decrements randomly, persisted per day, floor of 2/8)
+- WhatsAppFloat repositioned to `bottom-24 right-6 z-50` (clears Emergent badge)
+- Test results: 100% backend (9/9 pytest), 100% frontend acceptance criteria

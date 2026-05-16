@@ -142,7 +142,6 @@ const ExitIntentPopup = () => {
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Nombre"
                     className="bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white placeholder:text-white/35 focus:outline-none focus:border-[#9EFF00]/50 transition"
-                    required
                   />
                   <input
                     data-testid="exit-input-email"
@@ -151,7 +150,6 @@ const ExitIntentPopup = () => {
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="Email"
                     className="bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white placeholder:text-white/35 focus:outline-none focus:border-[#9EFF00]/50 transition"
-                    required
                   />
                   <input
                     data-testid="exit-input-phone"
