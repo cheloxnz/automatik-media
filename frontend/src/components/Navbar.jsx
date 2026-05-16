@@ -6,8 +6,8 @@ import { LOGO_URL, openCalendly } from "../lib/site";
 const links = [
   { label: "Problema", id: "problema" },
   { label: "Servicios", id: "servicios" },
+  { label: "Combo", id: "combo" },
   { label: "Proceso", id: "proceso" },
-  { label: "Sistema IA", id: "sistema" },
   { label: "Resultados", id: "resultados" },
 ];
 

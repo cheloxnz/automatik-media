@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Problem from "./components/Problem";
 import Services from "./components/Services";
+import InmoBotCombo from "./components/InmoBotCombo";
 import HowItWorks from "./components/HowItWorks";
 import Automation from "./components/Automation";
 import Results from "./components/Results";
@@ -28,6 +29,7 @@ const Landing = () => {
       <Hero />
       <Problem />
       <Services />
+      <InmoBotCombo />
       <HowItWorks />
       <Automation />
       <Results />

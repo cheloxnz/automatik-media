@@ -5,6 +5,12 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 )}`;
 export const CALENDLY_URL = "https://calendly.com/cheloxnz/30min";
 
+// InmoBot — included in the Automatik Media combo (7-day free trial)
+export const INMOBOT_SIGNUP_URL =
+  "https://inmobot-ia.com/signup?utm_source=automatikmedia&utm_medium=landing&utm_campaign=combo";
+export const INMOBOT_HOME_URL =
+  "https://inmobot-ia.com/inicio?utm_source=automatikmedia&utm_medium=landing";
+
 export const LOGO_URL =
   "https://customer-assets.emergentagent.com/job_990b7577-7a34-4de2-bd3d-b0129aaa80c1/artifacts/p6kfrgkw_d7ac7b2c-d6fe-4a78-b85c-090880d5dfb3.jpg";
 export const HERO_VIDEO_URL =
@@ -17,4 +23,7 @@ export const openCalendly = () => {
 };
 export const openWhatsApp = () => {
   window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
+};
+export const openInmoBotTrial = () => {
+  window.open(INMOBOT_SIGNUP_URL, "_blank", "noopener,noreferrer");
 };

@@ -20,7 +20,7 @@ const services = [
   { icon: Workflow, name: "Funnel Design", tag: "Conversion", desc: "Arquitectura de embudo basada en data y psicología del cliente high-ticket." },
   { icon: LayoutTemplate, name: "Landing Pages", tag: "CRO", desc: "Páginas cinematográficas optimizadas para conversión y velocidad." },
   { icon: Bot, name: "IA & Automatización", tag: "AI", desc: "Sistemas de IA que califican, agendan y nurturean leads 24/7." },
-  { icon: MessageCircle, name: "WhatsApp Bots", tag: "Conversational", desc: "Bots inteligentes que responden al instante y derivan a humano cuando hace falta." },
+  { icon: MessageCircle, name: "WhatsApp Bots", tag: "Powered by InmoBot", desc: "Bots inteligentes que responden al instante y derivan a humano cuando hace falta. Incluido con 7 días gratis." },
   { icon: Database, name: "CRM Systems", tag: "Pipeline", desc: "Centralización del lead a la venta con notificaciones y scoring automático." },
   { icon: Video, name: "Video Marketing", tag: "Creative", desc: "Producción cinematográfica para anuncios y orgánico que generan deseo." },
   { icon: LineChart, name: "Analytics & Reporting", tag: "Insight", desc: "Dashboards en vivo con métricas accionables, no vanidosas." },

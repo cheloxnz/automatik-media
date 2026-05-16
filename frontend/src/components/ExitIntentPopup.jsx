@@ -5,11 +5,11 @@ import {
   Sparkles,
   CalendarCheck,
   MessageCircle,
-  FileCheck2,
+  Bot,
   CheckCircle2,
 } from "lucide-react";
 import axios from "axios";
-import { CALENDLY_URL, WHATSAPP_NUMBER } from "../lib/site";
+import { CALENDLY_URL, INMOBOT_SIGNUP_URL } from "../lib/site";
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND}/api`;
@@ -44,32 +44,25 @@ const VARIANTS = {
   },
   B: {
     id: "B",
-    pill: "Checklist gratuito · Acceso inmediato",
-    Icon: FileCheck2,
+    pill: "InmoBot · 7 días gratis · Sin tarjeta",
+    Icon: Bot,
     title: (
       <>
-        Antes de irte: llevate el{" "}
-        <span className="text-[#9EFF00] am-text-glow">Checklist High-Ticket</span>{" "}
-        que usamos con nuestros clientes premium.
+        Antes de irte: probá{" "}
+        <span className="text-[#9EFF00] am-text-glow">InmoBot 7 días gratis</span>
+        . El asistente de WhatsApp que vende mientras dormís.
       </>
     ),
-    body: "27 puntos para auditar tu sistema en menos de 1 hora: anuncios, embudo, automatizaciones, CRM, follow-up y cierre. Te lo enviamos directo por WhatsApp.",
+    body: "Incluido en el combo de Automatik Media. Responde consultas, califica leads y agenda visitas 24/7 con IA. Sin tarjeta, sin compromiso.",
     bullets: [
-      "Acceso instantáneo por WhatsApp",
-      "Probado con clínicas, surgeons y real estate",
-      "Sin email, sin formularios largos",
+      "Activación en minutos — sin programar nada",
+      "API oficial de WhatsApp Business (Meta)",
+      "Si te gusta, te suscribís. Si no, cancelás y no perdés nada.",
     ],
-    ctaLabel: "Recibirlo por WhatsApp",
-    ctaIcon: MessageCircle,
+    ctaLabel: "Probar InmoBot gratis",
+    ctaIcon: Bot,
     action: () => {
-      const msg = encodeURIComponent(
-        "Hola! Quiero recibir el Checklist High-Ticket de Automatik Media."
-      );
-      window.open(
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,
-        "_blank",
-        "noopener,noreferrer"
-      );
+      window.open(INMOBOT_SIGNUP_URL, "_blank", "noopener,noreferrer");
     },
   },
 };

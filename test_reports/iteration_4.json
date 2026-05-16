@@ -1,0 +1,36 @@
+{
+  "summary": "Iteration 4 — Calendly webhook + InmoBot combo bundling. Backend: 26/26 pytest cases pass (10 new webhook tests + 16 regression). Webhook accepts unsigned when no key, signs/validates HMAC with key, returns 400 for missing header / wrong v1 / stale timestamp, dedups on (invitee_uuid+event_uuid), and fires a calendly_booking event visible in /api/events/stats. Frontend: Combo section live with title, chat preview and both CTAs (trial -> InmoBot signup w/ utm_source=automatikmedia, learn -> InmoBot home w/ utm); 'Powered by InmoBot' tag visible inside WhatsApp Bots service card (CSS uppercase, DOM text intact); Variant B popup now shows 'InmoBot 7 días gratis' and opens INMOBOT_SIGNUP_URL with utm params, while Variant A still opens Calendly; mobile navbar exposes nav-link-combo; no horizontal overflow at 390px; no console/page errors.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_calendly_webhook.py",
+    "/app/backend/tests/test_events_api.py",
+    "/app/backend/tests/test_leads_api.py",
+    "/app/test_reports/pytest/results_iter4.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py:262 — except Exception as e is broad; signature path swallows both ValueError and crypto errors as 400. OK for production but a more granular except (ValueError) would let unexpected bugs surface as 500.",
+    "server.py:288 — idempotency is only triggered when BOTH invitee_uuid AND event_uuid are present in the payload; a malformed webhook with only one of them would be re-inserted on retry. Calendly always sends both today, but a unique compound index on (invitee_uuid, event_uuid) in MongoDB would harden this.",
+    "server.py:293 — calendly_booking event is inserted with name='calendly_booking' but variant=booking.get('event_type') (e.g. 'invitee.created'). This means /api/events/stats will bucket bookings under variants 'invitee.created'/'invitee.canceled', mixing with the A/B variant namespace. Acceptable but worth documenting / using a metadata field instead.",
+    "server.py global on_event('shutdown') is deprecated — switch to FastAPI lifespan; not blocking, just a warning.",
+    "ExitIntentPopup.jsx still posts /api/events fire-and-forget — same observation as iter-3. Some ad-blockers may block it; covered by stats-counter delta in tests."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_calendly_webhook.py (new)"
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "N/A — webhook endpoint is public (optional HMAC verification gated by CALENDLY_WEBHOOK_SIGNING_KEY env var)",
+  "seed_data_creation": "Multiple TEST_-prefixed calendly_bookings inserted via POST /api/webhooks/calendly during webhook tests; a calendly_booking event with variant=invitee.created added per booking; TEST_ leads + A/B/ZTEST events from regression suites.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "CALENDLY_WEBHOOK_SIGNING_KEY is NOT set in /app/backend/.env on the running supervisor — webhook accepts unsigned (with WARNING log). Signature-required tests use FastAPI TestClient in-process with os.environ patched + importlib.reload of server module; this does not affect the live backend. Webhook idempotency key = (invitee_uuid, event_uuid). Successful booking also writes an event with name='calendly_booking' and variant=event_type (so it appears under the 'invitee.created' bucket in /api/events/stats, NOT under the A/B variant buckets). Frontend Variant B no longer opens wa.me — it opens INMOBOT_SIGNUP_URL (https://inmobot-ia.com/signup?utm_source=automatikmedia&utm_medium=landing&utm_campaign=combo). Patch window.open to capture calls instead of waiting for a new tab. 'Powered by InmoBot' is CSS-uppercased ('POWERED BY INMOBOT' in innerText) — use case-insensitive matching.",
+  "rca of the issue": "No issues found. All acceptance criteria from the iter-4 spec verified end-to-end."
+}
