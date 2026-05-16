@@ -68,6 +68,22 @@ class Lead(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
+class EventCreate(BaseModel):
+    name: str = Field(..., min_length=1, max_length=80)
+    variant: Optional[str] = Field(default=None, max_length=20)
+    metadata: Optional[dict] = None
+
+
+class Event(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    variant: Optional[str] = None
+    metadata: Optional[dict] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
 # ---------- Routes ----------
 @api_router.get("/")
 async def root():
@@ -113,6 +129,39 @@ async def list_leads(limit: int = 200):
         if isinstance(it.get('created_at'), str):
             it['created_at'] = datetime.fromisoformat(it['created_at'])
     return items
+
+
+@api_router.post("/events", response_model=Event, status_code=201)
+async def track_event(payload: EventCreate):
+    """Lightweight event tracking for A/B testing (variant exposure & CTA clicks)."""
+    try:
+        ev = Event(**payload.model_dump())
+        doc = ev.model_dump()
+        doc['created_at'] = doc['created_at'].isoformat()
+        await db.events.insert_one(doc)
+        return ev
+    except Exception as e:
+        logger.exception("Failed to track event")
+        raise HTTPException(status_code=500, detail="Tracking failed") from e
+
+
+@api_router.get("/events/stats")
+async def events_stats():
+    """Aggregated A/B test results — view per variant + clicks per variant + CR%."""
+    pipeline = [
+        {"$group": {"_id": {"name": "$name", "variant": "$variant"}, "count": {"$sum": 1}}}
+    ]
+    rows = await db.events.aggregate(pipeline).to_list(1000)
+    out = {}
+    for r in rows:
+        key = r["_id"].get("variant") or "default"
+        out.setdefault(key, {})[r["_id"]["name"]] = r["count"]
+    # Conversion rate = click / view per variant
+    for variant, counts in out.items():
+        views = counts.get("exit_view", 0)
+        clicks = counts.get("exit_click", 0)
+        counts["cr_percent"] = round((clicks / views) * 100, 2) if views else 0.0
+    return out
 
 
 # Include the router in the main app
