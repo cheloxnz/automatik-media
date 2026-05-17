@@ -29,7 +29,7 @@ const Landing = () => {
   return (
     <main
       data-testid="landing-page"
-      className="relative bg-[#050505] text-white antialiased selection:bg-[#9EFF00] selection:text-black"
+      className="relative overflow-x-clip bg-[#050505] text-white antialiased selection:bg-[#9EFF00] selection:text-black"
       style={{ scrollBehavior: "smooth" }}
     >
       <Analytics />
