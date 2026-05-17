@@ -12,6 +12,7 @@ import Results from "./components/Results";
 import ValueCalculator from "./components/ValueCalculator";
 import Psychology from "./components/Psychology";
 import SuccessCases from "./components/SuccessCases";
+import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
@@ -43,6 +44,7 @@ const Landing = () => {
       <ValueCalculator />
       <Psychology />
       <SuccessCases />
+      <Pricing />
       <Testimonials />
       <FinalCTA />
       <Footer />

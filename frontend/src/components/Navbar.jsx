@@ -7,8 +7,8 @@ const links = [
   { label: "Combo", id: "combo" },
   { label: "Servicios", id: "servicios" },
   { label: "Proceso", id: "proceso" },
-  { label: "Calculadora", id: "calculadora" },
   { label: "Casos", id: "casos" },
+  { label: "Precios", id: "precios" },
 ];
 
 const Navbar = () => {
