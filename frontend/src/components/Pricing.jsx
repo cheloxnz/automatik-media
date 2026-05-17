@@ -10,6 +10,7 @@ import {
   Gift,
   ImageIcon,
   Flame,
+  Bot,
 } from "lucide-react";
 import axios from "axios";
 import { CALENDLY_URL } from "../lib/site";
@@ -154,6 +155,15 @@ const PLANS = {
       bonuses: [
         { label: "E-book WhatsApp Marketing High-Ticket", value: "US$ 97" },
       ],
+      inmobot: [
+        "1 número de WhatsApp",
+        "2.000 leads/mes",
+        "2.000 conversaciones IA (GPT-4)/mes",
+        "10 usuarios",
+        "Métricas básicas",
+        "Broadcast masivo",
+        "Flujos básicos",
+      ],
     },
     {
       id: "combo_gold",
@@ -175,6 +185,15 @@ const PLANS = {
         { label: "50 plantillas de copy probadas", value: "US$ 147" },
         { label: 'Mini-curso "Respuesta < 1 min"', value: "US$ 197" },
       ],
+      inmobot: [
+        "1 número de WhatsApp + plantillas WhatsApp Business",
+        "5.000 leads/mes",
+        "5.000 conversaciones IA (GPT-4)/mes",
+        "20 usuarios",
+        "Métricas avanzadas",
+        "Broadcast masivo",
+        "Flujo personalizable",
+      ],
     },
     {
       id: "combo_diamond",
@@ -195,6 +214,16 @@ const PLANS = {
         { label: "Auditoría 1-on-1 con el equipo", value: "US$ 497" },
         { label: "Plantillas de funnel completo", value: "US$ 297" },
         { label: "Acceso a comunidad privada premium", value: null },
+      ],
+      inmobot: [
+        "Hasta 3 números de WhatsApp",
+        "8.000 leads/mes",
+        "8.000 conversaciones IA (GPT-4)/mes",
+        "30 usuarios",
+        "Dashboard completo + métricas avanzadas",
+        "Broadcast masivo",
+        "Flujo totalmente personalizable",
+        "Soporte prioritario",
       ],
     },
     {
@@ -222,6 +251,17 @@ const PLANS = {
         { label: "Llamada estratégica trimestral con dirección", value: null },
         { label: "Acceso anticipado a nuevas features y betas", value: null },
         { label: "Branding kit + 1 sesión de fotos", value: "US$ 1,200" },
+      ],
+      inmobot: [
+        "Múltiples números de WhatsApp (ilimitados)",
+        "10.000+ leads/mes",
+        "10.000+ conversaciones IA (GPT-4)/mes",
+        "50 usuarios",
+        "Dashboard completo + métricas avanzadas",
+        "API completa de InmoBot",
+        "Key propia de OpenAI (opcional)",
+        "Soporte 24/7 dedicado",
+        "6 bonus exclusivos InmoBot",
       ],
     },
   ],
@@ -589,6 +629,32 @@ const Pricing = () => {
                     );
                   })}
                 </ul>
+
+                {/* InmoBot capacity (combo plans only) */}
+                {plan.inmobot && plan.inmobot.length > 0 && (
+                  <div
+                    className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 mb-5"
+                    data-testid={`plan-inmobot-${plan.id}`}
+                  >
+                    <div className="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-[#9EFF00] font-mono-am mb-2.5">
+                      <Bot size={12} /> Capacidad InmoBot incluida
+                    </div>
+                    <ul className="space-y-1.5">
+                      {plan.inmobot.map((spec) => (
+                        <li
+                          key={spec}
+                          className="flex items-start gap-2 text-[12.5px] text-white/75 leading-snug"
+                        >
+                          <Check
+                            size={12}
+                            className="text-[#9EFF00] mt-1 shrink-0"
+                          />
+                          {spec}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Bonuses */}
                 {plan.bonuses && plan.bonuses.length > 0 && (

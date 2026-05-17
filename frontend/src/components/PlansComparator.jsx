@@ -86,10 +86,46 @@ const COMPARISON = {
         rows: [
           { label: "InmoBot 24/7", values: [true, true, true, true] },
           {
+            label: "Números de WhatsApp",
+            values: ["1", "1", "Hasta 3", "Ilimitados"],
+          },
+          {
+            label: "Leads / mes",
+            values: ["2.000", "5.000", "8.000", "10.000+"],
+          },
+          {
+            label: "Conversaciones IA (GPT-4) / mes",
+            values: ["2.000", "5.000", "8.000", "10.000+"],
+          },
+          {
+            label: "Usuarios",
+            values: ["10", "20", "30", "50"],
+          },
+          {
             label: "Plantillas WhatsApp Business",
             values: [false, true, true, true],
           },
           { label: "WhatsApp Marketing", values: [true, true, true, true] },
+          {
+            label: "Broadcast masivo",
+            values: [true, true, true, true],
+          },
+          {
+            label: "Flujo personalizable",
+            values: ["Básico", true, true, true],
+          },
+          {
+            label: "Dashboard completo + métricas avanzadas",
+            values: [false, true, true, true],
+          },
+          {
+            label: "API completa de InmoBot",
+            values: [false, false, false, true],
+          },
+          {
+            label: "Key propia de OpenAI (opcional)",
+            values: [false, false, false, true],
+          },
           {
             label: "Lead scoring + nurturing con IA",
             values: [false, false, false, true],
@@ -141,7 +177,15 @@ const COMPARISON = {
             values: [false, false, false, true],
           },
           {
+            label: "Soporte",
+            values: ["Estándar", "Estándar", "Prioritario", "24/7 dedicado"],
+          },
+          {
             label: "Garantía de leads mínimos",
+            values: [false, false, false, true],
+          },
+          {
+            label: "6 bonus exclusivos InmoBot",
             values: [false, false, false, true],
           },
         ],
