@@ -1,0 +1,44 @@
+{
+  "summary": "Frontend-only testing of Iteration 9 (LaunchBanner with slots counter, post-launch strikethrough prices, launch ribbon, image-feature lines, Bonus incluidos block, PlansComparator new row, FAQ accordion section, Navbar FAQ link). All 15 functional checks PASS. Single minor cosmetic issue: 10px horizontal overflow at 390px caused by decorative `.am-particle` and large blurred glow `<div>` elements positioned absolutely outside their parents. Section containers themselves are correctly 390px wide. No console errors.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Mobile 390px viewport (whole landing)",
+        "issues": [
+          "Horizontal overflow of ~10px: document.scrollWidth=400 vs window.innerWidth=390. Root cause: decorative `.am-particle` spans (in Hero/background animation) end up at left≈388–393, and unconstrained blurred glow divs (e.g. `absolute -top-20 -right-20 w-44 h-44` inside cards, `absolute bottom-0 right-0 w-[520px]` background blobs) escape the viewport on the right side. Sections themselves are correctly 390px. Recommend wrapping <main> or each section in `overflow-x-hidden` or adding `overflow-x: clip` on body to suppress decorative bleed."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Mobile horizontal overflow ~10px caused by decorative `.am-particle` spans and glow blobs. Add `overflow-x: hidden` (or `clip`) on `<main data-testid=\"landing-page\">` or on individual section wrappers in Hero / Pricing / SuccessCases to clip decorative bleed without affecting layout."
+  ],
+  "critical_code_review_comments": [
+    "Pricing.jsx is ~650 lines and mixes data (PLANS, FREQUENCIES, bonuses), a custom hook (useLaunchSlots), a sub-component (LaunchBanner) and the main Pricing component. Recommend extracting plan data + LaunchBanner into separate modules (e.g. pricing.data.js, LaunchBanner.jsx, useLaunchSlots.js) — this hits the >700 line trend and improves readability/testability.",
+    "useLaunchSlots `setInterval` runs every ~70–110s and can decrement even when the section is offscreen; consider Page Visibility API or IntersectionObserver gating to avoid unnecessary writes to localStorage in background tabs.",
+    "FAQ.jsx hardcodes WhatsApp content/CTA — good that it uses `openWhatsApp` from `lib/site`. No issues."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "not tested (frontend-only request)",
+    "frontend": "100% functional, 1 minor cosmetic overflow"
+  },
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 9 verified end-to-end on the preview URL. Verified: launch-banner renders, launch-slots-count shows 27/50 (within 12..50), localStorage key `am_launch_slots_v1` persists across reload, all plan cards show correct strikethrough post-launch prices (combo_basic 1,196 / combo_gold 2,396 / combo_diamond 4,316 / combo_diamond_premium 7,196 / marketing_basic 716 / marketing_gold 1,196 / marketing_diamond 1,916), 'post-lanzamiento' label + 'Precio de lanzamiento' ribbon + 'Asegurar precio de lanzamiento' CTA present on every card, image-feature lines present, Bonus incluidos block present per card (incl. stacked value 'US$ 1,200' on diamond_premium), PlansComparator new image row visible in both modes (with 'Ilimitadas' for diamond_premium), FAQ section renders with 8 items, accordion expand/collapse + single-open behavior verified via aria-expanded, faq-whatsapp-cta present, Navbar nav-link-faq smooth-scrolls FAQ into viewport. Console: zero errors. NOTE on test pattern: many strings in Pricing/FAQ use Tailwind `uppercase` so case-insensitive matching is required when asserting against `inner_text`.",
+  "rca of the issue": {
+    "issue": "10px horizontal overflow on 390px mobile viewport",
+    "reproduction": "Open preview URL on mobile 390x844 viewport -> document.documentElement.scrollWidth = 400 while window.innerWidth = 390.",
+    "root_cause": "Decorative absolutely-positioned elements escape the viewport on the right: (a) `<span class=\"am-particle\">` inside Hero (~3px wide, sitting at x≈388–393), (b) `absolute -top-20 -right-20 w-44 h-44 ...` hover-glow on plan/service cards (right edge 445px), (c) background gradient blobs like `absolute bottom-0 right-0 w-[520px] h-[520px] ...`. None of these affect functional layout but their bounding boxes extend the document width.",
+    "mitigation": "Add `overflow-x: hidden` (or modern `overflow-x: clip`) on `<main data-testid=\"landing-page\">` in App.js (or on each section root), or wrap blob/particle decorations in a container with `overflow: hidden`. No JS changes needed."
+  }
+}

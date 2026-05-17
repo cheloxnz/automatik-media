@@ -6,9 +6,9 @@ import { LOGO_URL, openCalendly } from "../lib/site";
 const links = [
   { label: "Combo", id: "combo" },
   { label: "Servicios", id: "servicios" },
-  { label: "Proceso", id: "proceso" },
   { label: "Casos", id: "casos" },
   { label: "Precios", id: "precios" },
+  { label: "FAQ", id: "faq" },
 ];
 
 const Navbar = () => {

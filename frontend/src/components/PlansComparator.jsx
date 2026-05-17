@@ -45,6 +45,10 @@ const COMPARISON = {
         title: "Contenido y reporting",
         rows: [
           { label: "Videos profesionales / mes", values: ["—", "—", "3"] },
+          {
+            label: "Imágenes profesionales con IA / mes",
+            values: ["5", "10", "20"],
+          },
           { label: "Reportes", values: ["Básicos", "Detallados", "Completos"] },
         ],
       },
@@ -102,6 +106,10 @@ const COMPARISON = {
           {
             label: "Videos profesionales / mes",
             values: ["—", "—", "3", "8"],
+          },
+          {
+            label: "Imágenes profesionales con IA / mes",
+            values: ["5", "10", "20", "Ilimitadas"],
           },
           {
             label: "SEO técnico + estrategia de contenido",
