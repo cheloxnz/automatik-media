@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -26,7 +26,19 @@ import CountdownBanner from "./components/CountdownBanner";
 import Analytics from "./components/Analytics";
 import NichePage from "./pages/NichePage";
 
+const DEFAULT_TITLE = "Automatik Media | Marketing, IA y Automatización para High-Ticket";
+const DEFAULT_DESC = "Automatik Media — Marketing, IA y Automatización para negocios high-ticket. Captamos clientes premium con Meta Ads, Google Ads, IA, WhatsApp Bots y sistemas inteligentes 24/7.";
+const DEFAULT_CANONICAL = "https://automatikmedia.com/";
+
 const Landing = () => {
+  useEffect(() => {
+    document.title = DEFAULT_TITLE;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", DEFAULT_DESC);
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", DEFAULT_CANONICAL);
+  }, []);
+
   return (
     <main
       data-testid="landing-page"

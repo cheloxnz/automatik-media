@@ -108,3 +108,15 @@ TELEGRAM_CHAT_ID=...               # from /api/getUpdates
 REACT_APP_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
 REACT_APP_META_PIXEL_ID=...
 ```
+
+
+## Iteration 10 (Feb 2026) — Dynamic Niche Pages (FIXED)
+- **6 niche-specific landing routes** rendering customized content from `/app/frontend/src/data/niches.js`:
+  - `/clinicas-esteticas`, `/cirujanos`, `/odontologia`, `/inmobiliarias`, `/disenadores-interiores`, `/abogados`
+- Shared template `pages/NichePage.jsx` reuses all universal sections (Services, Pricing, FAQ, etc.) and overrides Hero, Problem cards and Success Cases per niche.
+- Each niche has unique SEO meta tags (title + description + canonical) injected via `useEffect`.
+- **Root-cause fix**: NichePage previously used `useParams()` on static route paths → `slug` was undefined → always redirected to home. Fix: pass `slug` as a prop on each Route definition in `App.js`. NichePage accepts `{ slug: slugProp }` with `useParams()` as fallback.
+- **SEO cleanup on navigation**: Landing component now resets `document.title`, `meta[description]` and `link[canonical]` on mount so navigating from a niche back to `/` doesn't leak niche-specific SEO tags.
+- Fixed 3 broken `highlightWord` values in niches.js that weren't contained in `headline[1]` (clinicas-esteticas, cirujanos, abogados) and produced ugly concatenation.
+- Removed unused `Tooth` import from lucide-react (doesn't exist in the library).
+- **Tests**: 100% frontend (6/6 niche routes + home) via testing_agent_v3_fork iteration_10.
