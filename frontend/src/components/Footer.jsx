@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { LOGO_URL, openCalendly, openWhatsApp } from "../lib/site";
+import { NICHE_LIST } from "../data/niches/index";
 import { Instagram, MessageCircle, Linkedin, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
@@ -10,7 +12,7 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
         <div className="grid lg:grid-cols-12 gap-10 mb-16">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-5">
               <img
                 src={LOGO_URL}
@@ -70,16 +72,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3" data-testid="footer-niches">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4">
-              Servicios
+              Verticales
             </div>
-            <ul className="space-y-2.5 text-[14px] text-white/65">
-              <li>Meta Ads</li>
-              <li>Google Ads</li>
-              <li>IA & Automatización</li>
-              <li>WhatsApp Bots</li>
-              <li>Branding</li>
+            <ul className="space-y-2.5 text-[14px]">
+              {NICHE_LIST.map((n) => (
+                <li key={n.slug}>
+                  <Link
+                    to={`/${n.slug}`}
+                    data-testid={`footer-niche-link-${n.slug}`}
+                    className="group inline-flex items-center gap-2 text-white/65 hover:text-[#9EFF00] transition"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-[#9EFF00]/40 group-hover:bg-[#9EFF00] transition" />
+                    {n.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

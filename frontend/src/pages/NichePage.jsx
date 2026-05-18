@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { useParams, Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Play, ArrowDown, ArrowUpRight, MessageSquare, BarChart3, Sparkles } from "lucide-react";
-import { NICHES } from "../data/niches";
+import { Play, ArrowDown, ArrowUpRight } from "lucide-react";
+import { NICHES } from "../data/niches/index";
 import { openCalendly, HERO_VIDEO_URL } from "../lib/site";
 
 // Universal sections — imported as-is from the main landing
@@ -322,34 +323,9 @@ const NichePage = ({ slug: slugProp }) => {
   const slug = slugProp || params.slug;
   const niche = useMemo(() => NICHES[slug], [slug]);
 
-  // SEO meta tags — update on mount
-  useEffect(() => {
-    if (!niche) return;
-    document.title = niche.seo.title;
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", niche.seo.description);
-    // OG
-    const og = document.querySelector('meta[property="og:title"]');
-    if (og) og.setAttribute("content", niche.seo.title);
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", niche.seo.description);
-    // Canonical
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", `https://automatik-media.com/${slug}`);
-    window.scrollTo(0, 0);
-  }, [niche, slug]);
-
   if (!niche) return <Navigate to="/" replace />;
+
+  const canonicalUrl = `https://automatikmedia.com/${slug}`;
 
   return (
     <main
@@ -358,6 +334,16 @@ const NichePage = ({ slug: slugProp }) => {
       className="relative overflow-x-clip bg-[#050505] text-white antialiased selection:bg-[#9EFF00] selection:text-black"
       style={{ scrollBehavior: "smooth" }}
     >
+      <Helmet>
+        <title>{niche.seo.title}</title>
+        <meta name="description" content={niche.seo.description} />
+        <meta property="og:title" content={niche.seo.title} />
+        <meta property="og:description" content={niche.seo.description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={niche.seo.title} />
+        <meta name="twitter:description" content={niche.seo.description} />
+        <link rel="canonical" href={canonicalUrl} />
+      </Helmet>
       <Analytics />
       <CursorGlow />
       <CountdownBanner />
@@ -375,7 +361,19 @@ const NichePage = ({ slug: slugProp }) => {
       <Testimonials />
       <Pricing />
       <PlansComparator />
-      <FAQ />
+      <FAQ
+        items={niche.faqs}
+        eyebrow={`FAQ · ${niche.industry}`}
+        title={
+          <>
+            Dudas específicas de{" "}
+            <span className="text-[#9EFF00] am-text-glow">
+              {niche.name.toLowerCase()}
+            </span>
+          </>
+        }
+        subtitle={`Las preguntas que más nos hacen los negocios del rubro ${niche.industry.toLowerCase()} antes de avanzar.`}
+      />
       <FinalCTA />
       <Footer />
       <WhatsAppFloat />

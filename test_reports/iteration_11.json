@@ -1,0 +1,33 @@
+{
+  "summary": "Frontend-only regression + new-feature testing for iteration 11 (niche FAQs, UTM-aware CTAs, footer cross-linking, react-helmet-async, niche file split). 10 of 11 acceptance criteria PASS. Single SEO bug found: duplicate <link rel='canonical'> on every niche page because public/index.html ships a hardcoded canonical that react-helmet-async cannot replace (it appends a new one instead), leaving two canonicals in the DOM.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "public/index.html + NichePage Helmet",
+        "issue": "Duplicate <link rel='canonical'> on niche pages. On /abogados two tags exist: 'https://automatikmedia.com/' (from public/index.html) and 'https://automatikmedia.com/abogados' (injected by Helmet). React-helmet-async does not remove the static one because it lacks the data-rh attribute, so search engines will see two canonicals. Same issue affects every niche route.",
+        "selector": "link[rel='canonical']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Remove the hardcoded <link rel='canonical' href='https://automatikmedia.com/'/> from /app/frontend/public/index.html so react-helmet-async is the only source of truth (Landing component already injects the home canonical via Helmet). Alternative: add data-rh='true' to the static tag so Helmet can take it over. Verify with `document.querySelectorAll('link[rel=canonical]').length === 1` on /, /abogados, /clinicas-esteticas, etc.",
+    "Optional (spec clarification): the review request mentioned canonicals on niches should be 'https://automatikmedia.com/premium-lead-system' but the implementation uses '/${slug}' (e.g. /abogados). Current behaviour seems correct/desirable for SEO; confirm intent with product."
+  ],
+  "critical_code_review_comments": [
+    "Helmet duplicate canonical issue (above) — root cause is static head tags in public/index.html not managed by react-helmet-async.",
+    "NichePage.jsx canonicalUrl uses `https://automatikmedia.com/${slug}` (correct per-route), not the literal '/premium-lead-system' from the spec — likely spec is wrong, but worth confirming.",
+    "All other code paths look clean: niche files are split per file, NICHE_LIST is derived, getNicheFromPath safely handles undefined pathname, buildUtmParams correctly falls back to 'home' when no niche matches, openWhatsApp tags message with niche.name (display) while utm_campaign uses niche.utmCampaign (snake_case) — consistent and SEO/analytics friendly."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (not tested)", "frontend": "95% (10/11 acceptance criteria pass; 1 SEO bug)"},
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All 11 acceptance criteria were exercised via Playwright using window.open stubbing (window.__opens). Verified: (1) Home FAQ shows 8 generic items with title 'Antes de decidir, resolvé todas tus dudas'. (2) Each of the 6 niche pages renders niche-specific FAQs (counts: clinicas=7, cirujanos=6, odontologia=7, inmobiliarias=7, disenadores-interiores=6, abogados=7) with title 'Dudas específicas de {niche.name.toLowerCase()}' and eyebrow '[ FAQ · {INDUSTRY} ]'. First FAQ on /abogados is the ético/publicidad one, on /clinicas-esteticas is the botox/tratamientos one — matches data files. (3) Calendly UTM verified for all 6 niches with correct snake_case utm_campaign (clinicas_esteticas, cirujanos, odontologia, inmobiliarias, disenadores_interiores, abogados) and 'home' on /. (4) WhatsApp footer CTA on /clinicas-esteticas appends '[Clínicas Estéticas]' to message text. (5) Footer has data-testid='footer-niches' with all 6 footer-niche-link-{slug} links; clicking footer-niche-link-cirujanos navigates and renders niche-page with data-niche='cirujanos'. (6) Helmet title updates across SPA navigations (home → /abogados → back) without page reload. (7) Regression: all 6 niche routes render data-testid='niche-page' without redirecting to home. THE ONLY FAILURE: link[rel='canonical'] count is 2 on niche routes (one from public/index.html, one from Helmet). The og:url IS correctly singular ('https://automatikmedia.com/abogados') so OG tags are fine — the bug is canonical-only. After main agent removes the hardcoded canonical from public/index.html, re-run a quick check: document.querySelectorAll('link[rel=canonical]').length should equal 1 on every route, and the href should match the route.",
+  "rca of the issue": "react-helmet-async only takes over head tags that it itself injected or that already carry a data-rh marker. The <link rel='canonical' href='https://automatikmedia.com/'> in /app/frontend/public/index.html (line ~ in <head>) is part of the initial HTML and has no data-rh marker, so Helmet does NOT remove it when mounting Landing or NichePage. Instead, Helmet appends its own <link rel='canonical'> with the dynamic href. Net effect on /abogados: 2 canonical tags. Fix: delete the static canonical tag from public/index.html (Landing's <Helmet> already provides the default canonical for /). Alternatively keep the static tag and add data-rh='true' so Helmet manages it."
+}

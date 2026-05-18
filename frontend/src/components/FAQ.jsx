@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { HelpCircle, MessageCircle } from "lucide-react";
 import { openWhatsApp } from "../lib/site";
 
-const ITEMS = [
+const DEFAULT_ITEMS = [
   {
     q: "¿Por qué los planes parecen más caros que otras agencias?",
     a: "No vendemos solo ads. Construimos un sistema completo: campañas + IA en WhatsApp 24/7 + landing high-converting + automatizaciones + reportes. Una agencia tradicional cobra parecido por solo las campañas; nosotros incluimos la infraestructura que te dispara la conversión. Si comparás precio puro contra resultado, salimos más baratos.",
@@ -44,7 +44,8 @@ const ITEMS = [
   },
 ];
 
-const FAQ = () => {
+const FAQ = ({ items, title, subtitle, eyebrow }) => {
+  const list = items && items.length ? items : DEFAULT_ITEMS;
   return (
     <section
       id="faq"
@@ -56,18 +57,26 @@ const FAQ = () => {
       <div className="relative max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-            [ preguntas frecuentes ]
+            [ {eyebrow || "preguntas frecuentes"} ]
           </div>
           <h2
             data-testid="faq-title"
             className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
           >
-            Antes de decidir,{" "}
-            <span className="text-[#9EFF00] am-text-glow">resolvé todas tus dudas</span>
+            {title ? (
+              title
+            ) : (
+              <>
+                Antes de decidir,{" "}
+                <span className="text-[#9EFF00] am-text-glow">
+                  resolvé todas tus dudas
+                </span>
+              </>
+            )}
           </h2>
           <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
-            Las preguntas que más nos hacen los negocios premium antes de
-            entrar al combo.
+            {subtitle ||
+              "Las preguntas que más nos hacen los negocios premium antes de entrar al combo."}
           </p>
         </div>
 
@@ -79,7 +88,7 @@ const FAQ = () => {
           className="rounded-3xl glass p-2 sm:p-3"
         >
           <Accordion type="single" collapsible className="w-full">
-            {ITEMS.map((item, i) => (
+            {list.map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
