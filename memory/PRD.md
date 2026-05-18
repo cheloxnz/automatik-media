@@ -120,3 +120,13 @@ REACT_APP_META_PIXEL_ID=...
 - Fixed 3 broken `highlightWord` values in niches.js that weren't contained in `headline[1]` (clinicas-esteticas, cirujanos, abogados) and produced ugly concatenation.
 - Removed unused `Tooth` import from lucide-react (doesn't exist in the library).
 - **Tests**: 100% frontend (6/6 niche routes + home) via testing_agent_v3_fork iteration_10.
+
+
+## Iteration 11 (Feb 2026) — Niche FAQs, UTMs, Footer cross-links, Helmet, File split
+- **Niche-specific FAQs**: each niche now exports 6-7 industry-specific FAQs (ethics/regulation for lawyers, deposit-for-consultation for surgeons, treatment ranges for dental, etc.). NichePage passes them into a reusable `FAQ` component now accepting `{ items, title, subtitle, eyebrow }` props.
+- **UTM-aware CTAs**: `openCalendly` / `openWhatsApp` / `openInmoBotTrial` (and `openInmoBotPlusWhatsApp`) auto-detect the current niche from `window.location.pathname` and append `utm_source=automatikmedia&utm_medium=landing&utm_campaign={niche.utmCampaign}`. Home `/` uses `utm_campaign=home`. WhatsApp messages are also tagged with `[Niche Name]` for inbox triage.
+- **Footer cross-linking**: new "Verticales" column with all 6 niche links (`data-testid="footer-niche-link-{slug}"`) using `react-router` `<Link>`. Replaces the static "Servicios" list.
+- **react-helmet-async**: installed (`yarn add react-helmet-async@3.0.0`). `App.js` is wrapped with `<HelmetProvider>`. Both `Landing` and `NichePage` now use `<Helmet>` to inject `title`, `meta description`, `og:title`, `og:description`, `og:url`, `twitter:title`, `twitter:description` and `link canonical` declaratively (replacing the previous useEffect-based mutation that left tags dangling on navigation).
+- **Static canonical removed** from `/app/frontend/public/index.html` — `react-helmet-async` is now the single source of truth (verified 1 canonical per route).
+- **niches.js split**: data moved to `/app/frontend/src/data/niches/{slug}.js` (6 files) + `index.js` aggregator. Old `niches.js` kept as a 3-line re-export shim for backwards compatibility. Added `getNicheFromPath(pathname)` helper used by `lib/site.js`.
+- **Tests**: 100% (11/11) frontend acceptance criteria after canonical fix. Verified via `testing_agent_v3_fork` iteration_11 + manual canonical recount.
