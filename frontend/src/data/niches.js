@@ -2,25 +2,14 @@
 // Each niche overrides: hero, problem cards, success cases + SEO meta tags
 
 import {
-  UserX,
   Clock,
   Repeat,
-  Cpu,
-  Target,
   PhoneOff,
   CalendarX,
   TrendingDown,
   AlertTriangle,
   EyeOff,
-  Building2,
-  MapPin,
-  FileSearch,
   ScrollText,
-  Scale,
-  Stethoscope,
-  Tooth,
-  Syringe,
-  Sofa,
 } from "lucide-react";
 
 export const NICHES = {
@@ -37,7 +26,7 @@ export const NICHES = {
     hero: {
       badge: "Sector estético · High-Ticket",
       headline: ["Marketing y IA para", "clínicas y centros estéticos"],
-      highlightWord: "IA",
+      highlightWord: "estéticos",
       subheadline:
         "Llenamos tu agenda de pacientes calificados por presupuesto, zona y tratamiento. Meta Ads + bot 24/7 que califica y agenda sin que tu equipo levante el teléfono.",
       leadWord: "consultas",
@@ -151,8 +140,8 @@ export const NICHES = {
     },
     hero: {
       badge: "Cirugía plástica · High-Ticket",
-      headline: ["Pacientes calificados, no", "curiosos"],
-      highlightWord: "calificados",
+      headline: ["Pacientes calificados,", "no curiosos"],
+      highlightWord: "no curiosos",
       subheadline:
         "Solo ves en agenda candidatos serios. El bot filtra por procedimiento, presupuesto, zona y urgencia antes de pasar la consulta. Reservas con seña ya activadas.",
       leadWord: "consultas",
@@ -612,7 +601,7 @@ export const NICHES = {
     hero: {
       badge: "Estudios Jurídicos · Premium",
       headline: ["Casos calificados, no", "consultas gratuitas"],
-      highlightWord: "calificados",
+      highlightWord: "consultas gratuitas",
       subheadline:
         "Atraemos clientes para tus áreas premium: corporativo, sucesiones, inmobiliario, laboral high-ticket. El bot filtra por monto, área y urgencia.",
       leadWord: "casos",

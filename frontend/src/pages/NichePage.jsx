@@ -317,8 +317,9 @@ const NicheCases = ({ niche }) => {
   );
 };
 
-const NichePage = () => {
-  const { slug } = useParams();
+const NichePage = ({ slug: slugProp }) => {
+  const params = useParams();
+  const slug = slugProp || params.slug;
   const niche = useMemo(() => NICHES[slug], [slug]);
 
   // SEO meta tags — update on mount

@@ -66,12 +66,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/clinicas-esteticas" element={<NichePage />} />
-          <Route path="/cirujanos" element={<NichePage />} />
-          <Route path="/odontologia" element={<NichePage />} />
-          <Route path="/inmobiliarias" element={<NichePage />} />
-          <Route path="/disenadores-interiores" element={<NichePage />} />
-          <Route path="/abogados" element={<NichePage />} />
+          <Route path="/clinicas-esteticas" element={<NichePage slug="clinicas-esteticas" />} />
+          <Route path="/cirujanos" element={<NichePage slug="cirujanos" />} />
+          <Route path="/odontologia" element={<NichePage slug="odontologia" />} />
+          <Route path="/inmobiliarias" element={<NichePage slug="inmobiliarias" />} />
+          <Route path="/disenadores-interiores" element={<NichePage slug="disenadores-interiores" />} />
+          <Route path="/abogados" element={<NichePage slug="abogados" />} />
         </Routes>
       </BrowserRouter>
     </div>
