@@ -24,6 +24,7 @@ import ExitIntentPopup from "./components/ExitIntentPopup";
 import TrialIntentModal from "./components/TrialIntentModal";
 import CountdownBanner from "./components/CountdownBanner";
 import Analytics from "./components/Analytics";
+import NichePage from "./pages/NichePage";
 
 const Landing = () => {
   return (
@@ -65,6 +66,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/clinicas-esteticas" element={<NichePage />} />
+          <Route path="/cirujanos" element={<NichePage />} />
+          <Route path="/odontologia" element={<NichePage />} />
+          <Route path="/inmobiliarias" element={<NichePage />} />
+          <Route path="/disenadores-interiores" element={<NichePage />} />
+          <Route path="/abogados" element={<NichePage />} />
         </Routes>
       </BrowserRouter>
     </div>
