@@ -239,7 +239,7 @@ const PLANS = {
         "8 videos profesionales/mes",
         "SEO técnico + estrategia de contenido",
         "Prospección automática (+2.000 búsquedas/semana)",
-        "Outreach IA + follow-up FU1/FU2/FU3 automático",
+        "Outreach IA por email + WhatsApp para leads que respondieron",
         "Multi-canal: Meta + Google + TikTok Ads",
         "Reportes ejecutivos quincenales",
         "Garantía de leads mínimos o crédito mensual",
