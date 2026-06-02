@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Problem from "./components/Problem";
 import Services from "./components/Services";
 import InmoBotCombo from "./components/InmoBotCombo";
+import GrowthFramework from "./components/GrowthFramework";
 import HowItWorks from "./components/HowItWorks";
 import Automation from "./components/Automation";
 import Results from "./components/Results";
@@ -56,6 +57,7 @@ const Landing = () => {
       <Problem />
       <Services />
       <InmoBotCombo />
+      <GrowthFramework />
       <HowItWorks />
       <Automation />
       <Results />
