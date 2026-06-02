@@ -7,14 +7,22 @@ import {
   ShieldCheck,
   Zap,
   CheckCircle2,
+  BarChart3,
+  Flame,
+  Users,
+  Radio,
 } from "lucide-react";
 import { requestInmoBotTrial } from "../lib/site";
 
 const features = [
   { icon: MessageCircle, label: "Respuesta < 1 min", sub: "24/7 WhatsApp" },
   { icon: Bot, label: "IA que califica", sub: "OpenAI GPT" },
-  { icon: Calendar, label: "Agenda online", sub: "Google Calendar" },
+  { icon: BarChart3, label: "Dashboard de leads", sub: "Hot · Tibio · Frío" },
   { icon: ShieldCheck, label: "API oficial Meta", sub: "E2E cifrado" },
+  { icon: Flame, label: "Alertas Hot Lead", sub: "Notif. al instante" },
+  { icon: Users, label: "Gestión asesores", sub: "Multi-usuario" },
+  { icon: Radio, label: "Broadcast masivo", sub: "Campañas WA" },
+  { icon: Calendar, label: "Calendario", sub: "Seguimiento" },
 ];
 
 const chatMessages = [
@@ -86,10 +94,10 @@ const InmoBotCombo = () => {
 
               <ul className="mt-7 space-y-3">
                 {[
-                  "Activación incluida en tu plan — sin costo extra los primeros 7 días",
-                  "Conectado a tu Google Calendar y CRM desde el día 1",
-                  "Configurado para tu negocio (clínica, real estate, gastro, retail…)",
-                  "Handoff automático cuando un lead pide humano",
+                  "Bot responde al instante y califica: Hot 🔥 / Tibio 🌡️ / Frío ❄️",
+                  "Dashboard con métricas en tiempo real y ROI estimado del pipeline",
+                  "Alerta inmediata al asesor cuando un lead es Hot",
+                  "Configurado para tu inmobiliaria desde el día 1 — sin setup técnico",
                 ].map((b) => (
                   <li
                     key={b}
@@ -104,7 +112,7 @@ const InmoBotCombo = () => {
                 ))}
               </ul>
 
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3" data-testid="combo-features-grid">
                 {features.map((f) => {
                   const Icon = f.icon;
                   return (

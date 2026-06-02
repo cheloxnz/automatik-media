@@ -102,11 +102,11 @@ const Hero = () => {
             data-testid="hero-headline"
             className="font-display mt-6 text-4xl sm:text-5xl lg:text-[68px] leading-[1.02] tracking-tighter font-semibold"
           >
-            Marketing, <span className="text-[#9EFF00] am-text-glow">IA</span>{" "}
-            y Automatización
+            Más leads.{" "}
+            <span className="text-[#9EFF00] am-text-glow">Menos trabajo.</span>
             <br />
-            para Negocios{" "}
-            <span className="italic font-light text-white/70">High-Ticket</span>
+            Tu inmobiliaria crece{" "}
+            <span className="italic font-light text-white/70">con IA.</span>
           </motion.h1>
 
           <motion.p
@@ -116,10 +116,9 @@ const Hero = () => {
             data-testid="hero-subheadline"
             className="mt-6 max-w-xl text-[15px] sm:text-base text-white/65 leading-relaxed"
           >
-            Ayudamos a negocios premium a captar más clientes, automatizar
-            ventas y escalar mediante{" "}
-            <span className="text-white">Meta Ads, Google Ads, IA</span> y
-            sistemas inteligentes.
+            Captamos, calificamos y convertimos leads para inmobiliarias con{" "}
+            <span className="text-white">Meta Ads, WhatsApp IA</span> y un
+            sistema que trabaja 24/7 mientras tu equipo cierra negocios.
           </motion.p>
 
           <motion.div
@@ -155,8 +154,8 @@ const Hero = () => {
             data-testid="hero-mini-stats"
           >
             {[
-              { k: "+10", v: "Leads/mes" },
-              { k: "3X", v: "ROI proyectado" },
+              { k: "+340%", v: "Más leads" },
+              { k: "< 1 min", v: "Respuesta IA" },
               { k: "24/7", v: "Sistema activo" },
             ].map((s) => (
               <div key={s.v}>
