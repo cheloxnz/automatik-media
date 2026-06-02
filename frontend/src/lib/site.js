@@ -1,7 +1,7 @@
 // Shared constants for Automatik Media landing
 import { getNicheFromPath } from "../data/niches/index";
 
-export const WHATSAPP_NUMBER = "5491168754798";
+export const WHATSAPP_NUMBER = "5491153250877";
 const WHATSAPP_DEFAULT_TEXT =
   "Hola! Quiero más información sobre los servicios de Automatik Media.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(

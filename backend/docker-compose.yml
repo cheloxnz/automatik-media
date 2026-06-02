@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  automatik-backend:
+    build: .
+    container_name: automatik-backend
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    networks:
+      - automatik-net
+
+networks:
+  automatik-net:
+    driver: bridge
