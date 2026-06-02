@@ -1,31 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play } from "lucide-react";
-import { HERO_VIDEO_URL } from "../lib/site";
+import { HERO_YOUTUBE_ID } from "../lib/site";
 
 const VideoModal = ({ open, onClose }) => {
-  const videoRef = useRef(null);
-
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    // Try to unmute + play
-    const v = videoRef.current;
-    if (v) {
-      v.muted = false;
-      v.currentTime = 0;
-      v.play().catch(() => {
-        // Autoplay with sound may be blocked — fallback muted
-        v.muted = true;
-        v.play().catch(() => {});
-      });
-    }
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-      if (v) v.pause();
     };
   }, [open, onClose]);
 
@@ -64,12 +50,12 @@ const VideoModal = ({ open, onClose }) => {
               automatik / presentación.mp4
             </div>
 
-            <video
-              ref={videoRef}
-              src={HERO_VIDEO_URL}
-              controls
-              playsInline
+            <iframe
+              src={`https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`}
               className="w-full aspect-video bg-black"
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title="Automatik Media"
               data-testid="video-modal-player"
             />
 
@@ -86,7 +72,7 @@ const VideoModal = ({ open, onClose }) => {
                 onClick={() => {
                   onClose();
                   window.open(
-                    "https://calendly.com/cheloxnz/30min",
+                    "https://cal.com/marcelo-del-valle-bcgavl/30min",
                     "_blank",
                     "noopener,noreferrer"
                   );

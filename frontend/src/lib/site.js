@@ -7,7 +7,7 @@ const WHATSAPP_DEFAULT_TEXT =
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_DEFAULT_TEXT
 )}`;
-export const CALENDLY_URL = "https://calendly.com/cheloxnz/30min";
+export const CALENDLY_URL = "https://cal.com/marcelo-del-valle-bcgavl/30min";
 
 // InmoBot — included in the Automatik Media combo (7-day free trial)
 const INMOBOT_SIGNUP_BASE = "https://inmobot-ia.com/signup";
