@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, MessageSquare, BarChart3, Sparkles, ArrowDown } from "lucide-react";
-import { HERO_VIDEO_URL, openCalendly } from "../lib/site";
+import { MessageSquare, BarChart3, Sparkles, ArrowDown } from "lucide-react";
+import { HERO_YOUTUBE_ID, openCalendly } from "../lib/site";
 import VideoModal from "./VideoModal";
 
 const Particles = () => {
@@ -48,22 +48,7 @@ const FloatCard = ({ children, className = "", delay = 0, ...rest }) => (
 );
 
 const Hero = () => {
-  const videoRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const togglePlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.muted = false;
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
-  };
 
   return (
     <section
@@ -177,40 +162,24 @@ const Hero = () => {
             className="relative aspect-[4/5] sm:aspect-[5/6] rounded-[28px] overflow-hidden glass-strong am-ring-border"
             data-testid="hero-video-container"
           >
-            <video
-              ref={videoRef}
-              src={HERO_VIDEO_URL}
-              className="absolute inset-0 w-full h-full object-cover"
-              autoPlay
-              loop
-              muted={!playing}
-              playsInline
-              preload="metadata"
+            <iframe
+              src={`https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_YOUTUBE_ID}&controls=0&showinfo=0&rel=0&modestbranding=1`}
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title="Automatik Media"
               data-testid="hero-video"
             />
             {/* Vignette */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[28px] pointer-events-none" />
 
-            {/* Play overlay */}
-            <button
-              onClick={togglePlay}
-              data-testid="hero-video-play"
-              className="absolute inset-0 flex items-center justify-center group"
-              aria-label="Play video"
-            >
-              <span className="relative flex items-center justify-center w-20 h-20 rounded-full bg-[#9EFF00] text-black shadow-[0_0_40px_rgba(158,255,0,0.6)] group-hover:scale-110 transition-transform">
-                <Play size={28} className="ml-1" />
-                <span className="am-pulse-ring" />
-              </span>
-            </button>
-
             {/* Bottom label */}
             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-white/70">
-              <span className="font-mono-am">automatik / reel.mp4</span>
+              <span className="font-mono-am">automatik / reel</span>
               <span className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#9EFF00] animate-pulse" />
-                {playing ? "playing" : "preview"}
+                live
               </span>
             </div>
           </motion.div>

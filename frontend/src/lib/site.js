@@ -15,12 +15,9 @@ const INMOBOT_HOME_BASE = "https://inmobot-ia.com/inicio";
 export const INMOBOT_SIGNUP_URL = `${INMOBOT_SIGNUP_BASE}?utm_source=automatikmedia&utm_medium=landing&utm_campaign=combo`;
 export const INMOBOT_HOME_URL = `${INMOBOT_HOME_BASE}?utm_source=automatikmedia&utm_medium=landing`;
 
-export const LOGO_URL =
-  "https://customer-assets.emergentagent.com/job_990b7577-7a34-4de2-bd3d-b0129aaa80c1/artifacts/p6kfrgkw_d7ac7b2c-d6fe-4a78-b85c-090880d5dfb3.jpg";
-export const HERO_VIDEO_URL =
-  "https://customer-assets.emergentagent.com/job_990b7577-7a34-4de2-bd3d-b0129aaa80c1/artifacts/q8ox84ni_Presentaci%C3%B3n%20Automatik%20Media.mp4";
-export const FINAL_CTA_BG =
-  "https://static.prod-images.emergentagent.com/jobs/990b7577-7a34-4de2-bd3d-b0129aaa80c1/images/5f3c8bca7f3d29ee82015097544679d65072faef19e220b09419ef67ab0fac14.png";
+export const LOGO_URL = "/logo.jpg";
+export const HERO_YOUTUBE_ID = "UJBUJWdDkJQ";
+export const FINAL_CTA_BG = "/logo.jpg";
 
 // ----- UTM-aware URL builders -----
 // All outbound CTAs (Calendly, WhatsApp, InmoBot) auto-detect the current
