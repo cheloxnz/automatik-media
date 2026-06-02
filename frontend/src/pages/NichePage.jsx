@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Play, ArrowDown, ArrowUpRight } from "lucide-react";
 import { NICHES } from "../data/niches/index";
-import { openCalendly, HERO_VIDEO_URL } from "../lib/site";
+import { openCalendly, HERO_YOUTUBE_ID } from "../lib/site";
 
 // Universal sections — imported as-is from the main landing
 import Navbar from "../components/Navbar";
@@ -121,14 +121,12 @@ const NicheHero = ({ niche }) => {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="relative aspect-[4/5] sm:aspect-[5/6] rounded-[28px] overflow-hidden glass-strong am-ring-border"
           >
-            <video
-              src={HERO_VIDEO_URL}
-              className="absolute inset-0 w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
+            <iframe
+              src={`https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_YOUTUBE_ID}&controls=0&rel=0`}
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title="Automatik Media"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-white/70">
