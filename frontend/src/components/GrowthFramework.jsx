@@ -28,7 +28,7 @@ const stages = [
       {
         icon: MapPin,
         title: "Google Maps Scraping",
-        sub: "46 ciudades × 7 keywords = 322 búsquedas/semana",
+        sub: "Múltiples ciudades y keywords = +2.000 búsquedas/semana",
       },
       {
         icon: Bot,
@@ -230,7 +230,7 @@ const GrowthFramework = () => {
           className="mt-10 rounded-3xl border border-[#9EFF00]/20 bg-[#9EFF00]/[0.04] p-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
         >
           {[
-            { k: "322", v: "búsquedas/semana" },
+            { k: "+2.000", v: "búsquedas/semana" },
             { k: "< 1 min", v: "respuesta al lead" },
             { k: "3×", v: "follow-ups automáticos" },
             { k: "24/7", v: "sistema activo" },
