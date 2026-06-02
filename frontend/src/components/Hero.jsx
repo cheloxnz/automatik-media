@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MessageSquare, BarChart3, Sparkles, ArrowDown } from "lucide-react";
+import { Play, MessageSquare, BarChart3, Sparkles, ArrowDown } from "lucide-react";
 import { HERO_YOUTUBE_ID, openCalendly } from "../lib/site";
 import VideoModal from "./VideoModal";
 
