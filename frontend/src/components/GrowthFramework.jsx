@@ -13,6 +13,7 @@ import {
   CalendarCheck,
   Radio,
   TrendingUp,
+  ImageIcon,
 } from "lucide-react";
 
 const stages = [
@@ -20,20 +21,20 @@ const stages = [
     id: "capturar",
     number: "01",
     label: "Capturar",
-    title: "Prospección automática de leads",
-    desc: "Cada lunes, el sistema sale solo a buscar prospectos. Sin que toques nada, aparecen nuevos leads calificados con diagnóstico IA.",
+    title: "Creativos + prospección en piloto automático",
+    desc: "InmoGen convierte cada propiedad en creativos para Meta Ads en 2 minutos. InmoDesk sale a buscar inmobiliarias nuevas cada semana sin que toques nada.",
     color: "#9EFF00",
     icon: Search,
     systems: [
       {
-        icon: MapPin,
-        title: "Google Maps Scraping",
-        sub: "Múltiples ciudades y keywords = +2.000 búsquedas/semana",
+        icon: ImageIcon,
+        title: "InmoGen — Creativos automáticos",
+        sub: "Link de propiedad → 7 tipos de creativos con tu marca en 2 min",
       },
       {
-        icon: Bot,
-        title: "Diagnóstico con IA",
-        sub: "OpenAI analiza cada prospecto y genera problema + solución",
+        icon: MapPin,
+        title: "InmoDesk — Google Maps Scraping",
+        sub: "+1.000 prospectos/semana con diagnóstico IA incluido",
       },
       {
         icon: Mail,
@@ -41,7 +42,7 @@ const stages = [
         sub: "Borradores personalizados en Gmail. Vos aprobás, el sistema envía",
       },
     ],
-    badge: "Funciona solo · Cada lunes 3am",
+    badge: "InmoGen + InmoDesk · Funciona solo",
   },
   {
     id: "convertir",
@@ -113,18 +114,19 @@ const GrowthFramework = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-            [ conversation-led growth ]
+            [ automatik growth framework ]
           </div>
           <h2
             data-testid="framework-title"
             className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
           >
-            Tres sistemas que trabajan{" "}
-            <span className="text-[#9EFF00] am-text-glow">juntos y solos.</span>
+            El suite trabaja{" "}
+            <span className="text-[#9EFF00] am-text-glow">las 24 horas.</span>{" "}
+            Vos cerrás negocios.
           </h2>
           <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
-            Mientras tu equipo cierra negocios, el sistema captura leads nuevos,
-            convierte los que escriben y hace seguimiento a los que no respondieron.
+            InmoGen crea los creativos, InmoBot califica los leads y InmoDesk
+            prospecta nuevos clientes — todo en paralelo, todo automático.
           </p>
         </div>
 
@@ -230,9 +232,9 @@ const GrowthFramework = () => {
           className="mt-10 rounded-3xl border border-[#9EFF00]/20 bg-[#9EFF00]/[0.04] p-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
         >
           {[
-            { k: "+2.000", v: "búsquedas/semana" },
+            { k: "2 min", v: "creativos por propiedad" },
             { k: "< 1 min", v: "respuesta al lead" },
-            { k: "3×", v: "follow-ups automáticos" },
+            { k: "1.000+", v: "prospectos/semana" },
             { k: "24/7", v: "sistema activo" },
           ].map((s) => (
             <div key={s.v}>

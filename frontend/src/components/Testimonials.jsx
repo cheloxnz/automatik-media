@@ -4,40 +4,40 @@ import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
-    initials: "DR",
-    name: "Dra. Romina V.",
-    role: "Directora · Clínica de Estética",
+    initials: "MR",
+    name: "Martín R.",
+    role: "Agente Inmobiliario · Palermo, Buenos Aires",
     quote:
-      "Pasamos de 6 a 28 consultas mensuales en menos de 90 días. El sistema agenda solo, mi equipo solo confirma. Cambió la forma en que operamos.",
+      "Antes tardaba 2 horas armando los creativos para cada propiedad entre Canva y WhatsApp. Ahora en 3 minutos ya los tengo listos para publicar. InmoGen cambió mi semana entera.",
     stars: 5,
-    tag: "Beauty Clinic",
+    tag: "InmoGen",
   },
   {
-    initials: "MA",
-    name: "Dr. Mariano Aldana",
-    role: "Cirujano Plástico",
+    initials: "VS",
+    name: "Valentina S.",
+    role: "Directora · Inmobiliaria Recoleta",
     quote:
-      "Antes perdía leads por no contestar a tiempo. El bot de WhatsApp filtra y agenda con calendario. Aumentamos el ticket promedio un 41%.",
+      "La calidad visual sorprende. Los clientes me preguntan quién hace el diseño y les digo que es IA. Se quedan sin palabras. Y el bot de WhatsApp califica los leads mientras duermo.",
     stars: 5,
-    tag: "Plastic Surgery",
+    tag: "Pro Suite",
   },
   {
-    initials: "LS",
-    name: "Lucía Salgado",
-    role: "Owner · Salón Premium",
+    initials: "DM",
+    name: "Diego M.",
+    role: "Broker · Córdoba Capital",
     quote:
-      "El branding y los anuncios elevaron por completo la percepción del salón. Hoy atraemos un perfil de clienta totalmente distinto.",
+      "Lo mejor es que mantiene mi identidad de marca en todo. Logo, colores, teléfono. Súper consistente. Y la prospección automática me trajo 3 inmobiliarias nuevas en el primer mes.",
     stars: 5,
-    tag: "Luxury Salon",
+    tag: "Scale Suite",
   },
   {
     initials: "FN",
-    name: "Federico Núñez",
-    role: "CEO · Inmobiliaria Premium",
+    name: "Federico N.",
+    role: "CEO · Inmobiliaria Premium · Madrid",
     quote:
-      "Cerramos 3 propiedades de alto valor en el primer trimestre. El CRM y el seguimiento automático cambiaron todas las métricas del equipo.",
+      "Cerramos 4 propiedades de alto valor en el primer trimestre. El scoring automático y el follow-up de InmoBot cambiaron todas las métricas del equipo. No perdemos más un lead por respuesta lenta.",
     stars: 5,
-    tag: "Real Estate",
+    tag: "Scale Suite",
   },
 ];
 
@@ -57,9 +57,9 @@ const Testimonials = () => {
               data-testid="testimonials-title"
               className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
             >
-              Lo que dicen los{" "}
-              <span className="text-[#9EFF00] am-text-glow">negocios premium</span>{" "}
-              que confían en nosotros
+              Lo que dicen las{" "}
+              <span className="text-[#9EFF00] am-text-glow">inmobiliarias</span>{" "}
+              que automatizaron con el suite
             </h2>
           </div>
         </div>

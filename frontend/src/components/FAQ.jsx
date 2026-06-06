@@ -11,36 +11,36 @@ import { openWhatsApp } from "../lib/site";
 
 const DEFAULT_ITEMS = [
   {
-    q: "¿Por qué los planes parecen más caros que otras agencias?",
-    a: "No vendemos solo ads. Construimos un sistema completo: campañas + IA en WhatsApp 24/7 + landing high-converting + automatizaciones + reportes. Una agencia tradicional cobra parecido por solo las campañas; nosotros incluimos la infraestructura que te dispara la conversión. Si comparás precio puro contra resultado, salimos más baratos.",
+    q: "¿Qué incluye exactamente el Starter y por qué arranca en $497?",
+    a: "El Starter incluye InmoGen ilimitado (creativos para Meta Ads en 2 minutos por propiedad), landing page automática por propiedad, Meta Ads gestionado con hasta $1.000/mes de adspend, 3 videos profesionales al mes y reporte mensual de performance. El precio refleja la combinación de herramientas IA + gestión humana de campañas: solo InmoGen standalone vale $49/mes en inmogen-ia.com; el Starter lo incluye con todo el servicio de ads encima.",
+  },
+  {
+    q: "¿Qué es el adspend y está incluido en el precio del plan?",
+    a: "El adspend es el presupuesto que Meta (Facebook/Instagram) cobra directamente por mostrar tus anuncios. No está incluido en el fee mensual del plan — lo manejás desde tu cuenta de Meta Ads. Nosotros nos encargamos de la estrategia, configuración y optimización de las campañas; vos ponés el presupuesto publicitario por separado. El plan indica el máximo de adspend que gestionamos: Starter hasta $1.000/mes, Pro hasta $3.000/mes.",
+  },
+  {
+    q: "¿Qué diferencia al Plan Pro del Starter?",
+    a: "El Pro suma InmoBot 24/7: un bot de WhatsApp que califica tus leads automáticamente con scoring (🔥 Hot · 🌡️ Tibio · ❄️ Frío), notifica al asesor cuando el lead está listo, y hace follow-up automático a los que no responden. También sube el adspend gestionado a $3.000/mes, añade 2 videos más por mes y agrega reportes de performance de creativos para saber exactamente qué anuncio convierte mejor.",
   },
   {
     q: "¿En cuánto tiempo veo resultados reales?",
-    a: "Los primeros leads suelen entrar en la primera o segunda semana. Resultados consolidados (cierres + métricas estables) a partir del día 60-90. Por eso el contrato mínimo es de 3 meses: necesitamos ese tiempo para optimizar audiencias, creativos y flujos. En la sección de Casos podés ver ejemplos reales por rubro.",
+    a: "Los primeros leads suelen entrar en la primera o segunda semana de campaña activa. Resultados consolidados (cierres + métricas estables) a partir del día 60–90. Por eso el mínimo es 3 meses: necesitamos ese tiempo para optimizar audiencias, creativos y flujos. InmoGen empieza a funcionar desde el día 1 — en tu primera sesión ya generás creativos para tus propiedades.",
   },
   {
-    q: "¿Qué pasa si no me funcionan los anuncios o no me llegan leads?",
-    a: "Plan Diamond Premium incluye garantía de leads mínimos: si no alcanzamos el volumen acordado, te damos crédito en el mes siguiente. En todos los planes hacemos reportes y ajustes continuos. Si después de 90 días no estás conforme, te ayudamos a hacer la transición.",
-  },
-  {
-    q: "¿Mi negocio es muy chico (o muy grande) para esto?",
-    a: "Trabajamos con tickets desde US$ 200 hasta proyectos de inversión high-ticket. El sistema se adapta. Si tu ticket promedio es bajo y vendés volumen, el plan Basic con InmoBot puede ser ideal. Si manejás ticket alto y poco volumen pero crítico (cirugías, real estate premium), el Diamond/Premium es el sweet spot.",
+    q: "¿InmoGen funciona con los portales de mi país?",
+    a: "Sí. InmoGen tiene scraping automático para Zonaprop y Argenprop (Argentina), Idealista y Fotocasa (España), Inmuebles24 (México), Infocasas (Uruguay), Portal Inmobiliario (Chile), Metrocuadrado (Colombia) y MercadoLibre Inmuebles. Si tu portal no está en la lista, avisanos — lo agregamos en el onboarding.",
   },
   {
     q: "¿Necesito tener equipo de marketing interno?",
-    a: "No. Nosotros somos tu equipo. Nos encargamos de estrategia, creativos, copy, optimización, bot y reportes. Vos atendés a tus clientes; el sistema te trae los leads ya calificados. Si tenés equipo interno, nos coordinamos con ellos sin pisar nadie.",
+    a: "No. Nosotros somos tu equipo de marketing. Nos encargamos de estrategia, creativos (InmoGen), gestión de campañas Meta Ads, videos y reportes. Vos y tu equipo se enfocan en atender y cerrar leads. Si ya tenés equipo interno, nos coordinamos sin pisar nadie.",
   },
   {
-    q: "¿Cómo me cobran? ¿Aceptan tarjeta argentina / internacional / USDT?",
-    a: "Tarjeta (Stripe), transferencia bancaria internacional y USDT. Si pagás en una sola operación (3 meses o anual) accedés a descuentos. Para clientes en Argentina podemos coordinar pago en pesos al tipo de cambio del día por transferencia.",
+    q: "¿Puedo contratar solo InmoGen sin el resto del suite?",
+    a: "Sí. InmoGen está disponible como producto standalone en inmogen-ia.com desde $49/mes con sistema de créditos. Si después querés sumar Meta Ads gestionado, InmoBot o InmoDesk, escalás a cualquier plan del suite y el costo se ajusta proporcionalmente.",
   },
   {
-    q: "¿Qué incluye exactamente el trial de 7 días de InmoBot?",
-    a: "Acceso completo al bot configurado para tu negocio, conectado a tu WhatsApp, con flujos de calificación y agenda. Sin tarjeta. Si te suma, lo dejás activo dentro de tu combo. Si no, lo cancelás y no pagás nada. Tu data queda guardada por si decidís reactivarlo.",
-  },
-  {
-    q: "¿Puedo cambiar de plan en cualquier momento?",
-    a: "Sí. Subís de plan en cualquier momento y bonificamos la diferencia proporcional. Bajar de plan se puede hacer al fin del ciclo (3 meses o anual) ya cumplido. Cambios en mitad del ciclo se evalúan caso a caso.",
+    q: "¿Cómo me cobran? ¿Aceptan tarjeta / transferencia / USDT?",
+    a: "Tarjeta internacional (Stripe), transferencia bancaria y USDT. Si pagás 3 meses por adelantado te bonificamos el tercer mes. Para clientes en Argentina coordinamos pago en pesos al tipo de cambio del día. El plan Enterprise tiene condiciones de pago personalizadas.",
   },
 ];
 
@@ -76,7 +76,7 @@ const FAQ = ({ items, title, subtitle, eyebrow }) => {
           </h2>
           <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
             {subtitle ||
-              "Las preguntas que más nos hacen los negocios premium antes de entrar al combo."}
+              "Las preguntas que más nos hacen las inmobiliarias antes de entrar al suite."}
           </p>
         </div>
 
