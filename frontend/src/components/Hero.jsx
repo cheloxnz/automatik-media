@@ -77,7 +77,7 @@ const Hero = () => {
               <span className="absolute inline-flex h-full w-full rounded-full bg-[#9EFF00] opacity-75 animate-ping" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#9EFF00]" />
             </span>
-            Agencia AI · High-Ticket Only
+            Suite IA · Exclusivo para Inmobiliarias
           </motion.div>
 
           <motion.h1
@@ -87,11 +87,11 @@ const Hero = () => {
             data-testid="hero-headline"
             className="font-display mt-6 text-4xl sm:text-5xl lg:text-[68px] leading-[1.02] tracking-tighter font-semibold"
           >
-            Más leads.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Menos trabajo.</span>
+            Tres herramientas IA.{" "}
+            <span className="text-[#9EFF00] am-text-glow">Una sola plataforma.</span>
             <br />
-            Tu inmobiliaria crece{" "}
-            <span className="italic font-light text-white/70">con IA.</span>
+            Tu inmobiliaria en{" "}
+            <span className="italic font-light text-white/70">piloto automático.</span>
           </motion.h1>
 
           <motion.p
@@ -101,9 +101,10 @@ const Hero = () => {
             data-testid="hero-subheadline"
             className="mt-6 max-w-xl text-[15px] sm:text-base text-white/65 leading-relaxed"
           >
-            Captamos, calificamos y convertimos leads para inmobiliarias con{" "}
-            <span className="text-white">Meta Ads, WhatsApp IA</span> y un
-            sistema que trabaja 24/7 mientras tu equipo cierra negocios.
+            Generamos tus creativos para Meta Ads, calificamos leads por WhatsApp 24/7
+            y prospectamos nuevos clientes con{" "}
+            <span className="text-white">InmoGen, InmoBot e InmoDesk</span> —
+            el stack completo de IA para inmobiliarias.
           </motion.p>
 
           <motion.div
@@ -139,9 +140,9 @@ const Hero = () => {
             data-testid="hero-mini-stats"
           >
             {[
-              { k: "+340%", v: "Más leads" },
-              { k: "< 1 min", v: "Respuesta IA" },
-              { k: "24/7", v: "Sistema activo" },
+              { k: "2 min", v: "Creativos listos" },
+              { k: "24/7", v: "Calificación IA" },
+              { k: "1.000+", v: "Prospectos/semana" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl text-[#9EFF00]">{s.k}</div>

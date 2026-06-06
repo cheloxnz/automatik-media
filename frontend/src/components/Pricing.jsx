@@ -8,7 +8,6 @@ import {
   Zap,
   Trophy,
   Gift,
-  ImageIcon,
   Flame,
   Bot,
 } from "lucide-react";
@@ -74,195 +73,105 @@ const persist = (slots) => {
   } catch {}
 };
 
-// Bonuses common across plans
+// Suite plans
 const PLANS = {
-  marketing: [
+  suite: [
     {
-      id: "marketing_basic",
-      name: "Basic",
-      price: 597,
-      tagline: "Empezá a recibir leads premium",
+      id: "suite_starter",
+      name: "Starter",
+      price: 497,
+      tagline: "Creativos + Meta Ads gestionado",
       icon: Sparkles,
       features: [
-        "~1.000 mensajes/mes (campaña de mensajes)",
-        "Creación de campañas en Meta Ads",
-        "Optimización de anuncios",
-        "Estrategia básica de escalamiento",
-        "Sistema de generación de leads",
-        "5 imágenes profesionales con IA / mes",
+        "InmoGen ilimitado — creativos en 2 minutos por propiedad",
+        "7 tipos de creativos × 6 formatos Meta Ads",
+        "Landing page automática por propiedad",
+        "Meta Ads gestionado (hasta $1.000/mes adspend)",
+        "3 videos profesionales / mes",
+        "Reporte mensual de performance",
+        "Onboarding de marca (1 sesión dedicada)",
       ],
       bonuses: [
-        { label: "E-book WhatsApp Marketing High-Ticket", value: "US$ 97" },
+        { label: "Pack 50 plantillas de copy probadas", value: "US$ 147" },
+        { label: "E-book WhatsApp Marketing Inmobiliario", value: "US$ 97" },
       ],
+      tools: ["InmoGen"],
     },
     {
-      id: "marketing_gold",
-      name: "Gold",
+      id: "suite_pro",
+      name: "Pro",
       price: 997,
-      tagline: "Más volumen, mejor performance",
-      icon: Zap,
-      popular: true,
-      features: [
-        "~2.000 mensajes/mes",
-        "Optimización continua",
-        "Sistemas de escalamiento",
-        "Seguimiento y mejoras de rendimiento",
-        "Reportes mensuales detallados",
-        "10 imágenes profesionales con IA / mes",
-      ],
-      bonuses: [
-        { label: "Todos los bonus de Basic", value: null },
-        { label: "50 plantillas de copy probadas", value: "US$ 147" },
-        { label: 'Mini-curso "Respuesta < 1 min"', value: "US$ 197" },
-      ],
-    },
-    {
-      id: "marketing_diamond",
-      name: "Diamond",
-      price: 1597,
-      tagline: "Marketing alto rendimiento",
-      icon: Crown,
-      features: [
-        "~4.000 mensajes/mes",
-        "3 videos profesionales/mes",
-        "Estrategia de anuncios High-Ticket",
-        "Sistema avanzado de escalamiento",
-        "Optimización total: campañas + redes",
-        "20 imágenes profesionales con IA / mes",
-      ],
-      bonuses: [
-        { label: "Todos los bonus de Gold", value: null },
-        { label: "Auditoría 1-on-1 con el equipo", value: "US$ 497" },
-        { label: "Plantillas de funnel completo", value: "US$ 297" },
-      ],
-    },
-  ],
-  combo: [
-    {
-      id: "combo_basic",
-      name: "Basic",
-      price: 997,
-      tagline: "Marketing + IA en WhatsApp",
-      icon: Sparkles,
-      features: [
-        "Todo lo del Marketing Basic",
-        "InmoBot 24/7 — para no perder leads",
-        "WhatsApp Marketing",
-        "Landing Page Basic",
-        "Gestión de Reputación",
-        "5 imágenes profesionales con IA / mes",
-      ],
-      bonuses: [
-        { label: "E-book WhatsApp Marketing High-Ticket", value: "US$ 97" },
-      ],
-      inmobot: [
-        "1 número de WhatsApp",
-        "2.000 conversaciones IA (GPT-4)/mes",
-        "Leads llegan al WhatsApp del asesor (gestión manual)",
-        "Sin dashboard — sistema liviano para empezar",
-        "Flujos básicos de calificación",
-      ],
-    },
-    {
-      id: "combo_gold",
-      name: "Gold",
-      price: 1997,
       tagline: "El combo más elegido",
       icon: Zap,
       popular: true,
       features: [
-        "Todo lo del Marketing Gold",
-        "InmoBot 24/7 + Plantillas WhatsApp Business",
-        "WhatsApp Marketing",
-        "Landing Page Profesional",
-        "Gestión de Reputación",
-        "10 imágenes profesionales con IA / mes",
+        "Todo lo del Starter",
+        "InmoBot 24/7 — calificación de leads WhatsApp con IA",
+        "Scoring automático 🔥 Hot · 🌡️ Tibio · ❄️ Frío",
+        "Dashboard de leads + pipeline Kanban",
+        "Follow-up automático 24hs / 48hs / 7 días",
+        "Meta Ads Pro (hasta $3.000/mes adspend)",
+        "5 videos profesionales / mes",
+        "Reportes de creativos: qué convierte mejor",
+        "Estrategia de contenido quincenal con IA",
       ],
       bonuses: [
-        { label: "Todos los bonus de Basic", value: null },
-        { label: "50 plantillas de copy probadas", value: "US$ 147" },
-        { label: 'Mini-curso "Respuesta < 1 min"', value: "US$ 197" },
+        { label: "Todos los bonus de Starter", value: null },
+        { label: 'Mini-curso "Cierre en WhatsApp < 1 min"', value: "US$ 197" },
+        { label: "Plantillas de funnel completo", value: "US$ 297" },
       ],
-      inmobot: [
-        "1 número de WhatsApp + plantillas WhatsApp Business",
-        "5.000 conversaciones IA (GPT-4)/mes",
-        "Sistema de gestión de leads: Total / Calientes / Tibios / Fríos",
-        "Reporte semanal automático al asesor",
-        "Scoring visual: 🔥 Hot · 🌡️ Tibio · ❄️ Frío",
-        "Flujo personalizable",
-      ],
+      tools: ["InmoGen", "InmoBot"],
     },
     {
-      id: "combo_diamond",
-      name: "Diamond",
-      price: 3597,
-      tagline: "Sistema completo high-converting",
+      id: "suite_scale",
+      name: "Scale",
+      price: 1997,
+      tagline: "Stack completo — atracción + conversión + prospección",
       icon: Crown,
       features: [
-        "Todo lo del Marketing Diamond",
-        "InmoBot 24/7 + Plantillas WhatsApp Business",
-        "WhatsApp Marketing",
-        "Landing High-Converting a medida",
-        "Gestión de Reputación avanzada",
-        "Prospección automática (+2.000 búsquedas/semana)",
-        "Outreach con IA + follow-up automático",
-        "20 imágenes profesionales con IA / mes",
+        "Todo lo del Pro",
+        "InmoDesk — prospección B2B automática (1.000+/semana)",
+        "Outreach con IA + secuencias FU1 / FU2 / FU3",
+        "CRM Google Sheets integrado con estados automáticos",
+        "Google Ads gestionado",
+        "8 videos profesionales / mes",
+        "Account Manager dedicado (call quincenal)",
+        "Reporte ejecutivo semanal + dashboard live",
+        "Broadcast masivo a base de leads",
       ],
       bonuses: [
-        { label: "Todos los bonus de Gold", value: null },
+        { label: "Todos los bonus de Pro", value: null },
         { label: "Auditoría 1-on-1 con el equipo", value: "US$ 497" },
-        { label: "Plantillas de funnel completo", value: "US$ 297" },
         { label: "Acceso a comunidad privada premium", value: null },
       ],
-      inmobot: [
-        "Hasta 3 números de WhatsApp",
-        "8.000 conversaciones IA (GPT-4)/mes",
-        "Sistema de gestión de leads completo",
-        "Pipeline Kanban de oportunidades",
-        "Broadcast masivo a base de leads",
-        "Follow-up automático: 24hs / 48hs / 7 días",
-        "ROI estimado en tiempo real",
-        "Flujo totalmente personalizable",
-        "Soporte prioritario",
-      ],
+      tools: ["InmoGen", "InmoBot", "InmoDesk"],
     },
     {
-      id: "combo_diamond_premium",
-      name: "Diamond Premium",
-      price: 5997,
-      tagline: "El stack completo + tu equipo dedicado",
+      id: "suite_enterprise",
+      name: "Enterprise",
+      price: 3997,
+      tagline: "El stack premium con equipo dedicado",
       icon: Trophy,
       premium: true,
       features: [
-        "Todo lo del Diamond Combo",
-        "Account Manager dedicado (1-on-1 semanal)",
-        "8 videos profesionales/mes",
-        "SEO técnico + estrategia de contenido",
-        "Prospección automática (+2.000 búsquedas/semana)",
-        "Outreach IA por email + WhatsApp para leads que respondieron",
-        "Multi-canal: Meta + Google + TikTok Ads",
-        "Reportes ejecutivos quincenales",
+        "Todo lo del Scale",
+        "Multi-sucursal / multi-agente sin límite",
+        "TikTok Ads gestionado",
+        "SEO técnico + estrategia de contenido orgánico",
+        "Branding kit completo + sesión de fotos",
+        "Sesión estratégica semanal con dirección",
+        "Videos ilimitados / mes",
         "Garantía de leads mínimos o crédito mensual",
-        "Imágenes profesionales con IA ilimitadas",
+        "API completa + integración a medida",
+        "Soporte prioritario 24/7",
       ],
       bonuses: [
-        { label: "Todos los bonus de Diamond", value: null },
+        { label: "Todos los bonus de Scale", value: null },
         { label: "Llamada estratégica trimestral con dirección", value: null },
         { label: "Acceso anticipado a nuevas features y betas", value: null },
-        { label: "Branding kit + 1 sesión de fotos", value: "US$ 1,200" },
+        { label: "Branding kit + sesión de fotos", value: "US$ 1,200" },
       ],
-      inmobot: [
-        "Múltiples números de WhatsApp (ilimitados)",
-        "10.000+ conversaciones IA (GPT-4)/mes",
-        "Sistema de gestión de leads completo",
-        "Pipeline Kanban + Gestión de Asesores",
-        "Calendario de seguimiento integrado",
-        "Catálogo de propiedades conectado al bot",
-        "Broadcast + follow-up automático multi-etapa",
-        "Account Manager dedicado",
-        "API completa + Key propia de OpenAI (opcional)",
-        "Soporte 24/7 dedicado",
-      ],
+      tools: ["InmoGen", "InmoBot", "InmoDesk"],
     },
   ],
 };
@@ -374,7 +283,6 @@ const LaunchBanner = ({ slotsLeft }) => {
 };
 
 const Pricing = () => {
-  const [mode, setMode] = useState("combo");
   const [freqId, setFreqId] = useState("monthly");
   const slotsLeft = useLaunchSlots();
 
@@ -382,10 +290,10 @@ const Pricing = () => {
     () => FREQUENCIES.find((f) => f.id === freqId) || FREQUENCIES[0],
     [freqId]
   );
-  const plans = PLANS[mode];
+  const plans = PLANS["suite"];
 
   const openCalendly = (plan) => {
-    track(plan.id, freq.id, mode);
+    track(plan.id, freq.id, "suite");
     const url = `${CALENDLY_URL}?utm_source=automatikmedia&utm_medium=pricing&utm_content=${plan.id}&utm_campaign=${freq.id}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -408,49 +316,17 @@ const Pricing = () => {
             data-testid="pricing-title"
             className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
           >
-            Elegí cómo querés{" "}
-            <span className="text-[#9EFF00] am-text-glow">escalar</span>
+            Elegí tu nivel de{" "}
+            <span className="text-[#9EFF00] am-text-glow">automatización</span>
           </h2>
           <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
-            Marketing puro o combo completo con IA. Todos los planes con{" "}
-            <span className="text-white">servicio mínimo de 3 meses</span>.
+            Desde creativos automáticos hasta el stack completo con prospección y equipo dedicado.{" "}
+            <span className="text-white">Servicio mínimo 3 meses</span>.
           </p>
         </div>
 
         {/* Launch banner */}
         <LaunchBanner slotsLeft={slotsLeft} />
-
-        {/* Mode toggle */}
-        <div className="flex justify-center mb-6">
-          <div
-            className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/40 backdrop-blur p-1"
-            role="tablist"
-            data-testid="pricing-mode-toggle"
-          >
-            {[
-              { id: "marketing", label: "Solo Marketing" },
-              { id: "combo", label: "Combo + InmoBot" },
-            ].map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setMode(m.id)}
-                data-testid={`mode-${m.id}`}
-                className={`relative px-5 py-2.5 rounded-full text-[12.5px] font-medium tracking-wide transition ${
-                  mode === m.id
-                    ? "bg-[#9EFF00] text-black shadow-[0_0_20px_rgba(158,255,0,0.35)]"
-                    : "text-white/65 hover:text-white"
-                }`}
-              >
-                {m.label}
-                {m.id === "combo" && mode !== m.id && (
-                  <span className="ml-2 text-[9px] uppercase tracking-[0.18em] text-[#9EFF00]/80">
-                    + IA
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
 
         {/* Frequency toggle */}
         <div className="flex justify-center mb-12">
@@ -606,53 +482,36 @@ const Pricing = () => {
 
                 {/* Features */}
                 <ul className="space-y-2.5 mb-5">
-                  {plan.features.map((f) => {
-                    const isImageFeature = /imágenes?/i.test(f);
-                    return (
-                      <li
-                        key={f}
-                        className="flex items-start gap-2.5 text-[13.5px] text-white/75 leading-snug"
-                      >
-                        {isImageFeature ? (
-                          <ImageIcon
-                            size={14}
-                            className="text-[#9EFF00] mt-1 shrink-0"
-                          />
-                        ) : (
-                          <Check
-                            size={14}
-                            className="text-[#9EFF00] mt-1 shrink-0"
-                          />
-                        )}
-                        {f}
-                      </li>
-                    );
-                  })}
+                  {plan.features.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-start gap-2.5 text-[13.5px] text-white/75 leading-snug"
+                    >
+                      <Check size={14} className="text-[#9EFF00] mt-1 shrink-0" />
+                      {f}
+                    </li>
+                  ))}
                 </ul>
 
-                {/* InmoBot capacity (combo plans only) */}
-                {plan.inmobot && plan.inmobot.length > 0 && (
+                {/* Tools included */}
+                {plan.tools && plan.tools.length > 0 && (
                   <div
                     className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 mb-5"
-                    data-testid={`plan-inmobot-${plan.id}`}
+                    data-testid={`plan-tools-${plan.id}`}
                   >
                     <div className="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-[#9EFF00] font-mono-am mb-2.5">
-                      <Bot size={12} /> Capacidad InmoBot incluida
+                      <Bot size={12} /> Herramientas IA incluidas
                     </div>
-                    <ul className="space-y-1.5">
-                      {plan.inmobot.map((spec) => (
-                        <li
-                          key={spec}
-                          className="flex items-start gap-2 text-[12.5px] text-white/75 leading-snug"
+                    <div className="flex flex-wrap gap-2">
+                      {plan.tools.map((tool) => (
+                        <span
+                          key={tool}
+                          className="text-[11px] uppercase tracking-[0.18em] text-white bg-[#9EFF00]/10 border border-[#9EFF00]/25 rounded-full px-2.5 py-1 font-mono-am"
                         >
-                          <Check
-                            size={12}
-                            className="text-[#9EFF00] mt-1 shrink-0"
-                          />
-                          {spec}
-                        </li>
+                          {tool}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 )}
 
@@ -703,11 +562,9 @@ const Pricing = () => {
         <div className="mt-10 text-center text-[12px] text-white/45 leading-relaxed max-w-3xl mx-auto">
           Precios en USD. <span className="text-white/65">Servicio mínimo de 3 meses</span> en todos los planes —
           tiempo necesario para implementar, optimizar y validar resultados.{" "}
-          <span className="text-white/65">Pago único trimestral</span> bonifica
-          el tercer mes.{" "}
-          <span className="text-white/65">Pago anual</span> incluye 20% de
-          descuento sobre el total. Métodos de pago: tarjeta, transferencia,
-          USDT.
+          El adspend de Meta Ads / Google Ads es <span className="text-white/65">adicional al fee</span> y lo gestiona el cliente directamente.{" "}
+          <span className="text-white/65">Pago único trimestral</span> bonifica el tercer mes.{" "}
+          Métodos de pago: tarjeta, transferencia, USDT.
         </div>
       </div>
     </section>

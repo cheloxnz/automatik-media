@@ -29,9 +29,9 @@ import Analytics from "./components/Analytics";
 import NichePage from "./pages/NichePage";
 
 const DEFAULT_TITLE =
-  "Automatik Media | Marketing, IA y Automatización para High-Ticket";
+  "Automatik Suite | La plataforma IA para inmobiliarias que automatiza todo";
 const DEFAULT_DESC =
-  "Automatik Media — Marketing, IA y Automatización para negocios high-ticket. Captamos clientes premium con Meta Ads, Google Ads, IA, WhatsApp Bots y sistemas inteligentes 24/7.";
+  "Automatik Suite — InmoGen, InmoBot e InmoDesk: tres herramientas IA que automatizan creativos, calificación de leads y prospección para inmobiliarias de LATAM y España.";
 const DEFAULT_CANONICAL = "https://automatikmedia.com/";
 
 const Landing = () => {

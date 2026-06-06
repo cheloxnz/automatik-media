@@ -1,29 +1,84 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Megaphone,
-  Search,
-  Palette,
-  Workflow,
-  LayoutTemplate,
+  ImageIcon,
   Bot,
-  MessageCircle,
-  Database,
+  Search,
+  Megaphone,
   Video,
-  LineChart,
+  ArrowRight,
+  Sparkles,
+  Zap,
+  Users,
 } from "lucide-react";
 
-const services = [
-  { icon: Megaphone, name: "Meta Ads", tag: "Performance", desc: "Campañas en Instagram y Facebook con segmentación premium y creativos high-converting." },
-  { icon: Search, name: "Google Ads", tag: "Intent", desc: "Capturamos demanda activa de búsqueda con anuncios y landing optimizadas." },
-  { icon: Palette, name: "Branding Premium", tag: "Identity", desc: "Identidad visual que posiciona tu negocio como líder en tu mercado." },
-  { icon: Workflow, name: "Funnel Design", tag: "Conversion", desc: "Arquitectura de embudo basada en data y psicología del cliente high-ticket." },
-  { icon: LayoutTemplate, name: "Landing Pages", tag: "CRO", desc: "Páginas cinematográficas optimizadas para conversión y velocidad." },
-  { icon: Bot, name: "IA & Automatización", tag: "AI", desc: "Sistemas de IA que califican, agendan y nurturean leads 24/7." },
-  { icon: MessageCircle, name: "WhatsApp Bots", tag: "Powered by InmoBot", desc: "Bots inteligentes que responden al instante y derivan a humano cuando hace falta. Incluido con 7 días gratis." },
-  { icon: Database, name: "CRM Systems", tag: "Pipeline", desc: "Centralización del lead a la venta con notificaciones y scoring automático." },
-  { icon: Video, name: "Video Marketing", tag: "Creative", desc: "Producción cinematográfica para anuncios y orgánico que generan deseo." },
-  { icon: LineChart, name: "Analytics & Reporting", tag: "Insight", desc: "Dashboards en vivo con métricas accionables, no vanidosas." },
+const PRODUCTS = [
+  {
+    icon: ImageIcon,
+    name: "InmoGen",
+    tag: "Creativos IA",
+    badge: "inmogen-ia.com",
+    color: "#9EFF00",
+    desc: "Pegás el link de cualquier propiedad y en 2 minutos tenés 7 tipos de creativos para Meta Ads con tu marca aplicada. Sin diseñador. Sin Canva.",
+    features: [
+      "Scraping automático de portales (Zonaprop, Idealista, Fotocasa…)",
+      "7 tipos de creativos × 6 formatos de salida",
+      "Landing page por propiedad con formulario integrado",
+      "Reportes de performance: qué creativo convierte mejor",
+      "Calendario de contenido sugerido por IA",
+    ],
+    span: "lg:col-span-4 lg:row-span-2",
+    large: true,
+  },
+  {
+    icon: Bot,
+    name: "InmoBot",
+    tag: "WhatsApp IA",
+    badge: "inmobot-ia.com",
+    color: "#9EFF00",
+    desc: "Bot inteligente que califica leads por WhatsApp 24/7, aplica scoring automático y notifica al asesor cuando el lead está listo para cerrar.",
+    features: [
+      "Flujos: Comprar / Alquilar / Vender / Consulta libre",
+      "Scoring 🔥 Hot · 🌡️ Tibio · ❄️ Frío",
+      "Dashboard con pipeline de oportunidades",
+      "Follow-up automático 24hs / 48hs / 7 días",
+    ],
+    span: "lg:col-span-4",
+    large: false,
+  },
+  {
+    icon: Search,
+    name: "InmoDesk",
+    tag: "Prospección B2B",
+    badge: "incluido en Scale",
+    color: "#9EFF00",
+    desc: "Encuentra inmobiliarias en Google Maps, diagnóstica su presencia digital con IA y envía emails de outreach personalizados en piloto automático.",
+    features: [
+      "1.000+ prospectos/semana desde Google Maps",
+      "Diagnóstico IA de presencia digital",
+      "Secuencias de email: FU1 / FU2 / FU3 automáticas",
+      "CRM en Google Sheets con estados y seguimiento",
+    ],
+    span: "lg:col-span-4",
+    large: false,
+  },
+];
+
+const SERVICES = [
+  {
+    icon: Megaphone,
+    name: "Meta Ads Gestionado",
+    tag: "Performance",
+    desc: "Campañas en Facebook e Instagram con creativos generados por InmoGen. Segmentación premium, optimización continua y reportes de performance integrados.",
+    span: "lg:col-span-6",
+  },
+  {
+    icon: Video,
+    name: "Producción de Video",
+    tag: "Creative",
+    desc: "Videos profesionales para anuncios y contenido orgánico. Producción cinematográfica que genera deseo y aumenta el ticket de tus propiedades.",
+    span: "lg:col-span-6",
+  },
 ];
 
 const Services = () => {
@@ -34,64 +89,117 @@ const Services = () => {
       className="relative py-24 sm:py-32 bg-gradient-to-b from-black via-[#070908] to-black"
     >
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="grid lg:grid-cols-12 gap-10 mb-16">
           <div className="lg:col-span-7">
             <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-              [ 02 — qué hacemos ]
+              [ 02 — el suite completo ]
             </div>
             <h2
               data-testid="services-title"
               className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
             >
-              Construimos sistemas <span className="text-white/40">completos</span> de{" "}
-              <span className="text-[#9EFF00] am-text-glow">adquisición</span> y{" "}
-              <span className="italic font-light">automatización</span>
+              Tres herramientas IA{" "}
+              <span className="text-white/40">diseñadas</span> para{" "}
+              <span className="text-[#9EFF00] am-text-glow">inmobiliarias</span>
             </h2>
           </div>
           <div className="lg:col-span-5 flex items-end">
             <p className="text-white/55 text-[15px] leading-relaxed">
-              Diez disciplinas trabajando como una sola máquina. Desde la
-              primera impresión hasta el cierre de venta. Todo medible, todo
-              optimizable, todo escalable.
+              Creativos automáticos, calificación de leads 24/7 y prospección B2B —
+              más Meta Ads y video profesional para potenciarlas. Todo integrado.
             </p>
           </div>
         </div>
 
-        {/* Bento grid - irregular */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 auto-rows-[180px] gap-5">
-          {services.map((s, i) => {
+        {/* AI Products grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 auto-rows-auto gap-5 mb-5">
+          {PRODUCTS.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <motion.div
+                key={p.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className={`${p.span} group relative rounded-2xl glass overflow-hidden hover:border-[#9EFF00]/30 transition-all duration-500 ${p.large ? "min-h-[420px]" : "min-h-[220px]"}`}
+                data-testid={`product-card-${p.name.toLowerCase()}`}
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute -top-32 -right-32 w-72 h-72 rounded-full bg-[#9EFF00]/15 blur-3xl" />
+                </div>
+
+                <div className="relative h-full p-6 sm:p-8 flex flex-col">
+                  {/* Top row */}
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-[#9EFF00]/10 border border-[#9EFF00]/30 flex items-center justify-center text-[#9EFF00]">
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <div className="font-display text-2xl text-white tracking-tight">{p.name}</div>
+                        <div className="text-[10px] uppercase tracking-[0.22em] text-[#9EFF00]/70 font-mono-am">{p.tag}</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-white/30 font-mono-am hidden sm:block">
+                      {p.badge}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-white/60 text-[14px] leading-relaxed mb-6 max-w-lg">
+                    {p.desc}
+                  </p>
+
+                  {/* Features */}
+                  <ul className="space-y-2 mt-auto">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-[13px] text-white/70">
+                        <Sparkles size={12} className="text-[#9EFF00] mt-1 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="absolute bottom-5 right-5 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/40 group-hover:text-[#9EFF00] group-hover:border-[#9EFF00]/50 transition">
+                    <ArrowRight size={14} />
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Divider label */}
+        <div className="flex items-center gap-4 my-8">
+          <div className="h-px flex-1 bg-white/[0.06]" />
+          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-white/35 font-mono-am">
+            <Zap size={11} className="text-[#9EFF00]" />
+            servicios que potencian el suite
+          </div>
+          <div className="h-px flex-1 bg-white/[0.06]" />
+        </div>
+
+        {/* Supporting services */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          {SERVICES.map((s, i) => {
             const Icon = s.icon;
-            // Custom spans to create artistic bento layout
-            const layout = [
-              "lg:col-span-3 lg:row-span-2", // Meta Ads — large
-              "lg:col-span-3", // Google Ads
-              "lg:col-span-2", // Branding
-              "lg:col-span-4", // Funnel
-              "lg:col-span-2", // Landing
-              "lg:col-span-2 lg:row-span-2", // IA
-              "lg:col-span-2", // WhatsApp
-              "lg:col-span-2", // CRM
-              "lg:col-span-3", // Video
-              "lg:col-span-3", // Analytics
-            ];
-            const isLarge = layout[i].includes("row-span-2");
             return (
               <motion.div
                 key={s.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: (i % 5) * 0.06, duration: 0.6 }}
-                className={`${layout[i]} group relative rounded-2xl glass overflow-hidden hover:border-[#9EFF00]/30 transition-all duration-500`}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className={`${s.span} group relative rounded-2xl glass overflow-hidden hover:border-[#9EFF00]/30 transition-all duration-500 min-h-[160px]`}
                 data-testid={`service-card-${i}`}
               >
-                {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute -top-32 -right-32 w-72 h-72 rounded-full bg-[#9EFF00]/15 blur-3xl" />
+                  <div className="absolute -top-20 -right-20 w-52 h-52 rounded-full bg-[#9EFF00]/10 blur-3xl" />
                 </div>
-
                 <div className="relative h-full p-6 flex flex-col">
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-start justify-between mb-4">
                     <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white group-hover:text-[#9EFF00] group-hover:border-[#9EFF00]/40 transition">
                       <Icon size={18} />
                     </div>
@@ -99,18 +207,10 @@ const Services = () => {
                       {s.tag}
                     </span>
                   </div>
-
-                  <div className="mt-auto">
-                    <h3 className={`font-display text-white ${isLarge ? "text-2xl sm:text-3xl" : "text-xl"} tracking-tight`}>
-                      {s.name}
-                    </h3>
-                    <p className={`text-white/55 mt-2 text-[13px] leading-relaxed ${isLarge ? "" : "line-clamp-2"}`}>
-                      {s.desc}
-                    </p>
-                  </div>
-
+                  <h3 className="font-display text-xl text-white tracking-tight mb-2">{s.name}</h3>
+                  <p className="text-white/50 text-[13px] leading-relaxed">{s.desc}</p>
                   <div className="absolute bottom-4 right-4 w-7 h-7 rounded-full border border-white/15 flex items-center justify-center text-white/40 group-hover:text-[#9EFF00] group-hover:border-[#9EFF00]/50 transition">
-                    →
+                    <ArrowRight size={12} />
                   </div>
                 </div>
               </motion.div>
