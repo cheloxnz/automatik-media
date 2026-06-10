@@ -1,255 +1,169 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  MessageCircle,
-  Calendar,
+  ImageIcon,
   Bot,
-  ShieldCheck,
-  Zap,
+  Search,
+  ArrowRight,
+  Sparkles,
   CheckCircle2,
-  BarChart3,
-  Flame,
-  Users,
-  Radio,
 } from "lucide-react";
-import { requestInmoBotTrial } from "../lib/site";
+import { openCalendly } from "../lib/site";
 
-const features = [
-  { icon: MessageCircle, label: "Respuesta < 1 min", sub: "24/7 WhatsApp" },
-  { icon: Bot, label: "IA que califica", sub: "OpenAI GPT" },
-  { icon: BarChart3, label: "Dashboard de leads", sub: "Hot · Tibio · Frío" },
-  { icon: ShieldCheck, label: "API oficial Meta", sub: "E2E cifrado" },
-  { icon: Flame, label: "Alertas Hot Lead", sub: "Notif. al instante" },
-  { icon: Users, label: "Gestión asesores", sub: "Multi-usuario" },
-  { icon: Radio, label: "Broadcast masivo", sub: "Campañas WA" },
-  { icon: Calendar, label: "Calendario", sub: "Seguimiento" },
-];
-
-const chatMessages = [
-  { from: "user", text: "Hola, quería información sobre la propiedad de Palermo" },
+const SUITE_APPS = [
   {
-    from: "bot",
-    text: "¡Hola! 👋 Genial, te paso info al instante.\n¿Es para compra, alquiler o inversión?",
-    buttons: ["Compra", "Alquiler", "Inversión"],
+    icon: ImageIcon,
+    name: "InmoGen",
+    tag: "Creativos IA",
+    color: "from-[#9EFF00]/20 to-transparent",
+    border: "border-[#9EFF00]/30",
+    text: "text-[#9EFF00]",
+    desc: "Del link de la propiedad a 7 creativos para Meta Ads en 2 minutos.",
+    url: "https://inmogen-ia.com",
   },
-  { from: "user", text: "Compra" },
   {
-    from: "bot",
-    text: "Perfecto. ¿Cuál es tu presupuesto aproximado en USD?",
-    buttons: ["$100k–$200k", "$200k–$400k", "$400k+"],
+    icon: Bot,
+    name: "InmoBot",
+    tag: "WhatsApp IA",
+    color: "from-white/10 to-transparent",
+    border: "border-white/20",
+    text: "text-white",
+    desc: "Califica leads 24/7, aplica scoring automático y notifica al asesor.",
+    url: "https://inmobot-ia.com",
+  },
+  {
+    icon: Search,
+    name: "InmoDesk",
+    tag: "Prospección B2B",
+    color: "from-[#9EFF00]/10 to-transparent",
+    border: "border-[#9EFF00]/20",
+    text: "text-[#9EFF00]/80",
+    desc: "1.000+ prospectos/semana con outreach personalizado por IA.",
+    url: null,
   },
 ];
 
 const InmoBotCombo = () => {
   return (
     <section
-      id="combo"
+      id="suite"
       data-testid="combo-section"
       className="relative py-24 sm:py-32 bg-gradient-to-b from-black via-[#060807] to-black overflow-hidden"
     >
-      {/* Spotlight */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-[#9EFF00]/8 blur-[160px]" />
       <div className="absolute inset-0 am-grid-bg opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="grid lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-7">
             <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-              [ combo premium · 7 días gratis ]
+              [ suite IA · tres herramientas ]
             </div>
             <h2
               data-testid="combo-title"
               className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
             >
-              Tu sistema incluye{" "}
-              <span className="text-[#9EFF00] am-text-glow">InmoBot AI</span> —
-              el asistente que <span className="italic font-light">vende por vos</span>{" "}
-              en WhatsApp.
+              Tres apps independientes.{" "}
+              <span className="text-[#9EFF00] am-text-glow">Un solo sistema</span>{" "}
+              que trabaja junto.
             </h2>
           </div>
           <div className="lg:col-span-5 flex items-end">
             <p className="text-white/55 text-[15px] leading-relaxed">
-              Cada cliente de Automatik Media activa InmoBot por{" "}
-              <span className="text-white">7 días sin tarjeta</span>. Responde
-              consultas, califica leads y agenda visitas{" "}
-              <span className="text-[#9EFF00]">mientras dormís</span>.
+              Cada herramienta resuelve un problema distinto —
+              juntas automatizan el ciclo completo de tu inmobiliaria:
+              creativos, leads y prospección.
             </p>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-          {/* Left — Pitch + features + CTA */}
-          <div className="lg:col-span-7 relative rounded-3xl glass p-8 sm:p-10 overflow-hidden">
-            <div className="absolute -top-32 -right-32 w-72 h-72 rounded-full bg-[#9EFF00]/15 blur-[100px] pointer-events-none" />
-
-            <div className="relative">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#9EFF00]/30 bg-[#9EFF00]/[0.05] px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#9EFF00] mb-6 font-mono-am">
-                <Zap size={11} /> Powered by InmoBot AI
-              </div>
-
-              <h3 className="font-display text-2xl sm:text-3xl tracking-tight font-semibold leading-tight">
-                Marketing que trae el lead,{" "}
-                <span className="text-[#9EFF00]">IA que lo cierra</span>.
-              </h3>
-
-              <ul className="mt-7 space-y-3">
-                {[
-                  "Bot responde al instante y califica: Hot 🔥 / Tibio 🌡️ / Frío ❄️",
-                  "Dashboard con métricas en tiempo real y ROI estimado del pipeline",
-                  "Alerta inmediata al asesor cuando un lead es Hot",
-                  "Configurado para tu inmobiliaria desde el día 1 — sin setup técnico",
-                ].map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-start gap-3 text-[14px] text-white/75"
+        {/* App cards */}
+        <div className="grid md:grid-cols-3 gap-5 mb-12">
+          {SUITE_APPS.map((app, i) => {
+            const Icon = app.icon;
+            return (
+              <motion.div
+                key={app.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className={`relative rounded-3xl glass p-7 flex flex-col gap-4 bg-gradient-to-b ${app.color} overflow-hidden`}
+              >
+                <div className={`w-12 h-12 rounded-xl border ${app.border} bg-black/30 flex items-center justify-center ${app.text}`}>
+                  <Icon size={20} />
+                </div>
+                <div>
+                  <div className={`font-display text-2xl tracking-tight ${app.text}`}>{app.name}</div>
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-white/40 font-mono-am mt-0.5">{app.tag}</div>
+                </div>
+                <p className="text-white/60 text-[13.5px] leading-relaxed flex-1">{app.desc}</p>
+                {app.url ? (
+                  <a
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-1.5 text-[12px] font-medium ${app.text} hover:opacity-80 transition`}
                   >
-                    <CheckCircle2
-                      size={16}
-                      className="text-[#9EFF00] mt-0.5 shrink-0"
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3" data-testid="combo-features-grid">
-                {features.map((f) => {
-                  const Icon = f.icon;
-                  return (
-                    <div
-                      key={f.label}
-                      className="rounded-2xl border border-white/10 bg-white/[0.02] p-3.5"
-                    >
-                      <Icon size={16} className="text-[#9EFF00] mb-2" />
-                      <div className="text-[12.5px] text-white leading-tight">
-                        {f.label}
-                      </div>
-                      <div className="text-[10px] uppercase tracking-[0.16em] text-white/40 mt-1">
-                        {f.sub}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={() => requestInmoBotTrial("combo_section")}
-                  data-testid="combo-cta-trial"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#9EFF00] text-black px-6 py-3.5 text-[14px] font-semibold hover:bg-[#b8ff3a] transition shadow-[0_0_30px_rgba(158,255,0,0.35)]"
-                >
-                  Probar InmoBot 7 días gratis
-                  <span className="transition-transform group-hover:translate-x-1">
-                    →
+                    Ver app <ArrowRight size={12} />
+                  </a>
+                ) : (
+                  <span className="text-[11px] uppercase tracking-[0.18em] text-white/30 font-mono-am">
+                    Incluido en Plan Scale+
                   </span>
-                </button>
-                <a
-                  href="https://inmobot-ia.com/inicio?utm_source=automatikmedia&utm_medium=landing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="combo-cta-learn"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-6 py-3.5 text-[14px] font-medium text-white hover:bg-white/[0.06] hover:border-white/30 transition"
-                >
-                  Conocer más
-                </a>
-              </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
 
-              <div className="mt-5 text-[11px] uppercase tracking-[0.22em] text-white/35 font-mono-am">
-                Sin tarjeta · Sin compromiso · Cancelás cuando quieras
-              </div>
+        {/* CTA block */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-3xl border border-[#9EFF00]/25 bg-gradient-to-br from-[#9EFF00]/[0.07] via-black to-black p-8 sm:p-10 flex flex-col lg:flex-row gap-8 items-center justify-between overflow-hidden"
+        >
+          <div className="absolute -top-32 -right-20 w-72 h-72 rounded-full bg-[#9EFF00]/15 blur-[100px] pointer-events-none" />
+
+          <div className="relative flex-1">
+            <div className="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-[#9EFF00] font-mono-am mb-3">
+              <Sparkles size={12} /> Empezá hoy
+            </div>
+            <h3 className="font-display text-2xl sm:text-3xl tracking-tight font-semibold leading-tight mb-3">
+              Agendá una demo del suite completo.{" "}
+              <span className="text-[#9EFF00]">Sin compromiso.</span>
+            </h3>
+            <ul className="space-y-2">
+              {[
+                "Te mostramos InmoGen, InmoBot e InmoDesk en acción",
+                "Diagnóstico gratuito de tu situación actual",
+                "Propuesta personalizada según el tamaño de tu inmobiliaria",
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[13.5px] text-white/70">
+                  <CheckCircle2 size={14} className="text-[#9EFF00] mt-0.5 shrink-0" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="relative flex flex-col items-center sm:items-start lg:items-center gap-3 shrink-0">
+            <button
+              onClick={openCalendly}
+              data-testid="combo-cta-trial"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#9EFF00] text-black px-8 py-4 text-[14px] font-semibold hover:bg-[#b8ff3a] transition shadow-[0_0_40px_rgba(158,255,0,0.35)]"
+            >
+              Agendar demo gratuita
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-white/35 font-mono-am text-center">
+              30 min · Sin tarjeta · Sin compromiso
             </div>
           </div>
-
-          {/* Right — Mock chat */}
-          <div className="lg:col-span-5 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7 }}
-              className="rounded-3xl glass-strong overflow-hidden h-full"
-              data-testid="combo-chat-preview"
-            >
-              {/* WhatsApp-style header */}
-              <div className="flex items-center gap-3 px-5 py-4 border-b border-white/5 bg-black/40">
-                <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-[#9EFF00]/40 to-white/5 border border-[#9EFF00]/40 flex items-center justify-center">
-                  <Bot size={18} className="text-[#9EFF00]" />
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#9EFF00] border-2 border-black" />
-                </div>
-                <div className="flex-1">
-                  <div className="font-display text-white text-[14px]">
-                    InmoBot
-                  </div>
-                  <div className="text-[10.5px] text-[#9EFF00] uppercase tracking-[0.18em]">
-                    en línea
-                  </div>
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.22em] text-white/30 font-mono-am">
-                  AI · 24/7
-                </div>
-              </div>
-
-              {/* Messages */}
-              <div className="p-5 space-y-3.5 min-h-[420px] bg-gradient-to-b from-transparent to-black/30">
-                {chatMessages.map((m, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 + i * 0.15, duration: 0.4 }}
-                    className={`flex ${
-                      m.from === "user" ? "justify-end" : "justify-start"
-                    }`}
-                  >
-                    <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-[13px] leading-snug whitespace-pre-line ${
-                        m.from === "user"
-                          ? "bg-[#9EFF00] text-black rounded-br-md"
-                          : "bg-white/[0.06] text-white border border-white/10 rounded-bl-md"
-                      }`}
-                    >
-                      {m.text}
-                      {m.buttons && (
-                        <div className="flex flex-wrap gap-1.5 mt-2.5">
-                          {m.buttons.map((b) => (
-                            <span
-                              key={b}
-                              className="text-[11px] px-2.5 py-1 rounded-full border border-[#9EFF00]/30 bg-[#9EFF00]/[0.06] text-[#9EFF00]"
-                            >
-                              {b}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-
-                {/* Typing indicator */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 + chatMessages.length * 0.15, duration: 0.4 }}
-                  className="flex justify-start"
-                >
-                  <div className="bg-white/[0.06] border border-white/10 rounded-2xl rounded-bl-md px-4 py-3 flex gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#9EFF00] animate-bounce" />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-[#9EFF00] animate-bounce"
-                      style={{ animationDelay: "0.15s" }}
-                    />
-                    <span
-                      className="w-1.5 h-1.5 rounded-full bg-[#9EFF00] animate-bounce"
-                      style={{ animationDelay: "0.3s" }}
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

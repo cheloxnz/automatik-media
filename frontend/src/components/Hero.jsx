@@ -87,10 +87,10 @@ const Hero = () => {
             data-testid="hero-headline"
             className="font-display mt-6 text-4xl sm:text-5xl lg:text-[68px] leading-[1.02] tracking-tighter font-semibold"
           >
-            Tres herramientas IA.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Una sola plataforma.</span>
+            InmoGen · InmoBot · InmoDesk.{" "}
             <br />
-            Tu inmobiliaria en{" "}
+            <span className="text-[#9EFF00] am-text-glow">Tu inmobiliaria</span>{" "}
+            en{" "}
             <span className="italic font-light text-white/70">piloto automático.</span>
           </motion.h1>
 

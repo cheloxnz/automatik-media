@@ -1,59 +1,128 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  SendHorizonal,
-  MousePointerClick,
-  Image as ImageIcon,
+  ImageIcon,
+  Bot,
+  Search,
+  Link,
+  ScanLine,
   Wand2,
-  Rocket,
-  HandCoins,
+  Download,
+  MessageCircle,
+  Zap,
+  Bell,
+  RefreshCw,
+  MapPin,
+  Brain,
+  Mail,
+  CheckCircle,
 } from "lucide-react";
 
-const steps = [
+const SYSTEMS = [
   {
-    icon: SendHorizonal,
-    title: "Enviamos la Solicitud de Business Manager",
-    desc: "Recibirás una invitación segura a través del sistema oficial de Facebook.",
-  },
-  {
-    icon: MousePointerClick,
-    title: "Aceptas la Solicitud",
-    desc: "Un simple clic concede acceso limitado — nunca vemos contraseñas ni datos personales.",
-  },
-  {
+    id: "inmogen",
     icon: ImageIcon,
-    title: "Comparte tus Activos Visuales",
-    desc: "Envíanos tus fotos y videos existentes, o te ayudamos a crear nuevos.",
+    name: "InmoGen",
+    tag: "Creativos IA",
+    headline: "Del link al creativo en 2 minutos",
+    steps: [
+      {
+        icon: Link,
+        title: "Pegás la URL de la propiedad",
+        desc: "Cualquier portal: Zonaprop, Idealista, Argenprop, Fotocasa, Inmuebles24 y más.",
+      },
+      {
+        icon: ScanLine,
+        title: "El scraper extrae todo automáticamente",
+        desc: "Fotos, precio, m², ambientes, ubicación — sin copy-paste, sin errores.",
+      },
+      {
+        icon: Wand2,
+        title: "IA genera los creativos con tu marca",
+        desc: "7 tipos de creativo × 6 formatos. Logo, colores y tipografía de tu inmobiliaria aplicados solos.",
+      },
+      {
+        icon: Download,
+        title: "Descargás y publicás",
+        desc: "Descarga individual o ZIP. También podés compartir un link de la propiedad con tus clientes.",
+      },
+    ],
   },
   {
-    icon: Wand2,
-    title: "Creamos Anuncios Profesionales",
-    desc: "Nuestro equipo diseña campañas convincentes optimizadas para máxima conversión.",
+    id: "inmobot",
+    icon: Bot,
+    name: "InmoBot",
+    tag: "WhatsApp IA",
+    headline: "Lead calificado en menos de 1 minuto",
+    steps: [
+      {
+        icon: MessageCircle,
+        title: "El lead escribe por WhatsApp",
+        desc: "InmoBot responde al instante, 24/7. Sin esperas, sin leads perdidos por respuesta tardía.",
+      },
+      {
+        icon: Zap,
+        title: "El bot califica con IA",
+        desc: "Detecta intención, presupuesto, zona y timeline. Flujos de Comprar / Alquilar / Vender / Consulta libre.",
+      },
+      {
+        icon: Bell,
+        title: "Scoring automático + alerta al asesor",
+        desc: "🔥 Hot · 🌡️ Tibio · ❄️ Frío. Cuando el lead es Hot, el asesor recibe notificación inmediata.",
+      },
+      {
+        icon: RefreshCw,
+        title: "Follow-up automático si no responde",
+        desc: "A las 24hs, 48hs y 7 días. El pipeline se actualiza solo — sin intervención del equipo.",
+      },
+    ],
   },
   {
-    icon: Rocket,
-    title: "La Campaña se Activa",
-    desc: "Tus anuncios se lanzan en Facebook e Instagram, llegando a miles de clientes potenciales.",
-  },
-  {
-    icon: HandCoins,
-    title: "Recibes Clientes",
-    desc: "Leads cualificados empiezan a enviarte mensajes por WhatsApp, listos para comprar.",
+    id: "inmodesk",
+    icon: Search,
+    name: "InmoDesk",
+    tag: "Prospección B2B",
+    headline: "1.000+ prospectos por semana sin intervención",
+    steps: [
+      {
+        icon: MapPin,
+        title: "Cada lunes, escanea Google Maps",
+        desc: "Múltiples ciudades y keywords. +1.000 búsquedas automáticas — sin que toques nada.",
+      },
+      {
+        icon: Brain,
+        title: "IA diagnostica a cada prospecto",
+        desc: "Analiza presencia digital, detecta el problema principal y genera el ángulo de outreach.",
+      },
+      {
+        icon: Mail,
+        title: "Genera el email personalizado",
+        desc: "Borradores listos en Gmail, personalizados por prospecto. Vos revisás y aprobás antes de enviar.",
+      },
+      {
+        icon: CheckCircle,
+        title: "Follow-up automático FU1 / FU2 / FU3",
+        desc: "Lunes, miércoles y viernes. Cuando responden, el CRM se actualiza y n8n activa InmoBot automáticamente.",
+      },
+    ],
   },
 ];
 
 const HowItWorks = () => {
+  const [active, setActive] = useState("inmogen");
+  const system = SYSTEMS.find((s) => s.id === active);
+
   return (
     <section
       id="proceso"
       data-testid="howitworks-section"
       className="relative py-24 sm:py-32 overflow-hidden"
     >
-      {/* Backdrop accent */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[500px] h-[500px] bg-[#9EFF00]/5 rounded-full blur-[150px]" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
             [ 03 — cómo funciona ]
           </div>
@@ -61,69 +130,100 @@ const HowItWorks = () => {
             data-testid="howitworks-title"
             className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
           >
-            De cero a primer cliente,{" "}
-            <span className="text-[#9EFF00] am-text-glow">en 6 pasos.</span>
+            Cada herramienta,{" "}
+            <span className="text-[#9EFF00] am-text-glow">un sistema completo.</span>
           </h2>
           <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
-            Un proceso transparente y sin fricciones. Vos te enfocás en atender;
-            nosotros construimos el sistema que te trae los clientes.
+            Explorá cómo funciona cada producto por dentro — paso a paso.
           </p>
         </div>
 
-        {/* Steps timeline — alternating */}
-        <div className="relative">
-          {/* Vertical center line on desktop */}
-          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#9EFF00]/30 to-transparent" />
-
-          <div className="flex flex-col gap-12 lg:gap-16">
-            {steps.map((s, i) => {
+        {/* Tab selector */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/40 backdrop-blur p-1">
+            {SYSTEMS.map((s) => {
               const Icon = s.icon;
-              const left = i % 2 === 0;
               return (
-                <motion.div
-                  key={s.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative grid lg:grid-cols-9 items-center gap-6"
-                  data-testid={`step-${i + 1}`}
+                <button
+                  key={s.id}
+                  onClick={() => setActive(s.id)}
+                  data-testid={`tab-${s.id}`}
+                  className={`relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[12.5px] font-medium tracking-wide transition ${
+                    active === s.id
+                      ? "bg-[#9EFF00] text-black shadow-[0_0_20px_rgba(158,255,0,0.35)]"
+                      : "text-white/60 hover:text-white"
+                  }`}
                 >
-                  {/* Number node centered on the line */}
-                  <div className="hidden lg:flex lg:col-start-5 lg:col-span-1 justify-center relative z-10">
-                    <div className="relative w-14 h-14 rounded-full bg-black border border-[#9EFF00]/40 flex items-center justify-center am-glow">
-                      <span className="font-display text-[#9EFF00] text-lg">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card */}
-                  <div
-                    className={`lg:col-span-4 ${
-                      left ? "lg:col-start-1 lg:text-right lg:pr-10" : "lg:col-start-6 lg:pl-10"
-                    }`}
-                  >
-                    <div className={`flex items-center gap-3 mb-3 ${left ? "lg:justify-end" : "lg:justify-start"}`}>
-                      <div className="lg:hidden w-10 h-10 rounded-full border border-[#9EFF00]/40 flex items-center justify-center text-[#9EFF00] font-display text-sm">
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                      <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center text-[#9EFF00]">
-                        <Icon size={16} />
-                      </div>
-                    </div>
-                    <h3 className="font-display text-xl sm:text-2xl text-white tracking-tight leading-tight">
-                      {s.title}
-                    </h3>
-                    <p className="text-white/55 mt-3 text-[14px] leading-relaxed max-w-md lg:max-w-none">
-                      {s.desc}
-                    </p>
-                  </div>
-                </motion.div>
+                  <Icon size={13} />
+                  {s.name}
+                </button>
               );
             })}
           </div>
         </div>
+
+        {/* Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-3xl glass p-8 sm:p-10"
+          >
+            {/* System header */}
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-12 h-12 rounded-xl bg-[#9EFF00]/10 border border-[#9EFF00]/30 flex items-center justify-center text-[#9EFF00]">
+                <system.icon size={22} />
+              </div>
+              <div>
+                <div className="font-display text-2xl text-white tracking-tight">{system.name}</div>
+                <div className="text-[10px] uppercase tracking-[0.22em] text-[#9EFF00]/70 font-mono-am">{system.headline}</div>
+              </div>
+            </div>
+
+            {/* Steps */}
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="hidden lg:block absolute left-[27px] top-10 bottom-0 w-px bg-gradient-to-b from-[#9EFF00]/30 via-[#9EFF00]/15 to-transparent" />
+
+              <div className="flex flex-col gap-8">
+                {system.steps.map((step, i) => {
+                  const StepIcon = step.icon;
+                  return (
+                    <motion.div
+                      key={step.title}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.08, duration: 0.4 }}
+                      className="flex items-start gap-6"
+                      data-testid={`step-${i + 1}`}
+                    >
+                      {/* Icon node */}
+                      <div className="relative shrink-0 w-14 h-14 rounded-2xl bg-black border border-[#9EFF00]/30 flex flex-col items-center justify-center gap-0.5 z-10">
+                        <StepIcon size={16} className="text-[#9EFF00]" />
+                        <span className="font-mono-am text-[9px] text-[#9EFF00]/50">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 pt-2">
+                        <h3 className="font-display text-lg sm:text-xl text-white tracking-tight leading-tight">
+                          {step.title}
+                        </h3>
+                        <p className="text-white/55 mt-1.5 text-[13.5px] leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

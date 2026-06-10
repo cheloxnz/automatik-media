@@ -163,7 +163,7 @@ const Services = () => {
                   </p>
 
                   {/* Features */}
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 pb-8">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-[13px] text-white/70">
                         <Sparkles size={12} className="text-[#9EFF00] mt-1 shrink-0" />
