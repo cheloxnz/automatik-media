@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { LOGO_URL, openCalendly } from "../lib/site";
 
 const links = [
-  { label: "Combo", id: "combo" },
+  { label: "Suite", id: "suite" },
   { label: "Servicios", id: "servicios" },
   { label: "Casos", id: "casos" },
   { label: "Precios", id: "precios" },
