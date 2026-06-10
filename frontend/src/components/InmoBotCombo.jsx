@@ -38,7 +38,7 @@ const SUITE_APPS = [
     color: "from-[#9EFF00]/10 to-transparent",
     border: "border-[#9EFF00]/20",
     text: "text-[#9EFF00]/80",
-    desc: "Configurás el perfil de cliente B2B que buscás y el sistema prospecta automáticamente.",
+    desc: "Para inmobiliarias que quieren clientes corporativos: encuentra inversores, desarrolladoras y empresas en piloto automático.",
     url: null,
   },
 ];

@@ -81,13 +81,13 @@ const SYSTEMS = [
     id: "inmodesk",
     icon: Search,
     name: "InmoDesk",
-    tag: "Prospección B2B",
-    headline: "1.000+ prospectos B2B por semana sin intervención",
+    tag: "Clientes Corporativos B2B",
+    headline: "Para inmobiliarias que quieren clientes corporativos",
     steps: [
       {
         icon: MapPin,
-        title: "Configurás tu perfil de prospecto ideal",
-        desc: "Inversores, desarrolladoras, empresas que relocalizan empleados, estudios de arquitectura — cualquier perfil B2B que te interese.",
+        title: "Definís tu cliente corporativo ideal",
+        desc: "Inversores, fondos de inversión, desarrolladoras, empresas que relocalizan empleados — el canal B2B que los ads y el bot no cubren.",
       },
       {
         icon: Brain,

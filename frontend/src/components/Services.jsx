@@ -62,10 +62,10 @@ const PRODUCTS = [
     tag: "Prospección B2B",
     badge: "incluido en Scale",
     color: "#9EFF00",
-    desc: "Configurás tu perfil de prospecto ideal y el sistema sale solo a buscarlos en Google Maps, diagnostica cada uno con IA y envía outreach personalizado en piloto automático.",
+    desc: "Complemento B2B para inmobiliarias que quieren clientes corporativos: inversores, desarrolladoras y empresas. El sistema los encuentra en Google Maps y hace el outreach solo.",
     features: [
-      "Perfil configurable: inversores, desarrolladoras, empresas, estudios…",
-      "1.000+ prospectos/semana con diagnóstico IA incluido",
+      "Perfil configurable: inversores, desarrolladoras, empresas, fondos…",
+      "1.000+ prospectos B2B/semana con diagnóstico IA incluido",
       "Secuencias de email: FU1 / FU2 / FU3 automáticas",
       "CRM en Google Sheets con estados y seguimiento",
     ],
