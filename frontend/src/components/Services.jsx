@@ -62,10 +62,10 @@ const PRODUCTS = [
     tag: "Prospección B2B",
     badge: "incluido en Scale",
     color: "#9EFF00",
-    desc: "Encuentra inmobiliarias en Google Maps, diagnóstica su presencia digital con IA y envía emails de outreach personalizados en piloto automático.",
+    desc: "Configurás tu perfil de prospecto ideal y el sistema sale solo a buscarlos en Google Maps, diagnostica cada uno con IA y envía outreach personalizado en piloto automático.",
     features: [
-      "1.000+ prospectos/semana desde Google Maps",
-      "Diagnóstico IA de presencia digital",
+      "Perfil configurable: inversores, desarrolladoras, empresas, estudios…",
+      "1.000+ prospectos/semana con diagnóstico IA incluido",
       "Secuencias de email: FU1 / FU2 / FU3 automáticas",
       "CRM en Google Sheets con estados y seguimiento",
     ],

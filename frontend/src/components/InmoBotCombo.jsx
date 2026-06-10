@@ -38,7 +38,7 @@ const SUITE_APPS = [
     color: "from-[#9EFF00]/10 to-transparent",
     border: "border-[#9EFF00]/20",
     text: "text-[#9EFF00]/80",
-    desc: "1.000+ prospectos/semana con outreach personalizado por IA.",
+    desc: "Configurás el perfil de cliente B2B que buscás y el sistema prospecta automáticamente.",
     url: null,
   },
 ];
