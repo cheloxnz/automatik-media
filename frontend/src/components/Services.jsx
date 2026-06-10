@@ -9,7 +9,10 @@ import {
   ArrowRight,
   Sparkles,
   Zap,
-  Users,
+  Chrome,
+  Sofa,
+  Sun,
+  Clapperboard,
 } from "lucide-react";
 
 const PRODUCTS = [
@@ -23,9 +26,16 @@ const PRODUCTS = [
     features: [
       "Scraping automático de portales (Zonaprop, Idealista, Fotocasa…)",
       "7 tipos de creativos × 6 formatos de salida",
-      "Landing page por propiedad con formulario integrado",
-      "Reportes de performance: qué creativo convierte mejor",
-      "Calendario de contenido sugerido por IA",
+      "Home Staging Virtual — amoblá espacios vacíos con IA en segundos",
+      "Auto-mejora de fotos + reemplazo de cielo automático",
+      "Video Ken Burns — video cinematográfico de la propiedad con tus fotos",
+      "Extensión Chrome — generá desde el portal sin copiar la URL",
+    ],
+    aiFeatures: [
+      { icon: Sofa, label: "Home Staging Virtual" },
+      { icon: Sun, label: "Reemplazo de cielo" },
+      { icon: Clapperboard, label: "Video Ken Burns" },
+      { icon: Chrome, label: "Extensión Chrome" },
     ],
     span: "lg:col-span-4 lg:row-span-2",
     large: true,
@@ -153,7 +163,7 @@ const Services = () => {
                   </p>
 
                   {/* Features */}
-                  <ul className="space-y-2 mt-auto">
+                  <ul className="space-y-2">
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-[13px] text-white/70">
                         <Sparkles size={12} className="text-[#9EFF00] mt-1 shrink-0" />
@@ -161,6 +171,26 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
+
+                  {/* AI Feature badges (InmoGen only) */}
+                  {p.aiFeatures && (
+                    <div className="mt-5 pt-4 border-t border-white/[0.06]">
+                      <div className="text-[9.5px] uppercase tracking-[0.24em] text-[#9EFF00]/60 font-mono-am mb-2.5">
+                        Herramientas IA incluidas
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {p.aiFeatures.map(({ icon: AiIcon, label }) => (
+                          <span
+                            key={label}
+                            className="inline-flex items-center gap-1.5 text-[11px] text-white/70 bg-white/[0.04] border border-white/10 rounded-full px-3 py-1"
+                          >
+                            <AiIcon size={11} className="text-[#9EFF00]" />
+                            {label}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="absolute bottom-5 right-5 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/40 group-hover:text-[#9EFF00] group-hover:border-[#9EFF00]/50 transition">
                     <ArrowRight size={14} />
