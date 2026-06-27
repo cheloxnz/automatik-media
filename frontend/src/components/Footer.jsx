@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { LOGO_URL, openCalendly, openWhatsApp } from "../lib/site";
-import { NICHE_LIST } from "../data/niches/index";
 import { Instagram, MessageCircle, Linkedin, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
@@ -72,25 +70,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="lg:col-span-3" data-testid="footer-niches">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4">
-              Verticales
-            </div>
-            <ul className="space-y-2.5 text-[14px]">
-              {NICHE_LIST.map((n) => (
-                <li key={n.slug}>
-                  <Link
-                    to={`/${n.slug}`}
-                    data-testid={`footer-niche-link-${n.slug}`}
-                    className="group inline-flex items-center gap-2 text-white/65 hover:text-[#9EFF00] transition"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-[#9EFF00]/40 group-hover:bg-[#9EFF00] transition" />
-                    {n.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div className="lg:col-span-3">
             <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4">
