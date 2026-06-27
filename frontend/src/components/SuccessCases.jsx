@@ -1,187 +1,133 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 const cases = [
   {
-    initials: "CE",
-    name: "Clínica estética premium",
-    location: "Palermo, BA",
-    industry: "Beauty Clinic",
-    before: { label: "Consultas/mes", value: "6" },
-    after: { label: "Consultas/mes", value: "28" },
-    metrics: [
-      { label: "Ticket promedio", value: "+41%" },
-      { label: "Tiempo respuesta", value: "< 1 min" },
-      { label: "ROI a 90 días", value: "4.2x" },
-    ],
-    quote:
-      "Mi equipo dejó de filtrar consultas y se enfoca solo en cerrar. La agenda no para.",
-  },
-  {
-    initials: "CP",
-    name: "Centro de cirugía plástica",
-    location: "Recoleta, BA",
-    industry: "Plastic Surgery",
-    before: { label: "Leads perdidos", value: "62%" },
-    after: { label: "Leads perdidos", value: "9%" },
-    metrics: [
-      { label: "Calls agendadas", value: "+312%" },
-      { label: "Tiempo respuesta", value: "< 1 min" },
-      { label: "Show rate", value: "84%" },
-    ],
-    quote:
-      "InmoBot califica mejor que un SDR humano. Solo veo en agenda casos serios.",
-  },
-  {
-    initials: "RE",
-    name: "Inmobiliaria boutique",
-    location: "Nordelta",
+    initials: "IM",
+    name: "Inmobiliaria premium",
+    location: "Buenos Aires, AR",
     industry: "Real Estate",
-    before: { label: "Visitas/mes", value: "4" },
-    after: { label: "Visitas/mes", value: "21" },
+    before: { label: "Leads calificados/mes", value: "12" },
+    after: { label: "Leads calificados/mes", value: "67" },
     metrics: [
-      { label: "Cierres 90 días", value: "3 prop." },
-      { label: "Ticket promedio", value: "US$ 480k" },
-      { label: "Tiempo respuesta", value: "Instantáneo" },
+      { label: "Tiempo de respuesta", value: "< 90 seg" },
+      { label: "Horas admin ahorradas", value: "28/sem" },
+      { label: "ROI a 90 días", value: "5.1x" },
     ],
-    quote:
-      "Vendimos 3 propiedades en el primer trimestre sin tocar el celular un fin de semana.",
+    quote: "Antes perdíamos leads porque nadie podía responder a las 11pm. Ahora el bot califica, agenda y el equipo solo cierra.",
+    phase: "Implementación completa",
   },
   {
-    initials: "GA",
-    name: "Salón premium",
-    location: "Recoleta, BA",
-    industry: "Luxury Salon",
-    before: { label: "Reservas online", value: "18%" },
-    after: { label: "Reservas online", value: "67%" },
+    initials: "RL",
+    name: "Retail de indumentaria",
+    location: "Córdoba, AR",
+    industry: "Retail",
+    before: { label: "Consultas atendidas/día", value: "30" },
+    after: { label: "Consultas atendidas/día", value: "210" },
     metrics: [
-      { label: "No-shows", value: "-58%" },
-      { label: "Ticket promedio", value: "+28%" },
-      { label: "Recurrencia", value: "+44%" },
+      { label: "Conversión web", value: "+38%" },
+      { label: "Tickets de soporte", value: "-65%" },
+      { label: "Satisfacción cliente", value: "4.8/5" },
     ],
-    quote:
-      "Cambió por completo el perfil de clienta. Hoy entran ya pre-calificadas y compran al instante.",
+    quote: "El chatbot maneja el 80% de las consultas. Mi equipo ahora se enfoca en clientes que realmente necesitan ayuda humana.",
+    phase: "Quick Wins + Implementación",
+  },
+  {
+    initials: "AS",
+    name: "Asesoría contable",
+    location: "Monterrey, MX",
+    industry: "Servicios profesionales",
+    before: { label: "Onboarding de cliente (días)", value: "7" },
+    after: { label: "Onboarding de cliente (días)", value: "1" },
+    metrics: [
+      { label: "Documentos procesados", value: "10x más rápido" },
+      { label: "Errores de carga", value: "-94%" },
+      { label: "Clientes gestionados", value: "+3x" },
+    ],
+    quote: "Lo que tardábamos una semana en procesar ahora está listo en horas. Pudimos triplicar la cartera sin contratar más personal.",
+    phase: "Automatización operativa",
   },
 ];
 
 const SuccessCases = () => {
   return (
-    <section
-      id="casos"
-      data-testid="cases-section"
-      className="relative py-24 sm:py-32 bg-gradient-to-b from-black via-[#070908] to-black"
-    >
+    <section id="casos" className="relative py-24 sm:py-32 overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#9EFF00]/4 blur-[160px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-10 mb-14">
-          <div className="lg:col-span-7">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-              [ casos de éxito · resultados reales ]
-            </div>
-            <h2
-              data-testid="cases-title"
-              className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
-            >
-              Negocios premium que ya están{" "}
-              <span className="text-[#9EFF00] am-text-glow">escalando</span> con
-              nosotros
-            </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mb-16"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-6">
+            Casos de éxito
           </div>
-          <div className="lg:col-span-5 flex items-end">
-            <p className="text-white/55 text-[15px] leading-relaxed">
-              Números reales de clientes en distintos rubros. Métricas medidas
-              durante los primeros 90 días con el sistema completo activo.
-            </p>
-          </div>
-        </div>
+          <h2 className="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tighter font-semibold">
+            Resultados reales.{" "}
+            <span className="text-[#9EFF00] am-text-glow">Negocios reales.</span>
+          </h2>
+          <p className="mt-5 text-white/60 text-[15px] leading-relaxed">
+            Cada caso parte de un diagnóstico real y termina con métricas medibles.
+            Sin promesas vacías, sin vanity metrics.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-3 gap-6">
           {cases.map((c, i) => (
             <motion.div
               key={c.name}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: (i % 2) * 0.1, duration: 0.6 }}
-              className="group relative rounded-3xl glass p-7 sm:p-8 hover:border-[#9EFF00]/30 transition-all overflow-hidden"
-              data-testid={`case-${i}`}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.7 }}
+              className="rounded-2xl border border-white/8 bg-white/[0.02] p-7 flex flex-col"
             >
-              <div className="absolute -top-32 -right-32 w-72 h-72 rounded-full bg-[#9EFF00]/0 group-hover:bg-[#9EFF00]/8 blur-3xl transition" />
-
-              <div className="relative flex items-center gap-4 mb-5">
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-[#9EFF00]/30 to-white/[0.04] border border-[#9EFF00]/30 flex items-center justify-center">
-                  <span className="font-display text-white text-base tracking-tight">
-                    {c.initials}
-                  </span>
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-[#9EFF00]/15 flex items-center justify-center text-[#9EFF00] font-display font-semibold text-sm">
+                  {c.initials}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-display text-white text-[17px] leading-tight">
-                    {c.name}
-                  </div>
-                  <div className="text-[12px] text-white/45 mt-0.5">
-                    {c.location}
-                  </div>
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.22em] text-[#9EFF00] font-mono-am">
-                  {c.industry}
+                <div>
+                  <div className="text-[14px] font-semibold text-white">{c.name}</div>
+                  <div className="text-[12px] text-white/40">{c.location} · {c.industry}</div>
                 </div>
               </div>
 
-              {/* Before/After */}
-              <div className="relative grid grid-cols-3 items-center gap-3 mb-6">
-                <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-3">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">
-                    Antes
-                  </div>
-                  <div className="font-display text-2xl text-white/65 tabular-nums mt-1">
-                    {c.before.value}
-                  </div>
-                  <div className="text-[10.5px] text-white/40 mt-0.5">
-                    {c.before.label}
-                  </div>
+              {/* Before/After main metric */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="rounded-xl bg-white/[0.03] border border-white/8 p-3.5 text-center">
+                  <div className="text-[11px] uppercase tracking-[0.16em] text-white/40 mb-1">Antes</div>
+                  <div className="font-display text-2xl text-white/40">{c.before.value}</div>
+                  <div className="text-[10px] text-white/30 mt-0.5">{c.before.label}</div>
                 </div>
-                <div className="flex justify-center">
-                  <ArrowUpRight size={22} className="text-[#9EFF00]" />
-                </div>
-                <div className="rounded-xl border border-[#9EFF00]/40 bg-[#9EFF00]/[0.04] px-4 py-3">
-                  <div className="text-[10px] uppercase tracking-[0.18em] text-[#9EFF00]">
-                    Ahora
-                  </div>
-                  <div className="font-display text-2xl text-[#9EFF00] tabular-nums mt-1 am-text-glow">
-                    {c.after.value}
-                  </div>
-                  <div className="text-[10.5px] text-white/55 mt-0.5">
-                    {c.after.label}
-                  </div>
+                <div className="rounded-xl bg-[#9EFF00]/[0.06] border border-[#9EFF00]/20 p-3.5 text-center">
+                  <div className="text-[11px] uppercase tracking-[0.16em] text-[#9EFF00] mb-1">Después</div>
+                  <div className="font-display text-2xl text-[#9EFF00]">{c.after.value}</div>
+                  <div className="text-[10px] text-[#9EFF00]/60 mt-0.5">{c.after.label}</div>
                 </div>
               </div>
 
               {/* Metrics */}
-              <div className="relative grid grid-cols-3 gap-2 mb-6">
+              <div className="space-y-2 mb-6">
                 {c.metrics.map((m) => (
-                  <div
-                    key={m.label}
-                    className="text-center rounded-lg bg-white/[0.02] border border-white/5 px-2 py-2.5"
-                  >
-                    <div className="font-mono-am text-[#9EFF00] text-[13px] font-semibold tabular-nums">
-                      {m.value}
-                    </div>
-                    <div className="text-[9.5px] uppercase tracking-[0.14em] text-white/40 mt-1 leading-tight">
-                      {m.label}
-                    </div>
+                  <div key={m.label} className="flex items-center justify-between text-[13px]">
+                    <span className="text-white/50">{m.label}</span>
+                    <span className="text-white font-medium">{m.value}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="relative text-white/65 italic text-[13.5px] leading-relaxed border-l-2 border-[#9EFF00]/40 pl-4">
+              {/* Quote */}
+              <blockquote className="mt-auto pt-5 border-t border-white/8 text-[13px] text-white/65 italic leading-relaxed">
                 "{c.quote}"
-              </p>
+              </blockquote>
+
+              <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#9EFF00]/20 bg-[#9EFF00]/[0.05] px-3 py-1 text-[11px] text-[#9EFF00]">
+                {c.phase}
+              </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-10 text-center text-[11px] uppercase tracking-[0.22em] text-white/30 font-mono-am">
-          Métricas auto-reportadas · primeros 90 días con sistema completo
         </div>
       </div>
     </section>

@@ -4,34 +4,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import ImpactMetrics from "./components/ImpactMetrics";
 import Problem from "./components/Problem";
-import Services from "./components/Services";
-import InmoBotCombo from "./components/InmoBotCombo";
-import GrowthFramework from "./components/GrowthFramework";
-import HowItWorks from "./components/HowItWorks";
-import Automation from "./components/Automation";
-import Results from "./components/Results";
-import ValueCalculator from "./components/ValueCalculator";
-import Psychology from "./components/Psychology";
+import WhatWeDo from "./components/WhatWeDo";
+import TheProcess from "./components/TheProcess";
+import ByArea from "./components/ByArea";
+import BySector from "./components/BySector";
+import WhyAutomatik from "./components/WhyAutomatik";
 import SuccessCases from "./components/SuccessCases";
-import Pricing from "./components/Pricing";
-import PlansComparator from "./components/PlansComparator";
 import FAQ from "./components/FAQ";
-import Testimonials from "./components/Testimonials";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import CursorGlow from "./components/CursorGlow";
-import ExitIntentPopup from "./components/ExitIntentPopup";
-import TrialIntentModal from "./components/TrialIntentModal";
-import CountdownBanner from "./components/CountdownBanner";
 import Analytics from "./components/Analytics";
 import NichePage from "./pages/NichePage";
 
 const DEFAULT_TITLE =
-  "Automatik Suite | La plataforma IA para inmobiliarias que automatiza todo";
+  "Automatik Media | Agencia de Inteligencia Artificial para empresas";
 const DEFAULT_DESC =
-  "Automatik Suite — InmoGen, InmoBot e InmoDesk: tres herramientas IA que automatizan creativos, calificación de leads y prospección para inmobiliarias de LATAM y España.";
+  "Construimos sistemas de IA a medida que transforman tu negocio: automatización de procesos, agentes conversacionales e integraciones inteligentes. Metodología en 4 fases, resultados desde la semana 1.";
 const DEFAULT_CANONICAL = "https://automatikmedia.com/";
 
 const Landing = () => {
@@ -51,28 +43,20 @@ const Landing = () => {
       </Helmet>
       <Analytics />
       <CursorGlow />
-      <CountdownBanner />
       <Navbar />
       <Hero />
+      <ImpactMetrics />
       <Problem />
-      <Services />
-      <InmoBotCombo />
-      <GrowthFramework />
-      <HowItWorks />
-      <Automation />
-      <Results />
-      <ValueCalculator />
-      <Psychology />
+      <WhatWeDo />
+      <TheProcess />
+      <ByArea />
+      <BySector />
+      <WhyAutomatik />
       <SuccessCases />
-      <Pricing />
-      <PlansComparator />
       <FAQ />
-      <Testimonials />
       <FinalCTA />
       <Footer />
       <WhatsAppFloat />
-      <ExitIntentPopup />
-      <TrialIntentModal />
     </main>
   );
 };

@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { LOGO_URL, openCalendly } from "../lib/site";
 
 const links = [
-  { label: "Suite", id: "suite" },
-  { label: "Servicios", id: "servicios" },
+  { label: "Qué hacemos", id: "que-hacemos" },
+  { label: "El proceso", id: "proceso" },
+  { label: "Verticales", id: "verticales" },
   { label: "Casos", id: "casos" },
-  { label: "Precios", id: "precios" },
   { label: "FAQ", id: "faq" },
 ];
 
@@ -77,7 +77,7 @@ const Navbar = () => {
             data-testid="navbar-cta-agendar"
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#9EFF00] text-black px-5 py-2.5 text-[13px] font-semibold tracking-wide hover:bg-[#b8ff3a] transition shadow-[0_0_24px_rgba(158,255,0,0.35)]"
           >
-            Agendar Reunión
+            Diagnóstico gratuito
             <span className="text-base leading-none">→</span>
           </button>
           <button

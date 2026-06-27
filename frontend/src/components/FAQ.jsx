@@ -6,110 +6,79 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { motion } from "framer-motion";
-import { HelpCircle, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { openWhatsApp } from "../lib/site";
 
 const DEFAULT_ITEMS = [
   {
-    q: "¿Qué incluye exactamente el Starter y por qué arranca en $497?",
-    a: "El Starter incluye InmoGen ilimitado (creativos para Meta Ads en 2 minutos por propiedad), landing page automática por propiedad, Meta Ads gestionado con hasta $1.000/mes de adspend, 3 videos profesionales al mes y reporte mensual de performance. El precio refleja la combinación de herramientas IA + gestión humana de campañas: solo InmoGen standalone vale $49/mes en inmogen-ia.com; el Starter lo incluye con todo el servicio de ads encima.",
+    q: "¿Cuánto tiempo tarda en verse el primer resultado?",
+    a: "En la fase de Quick Wins (semanas 2–4) ya tenés automatizaciones operativas funcionando. Los resultados medibles del sistema completo se ven entre los 30 y 90 días posteriores a la implementación, dependiendo de la complejidad.",
   },
   {
-    q: "¿Qué es el adspend y está incluido en el precio del plan?",
-    a: "El adspend es el presupuesto que Meta (Facebook/Instagram) cobra directamente por mostrar tus anuncios. No está incluido en el fee mensual del plan — lo manejás desde tu cuenta de Meta Ads. Nosotros nos encargamos de la estrategia, configuración y optimización de las campañas; vos ponés el presupuesto publicitario por separado. El plan indica el máximo de adspend que gestionamos: Starter hasta $1.000/mes, Pro hasta $3.000/mes.",
+    q: "¿Necesito tener conocimientos técnicos o equipo de IT?",
+    a: "No. Nos encargamos de toda la implementación técnica de principio a fin. Solo necesitamos acceso a tus sistemas actuales y reuniones de alineación con tu equipo. Al final del proyecto, tu equipo puede operar el sistema sin depender de nosotros.",
   },
   {
-    q: "¿Qué diferencia al Plan Pro del Starter?",
-    a: "El Pro suma InmoBot 24/7: un bot de WhatsApp que califica tus leads automáticamente con scoring (🔥 Hot · 🌡️ Tibio · ❄️ Frío), notifica al asesor cuando el lead está listo, y hace follow-up automático a los que no responden. También sube el adspend gestionado a $3.000/mes, añade 2 videos más por mes y agrega reportes de performance de creativos para saber exactamente qué anuncio convierte mejor.",
+    q: "¿Trabajan con cualquier industria o solo con algunas?",
+    a: "Trabajamos con cualquier industria. La metodología de auditoría → quick wins → implementación → autonomía aplica independientemente del sector. Tenemos experiencia especial en inmobiliarias, retail, servicios profesionales, salud y logística, pero el enfoque funciona para cualquier negocio.",
   },
   {
-    q: "¿En cuánto tiempo veo resultados reales?",
-    a: "Los primeros leads suelen entrar en la primera o segunda semana de campaña activa. Resultados consolidados (cierres + métricas estables) a partir del día 60–90. Por eso el mínimo es 3 meses: necesitamos ese tiempo para optimizar audiencias, creativos y flujos. InmoGen empieza a funcionar desde el día 1 — en tu primera sesión ya generás creativos para tus propiedades.",
+    q: "¿Qué pasa si ya tengo herramientas de software instaladas?",
+    a: "Las integramos. Una parte clave del diagnóstico es identificar qué sistemas ya están usando y cómo conectarlos con las nuevas automatizaciones. No hace falta tirar lo que funciona — la IA se suma encima de tu stack actual.",
   },
   {
-    q: "¿InmoGen funciona con los portales de mi país?",
-    a: "Sí. InmoGen tiene scraping automático para Zonaprop y Argenprop (Argentina), Idealista y Fotocasa (España), Inmuebles24 (México), Infocasas (Uruguay), Portal Inmobiliario (Chile), Metrocuadrado (Colombia) y MercadoLibre Inmuebles. Si tu portal no está en la lista, avisanos — lo agregamos en el onboarding.",
+    q: "¿Tienen contratos largos? ¿Hay lock-in?",
+    a: "No. Trabajamos por proyecto o con acuerdos de soporte continuo, sin lock-in. Si el proyecto termina y querés operar de forma autónoma, te entregamos todo documentado y funcionando. Preferimos seguir trabajando porque los resultados lo justifican, no por contrato.",
   },
   {
-    q: "¿Necesito tener equipo de marketing interno?",
-    a: "No. Nosotros somos tu equipo de marketing. Nos encargamos de estrategia, creativos (InmoGen), gestión de campañas Meta Ads, videos y reportes. Vos y tu equipo se enfocan en atender y cerrar leads. Si ya tenés equipo interno, nos coordinamos sin pisar nadie.",
+    q: "¿Cómo es el diagnóstico gratuito?",
+    a: "Es una llamada de 30–45 minutos donde analizamos tu operación actual, identificamos los 3–5 puntos de mayor impacto potencial para IA y te presentamos una estimación de resultados. Sin presión, sin compromiso. Si hay fit, avanzamos; si no, igual te llevás el diagnóstico.",
   },
   {
-    q: "¿Puedo contratar solo InmoGen sin el resto del suite?",
-    a: "Sí. InmoGen está disponible como producto standalone en inmogen-ia.com desde $49/mes con sistema de créditos. Si después querés sumar Meta Ads gestionado, InmoBot o InmoDesk, escalás a cualquier plan del suite y el costo se ajusta proporcionalmente.",
+    q: "¿Cuánto cuesta implementar IA con Automatik?",
+    a: "Depende del alcance. Cada proyecto se cotiza después del diagnóstico gratuito, con transparencia total. No publicamos precios genéricos porque cada negocio tiene necesidades distintas — pero sí podemos decirte que trabajamos con empresas de diferentes tamaños y ajustamos el alcance al presupuesto disponible.",
   },
   {
-    q: "¿Cómo me cobran? ¿Aceptan tarjeta / transferencia / USDT?",
-    a: "Tarjeta internacional (Stripe), transferencia bancaria y USDT. Si pagás 3 meses por adelantado te bonificamos el tercer mes. Para clientes en Argentina coordinamos pago en pesos al tipo de cambio del día. El plan Enterprise tiene condiciones de pago personalizadas.",
+    q: "¿Qué diferencia a Automatik de una agencia de marketing o un proveedor de software?",
+    a: "Las agencias de marketing generan demanda. Los proveedores de software venden herramientas. Nosotros construimos el sistema operativo de IA de tu negocio: integramos datos, automatizamos procesos, y hacemos que todo funcione junto. No dejamos una herramienta instalada — dejamos un sistema funcionando.",
   },
 ];
 
-const FAQ = ({ items, title, subtitle, eyebrow }) => {
-  const list = items && items.length ? items : DEFAULT_ITEMS;
+const FAQ = ({ items = DEFAULT_ITEMS }) => {
   return (
-    <section
-      id="faq"
-      data-testid="faq-section"
-      className="relative py-24 sm:py-32"
-    >
-      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] rounded-full bg-[#9EFF00]/5 blur-[140px]" />
-
-      <div className="relative max-w-4xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="text-[11px] uppercase tracking-[0.3em] text-[#9EFF00] mb-4 font-mono-am">
-            [ {eyebrow || "preguntas frecuentes"} ]
-          </div>
-          <h2
-            data-testid="faq-title"
-            className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-semibold leading-[1.05]"
-          >
-            {title ? (
-              title
-            ) : (
-              <>
-                Antes de decidir,{" "}
-                <span className="text-[#9EFF00] am-text-glow">
-                  resolvé todas tus dudas
-                </span>
-              </>
-            )}
-          </h2>
-          <p className="text-white/55 mt-5 text-[15px] leading-relaxed">
-            {subtitle ||
-              "Las preguntas que más nos hacen las inmobiliarias antes de entrar al suite."}
-          </p>
-        </div>
-
+    <section id="faq" className="relative py-24 sm:py-32 overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="rounded-3xl glass p-2 sm:p-3"
+          viewport={{ once: true }}
+          className="text-center mb-14"
         >
-          <Accordion type="single" collapsible className="w-full">
-            {list.map((item, i) => (
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-6">
+            Preguntas frecuentes
+          </div>
+          <h2 className="font-display text-3xl sm:text-[48px] leading-[1.05] tracking-tighter font-semibold">
+            Las preguntas que todos hacen{" "}
+            <span className="text-[#9EFF00] am-text-glow">antes de empezar.</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Accordion type="single" collapsible className="space-y-3">
+            {items.map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                data-testid={`faq-item-${i}`}
-                className="border-b border-white/[0.06] last:border-b-0 px-4 sm:px-5"
+                className="border border-white/8 rounded-xl bg-white/[0.02] px-6 data-[state=open]:border-[#9EFF00]/30 data-[state=open]:bg-white/[0.04] transition-all"
               >
-                <AccordionTrigger
-                  className="text-left font-display text-[16px] sm:text-[17px] text-white tracking-tight hover:no-underline hover:text-[#9EFF00] data-[state=open]:text-[#9EFF00] py-5"
-                  data-testid={`faq-trigger-${i}`}
-                >
-                  <span className="flex items-start gap-3 pr-4">
-                    <span className="font-mono-am text-[#9EFF00]/70 text-[12px] mt-1 shrink-0 w-6">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span>{item.q}</span>
-                  </span>
+                <AccordionTrigger className="text-left text-[14px] sm:text-[15px] text-white/90 py-5 hover:text-white hover:no-underline font-medium">
+                  {item.q}
                 </AccordionTrigger>
-                <AccordionContent
-                  className="text-white/65 text-[14px] leading-relaxed pb-5 pl-9 pr-4"
-                  data-testid={`faq-content-${i}`}
-                >
+                <AccordionContent className="text-[14px] text-white/60 leading-relaxed pb-5">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -117,22 +86,23 @@ const FAQ = ({ items, title, subtitle, eyebrow }) => {
           </Accordion>
         </motion.div>
 
-        {/* CTA fallback */}
-        <div className="mt-10 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 rounded-2xl glass px-6 py-5">
-            <HelpCircle size={18} className="text-[#9EFF00]" />
-            <div className="text-[14px] text-white/70">
-              ¿Tu duda no está acá?
-            </div>
-            <button
-              onClick={openWhatsApp}
-              data-testid="faq-whatsapp-cta"
-              className="inline-flex items-center gap-2 rounded-full bg-[#9EFF00] text-black px-5 py-2.5 text-[13px] font-semibold hover:bg-[#b8ff3a] transition"
-            >
-              <MessageCircle size={14} /> Escribinos por WhatsApp
-            </button>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-white/50 text-[14px] mb-5">
+            ¿Tenés una pregunta que no está acá?
+          </p>
+          <button
+            onClick={openWhatsApp}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-6 py-3 text-[13px] text-white hover:bg-white/[0.06] hover:border-white/30 transition"
+          >
+            <MessageCircle size={15} className="text-[#9EFF00]" />
+            Escribinos por WhatsApp
+          </button>
+        </motion.div>
       </div>
     </section>
   );

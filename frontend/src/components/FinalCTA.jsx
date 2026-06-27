@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
-import { FINAL_CTA_BG, openCalendly, openWhatsApp } from "../lib/site";
-import SlotsCounter from "./SlotsCounter";
+import { MessageCircle, Calendar } from "lucide-react";
+import { openCalendly, openWhatsApp } from "../lib/site";
 
 const FinalCTA = () => {
   return (
@@ -10,14 +9,8 @@ const FinalCTA = () => {
       data-testid="final-cta-section"
       className="relative py-24 sm:py-32 overflow-hidden"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-50"
-        style={{ backgroundImage: `url(${FINAL_CTA_BG})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" />
       <div className="absolute inset-0 am-grid-bg opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#9EFF00]/10 blur-[160px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#9EFF00]/10 blur-[180px]" />
 
       <div className="relative max-w-5xl mx-auto px-6 text-center">
         <motion.div
@@ -25,9 +18,13 @@ const FinalCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-8 flex justify-center"
+          className="inline-flex items-center gap-2 rounded-full border border-[#9EFF00]/30 bg-[#9EFF00]/[0.05] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-[#9EFF00] mb-8"
         >
-          <SlotsCounter />
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-[#9EFF00] opacity-75 animate-ping" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#9EFF00]" />
+          </span>
+          Diagnóstico gratuito disponible
         </motion.div>
 
         <motion.h2
@@ -38,10 +35,10 @@ const FinalCTA = () => {
           data-testid="final-cta-headline"
           className="font-display text-3xl sm:text-5xl lg:text-[64px] leading-[1.05] tracking-tighter font-semibold max-w-4xl mx-auto"
         >
-          Tu negocio ya tiene potencial.
+          Tu competencia ya está{" "}
+          <span className="text-white/40 italic font-light">implementando IA.</span>
           <br />
-          <span className="text-white/50">Nosotros construimos el sistema</span>{" "}
-          <span className="text-[#9EFF00] am-text-glow">para escalarlo.</span>
+          <span className="text-[#9EFF00] am-text-glow">El momento es ahora.</span>
         </motion.h2>
 
         <motion.p
@@ -52,8 +49,9 @@ const FinalCTA = () => {
           data-testid="final-cta-subheadline"
           className="text-white/60 mt-7 max-w-2xl mx-auto text-[15px] sm:text-base leading-relaxed"
         >
-          Automatik Media combina marketing, IA y automatización para convertir
-          negocios premium en líderes de su mercado.
+          Agendá una llamada de 30 minutos. Te mostramos exactamente qué procesos de tu negocio
+          se pueden automatizar, con qué impacto estimado y en cuánto tiempo.
+          Sin presión, sin compromiso.
         </motion.p>
 
         <motion.div
@@ -68,7 +66,8 @@ const FinalCTA = () => {
             data-testid="final-cta-agendar"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#9EFF00] text-black px-8 py-4 text-[14px] font-semibold tracking-wide hover:bg-[#b8ff3a] transition shadow-[0_0_45px_rgba(158,255,0,0.45)]"
           >
-            Agendar Reunión
+            <Calendar size={16} />
+            Agendá tu diagnóstico gratuito
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </button>
           <button
@@ -84,11 +83,11 @@ const FinalCTA = () => {
         <div className="mt-10 flex items-center justify-center gap-6 text-[11px] uppercase tracking-[0.22em] text-white/40">
           <span className="flex items-center gap-2">
             <span className="w-1 h-1 rounded-full bg-[#9EFF00]" />
-            Respuesta en 24 hs
+            30 min · sin costo
           </span>
           <span className="hidden sm:flex items-center gap-2">
             <span className="w-1 h-1 rounded-full bg-[#9EFF00]" />
-            Diagnóstico gratuito
+            Diagnóstico personalizado
           </span>
           <span className="flex items-center gap-2">
             <span className="w-1 h-1 rounded-full bg-[#9EFF00]" />

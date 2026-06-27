@@ -26,8 +26,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white/55 text-[14px] leading-relaxed max-w-md">
-              Sistemas de adquisición y automatización para negocios
-              high-ticket. Marketing, IA y resultados medibles.
+              Agencia de inteligencia artificial. Construimos sistemas de IA
+              a medida que transforman operaciones y aceleran el crecimiento.
             </p>
 
             <div className="mt-6 flex gap-3">
@@ -36,7 +36,7 @@ const Footer = () => {
                 data-testid="footer-cta-agendar"
                 className="rounded-full bg-[#9EFF00] text-black px-5 py-2.5 text-[13px] font-semibold hover:bg-[#b8ff3a] transition"
               >
-                Agendar reunión →
+                Diagnóstico gratuito →
               </button>
               <button
                 onClick={openWhatsApp}
@@ -54,11 +54,11 @@ const Footer = () => {
             </div>
             <ul className="space-y-2.5 text-[14px]">
               {[
-                ["Problema", "problema"],
-                ["Servicios", "servicios"],
-                ["Proceso", "proceso"],
-                ["Sistema IA", "sistema"],
-                ["Resultados", "resultados"],
+                ["El problema", "problema"],
+                ["Qué hacemos", "que-hacemos"],
+                ["El proceso", "proceso"],
+                ["Verticales", "verticales"],
+                ["Casos", "casos"],
               ].map(([label, id]) => (
                 <li key={id}>
                   <a
