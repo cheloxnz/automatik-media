@@ -5,7 +5,7 @@ const metrics = [
   { value: "24/7", label: "Atención sin interrupciones", desc: "el bot no duerme, no falla el lunes" },
   { value: "< 5 seg", label: "Tiempo de respuesta", desc: "vs. 2–4 horas del promedio humano" },
   { value: "~15 días", label: "Tiempo de entrega", desc: "desde el pago hasta el bot activo" },
-  { value: "$200/mes", label: "Mantenimiento mensual", desc: "ajustes, prompts y soporte incluido" },
+  { value: "3 niveles", label: "Tamaños disponibles", desc: "del bot básico al sistema completo" },
 ];
 
 const ImpactMetrics = () => {

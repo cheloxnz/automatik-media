@@ -86,15 +86,6 @@ const WhatWeDo = () => {
         </motion.div>
 
         {/* Aviso */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 inline-flex items-center gap-2 rounded-full border border-[#9EFF00]/20 bg-[#9EFF00]/[0.04] px-4 py-2 text-[12px] text-[#9EFF00]/80"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#9EFF00]" />
-          Precio de setup único · Mantenimiento desde $200/mes a partir del 2do mes
-        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
           {niveles.map((n, i) => (
@@ -123,11 +114,6 @@ const WhatWeDo = () => {
               <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-1">{n.num}</div>
               <h3 className="font-display text-xl font-semibold mb-2">{n.name}</h3>
 
-              <div className="font-display text-4xl font-semibold text-white mb-1">
-                {n.price}
-                <span className="text-[15px] font-normal text-white/40 ml-1">USD</span>
-              </div>
-              <div className="text-[12px] text-white/40 mb-6">setup único · pago 50/50</div>
 
               <p className="text-[13px] text-white/50 italic mb-6 leading-relaxed border-l-2 border-[#9EFF00]/30 pl-4">
                 {n.pitch}

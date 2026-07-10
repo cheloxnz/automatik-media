@@ -29,8 +29,8 @@ const steps = [
   },
   {
     num: "05",
-    title: "Desde el 2do mes: $200/mes",
-    body: "Cubre mantenimiento, ajustes del prompt, cambios de ofertas y correcciones. El negocio de verdad es el recurrente.",
+    title: "Desde el 2do mes: mensualidad de mantenimiento",
+    body: "Cubre mantenimiento, ajustes del prompt, cambios de ofertas y correcciones. El negocio de verdad es el recurrente — clientes que pagan mes a mes sin que tengas que conseguir uno nuevo.",
     detail: "El setup es el arranque. La mensualidad es el negocio.",
     highlight: true,
   },
@@ -102,7 +102,7 @@ const TheProcess = () => {
 
                 {s.highlight && (
                   <div className="mt-4 pt-4 border-t border-[#9EFF00]/15 text-[13px] text-white/50">
-                    💡 5 clientes de Nivel 1 = <span className="text-white">$5.000 de setup</span> + <span className="text-[#9EFF00]">$1.000/mes recurrente</span> que entran solos, todos los meses.
+                    💡 El setup te paga el arranque. La mensualidad convierte esto en un negocio — no en changas.
                   </div>
                 )}
               </motion.div>
