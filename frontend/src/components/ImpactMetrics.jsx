@@ -2,10 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const metrics = [
-  { value: "+40%", label: "Reducción de costos operativos", desc: "promedio en los primeros 90 días" },
-  { value: "10x", label: "Velocidad de respuesta al cliente", desc: "con agentes de IA 24/7" },
-  { value: "3–5x", label: "Productividad por empleado", desc: "al eliminar tareas repetitivas" },
-  { value: "< 4 sem", label: "Primer resultado visible", desc: "desde el inicio del proyecto" },
+  { value: "24/7", label: "Atención sin interrupciones", desc: "el bot no duerme, no falla el lunes" },
+  { value: "< 5 seg", label: "Tiempo de respuesta", desc: "vs. 2–4 horas del promedio humano" },
+  { value: "~15 días", label: "Tiempo de entrega", desc: "desde el pago hasta el bot activo" },
+  { value: "$200/mes", label: "Mantenimiento mensual", desc: "ajustes, prompts y soporte incluido" },
 ];
 
 const ImpactMetrics = () => {
@@ -23,12 +23,8 @@ const ImpactMetrics = () => {
               transition={{ delay: i * 0.08, duration: 0.6 }}
               className="lg:px-10 first:lg:pl-0 last:lg:pr-0"
             >
-              <div className="font-display text-4xl sm:text-5xl text-[#9EFF00] tracking-tighter">
-                {m.value}
-              </div>
-              <div className="mt-2 text-[13px] font-medium text-white/90 leading-snug">
-                {m.label}
-              </div>
+              <div className="font-display text-4xl sm:text-5xl text-[#9EFF00] tracking-tighter">{m.value}</div>
+              <div className="mt-2 text-[13px] font-medium text-white/90 leading-snug">{m.label}</div>
               <div className="mt-1 text-[12px] text-white/40">{m.desc}</div>
             </motion.div>
           ))}

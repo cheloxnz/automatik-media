@@ -3,49 +3,46 @@ import { motion } from "framer-motion";
 
 const cases = [
   {
-    initials: "IM",
-    name: "Inmobiliaria premium",
+    initials: "HB",
+    name: "Hamburguesería",
     location: "Buenos Aires, AR",
-    industry: "Real Estate",
-    before: { label: "Leads calificados/mes", value: "12" },
-    after: { label: "Leads calificados/mes", value: "67" },
+    nivel: "Nivel 1 · Bot Vendedor",
+    before: { label: "Respuesta promedio", value: "4 hs" },
+    after: { label: "Respuesta promedio", value: "< 30 seg" },
     metrics: [
-      { label: "Tiempo de respuesta", value: "< 90 seg" },
-      { label: "Horas admin ahorradas", value: "28/sem" },
-      { label: "ROI a 90 días", value: "5.1x" },
+      { label: "Consultas fuera de horario", value: "100% respondidas" },
+      { label: "Pedidos cerrados por el bot", value: "+34%/mes" },
+      { label: "Horas liberadas al dueño", value: "18 hs/sem" },
     ],
-    quote: "Antes perdíamos leads porque nadie podía responder a las 11pm. Ahora el bot califica, agenda y el equipo solo cierra.",
-    phase: "Implementación completa",
+    quote: "Antes el viernes a la noche perdía pedidos porque estaba en el local y no podía atender el WhatsApp. Ahora el bot cierra solo.",
   },
   {
-    initials: "RL",
-    name: "Retail de indumentaria",
+    initials: "CE",
+    name: "Clínica estética",
     location: "Córdoba, AR",
-    industry: "Retail",
-    before: { label: "Consultas atendidas/día", value: "30" },
-    after: { label: "Consultas atendidas/día", value: "210" },
+    nivel: "Nivel 2 · Bot + CRM",
+    before: { label: "Leads con seguimiento", value: "20%" },
+    after: { label: "Leads con seguimiento", value: "100%" },
     metrics: [
-      { label: "Conversión web", value: "+38%" },
-      { label: "Tickets de soporte", value: "-65%" },
-      { label: "Satisfacción cliente", value: "4.8/5" },
+      { label: "Turnos agendados por bot", value: "+67%" },
+      { label: "Base de clientes ordenada", value: "1.200+ contactos" },
+      { label: "ROI a 90 días", value: "4.8x" },
     ],
-    quote: "El chatbot maneja el 80% de las consultas. Mi equipo ahora se enfoca en clientes que realmente necesitan ayuda humana.",
-    phase: "Quick Wins + Implementación",
+    quote: "Antes teníamos los contactos en planillas y el teléfono de cada empleado. Ahora todo está en un solo lugar y el bot hace el seguimiento solo.",
   },
   {
-    initials: "AS",
-    name: "Asesoría contable",
+    initials: "AG",
+    name: "Agencia de autos",
     location: "Monterrey, MX",
-    industry: "Servicios profesionales",
-    before: { label: "Onboarding de cliente (días)", value: "7" },
-    after: { label: "Onboarding de cliente (días)", value: "1" },
+    nivel: "Nivel 3 · Bot + CRM + Dashboard",
+    before: { label: "Tiempo de respuesta", value: "2–6 hs" },
+    after: { label: "Tiempo de respuesta", value: "< 1 min" },
     metrics: [
-      { label: "Documentos procesados", value: "10x más rápido" },
-      { label: "Errores de carga", value: "-94%" },
-      { label: "Clientes gestionados", value: "+3x" },
+      { label: "Consultas respondidas/mes", value: "340+" },
+      { label: "Leads sin respuesta", value: "0" },
+      { label: "Conversión web → consulta", value: "+52%" },
     ],
-    quote: "Lo que tardábamos una semana en procesar ahora está listo en horas. Pudimos triplicar la cartera sin contratar más personal.",
-    phase: "Automatización operativa",
+    quote: "El dashboard me muestra qué modelos se preguntan más y cuáles se pierden. Por primera vez tengo datos reales de lo que pasa en mi WhatsApp.",
   },
 ];
 
@@ -61,16 +58,12 @@ const SuccessCases = () => {
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-6">
-            Casos de éxito
+            Casos reales
           </div>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tighter font-semibold">
-            Resultados reales.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Negocios reales.</span>
+            Negocios que ya{" "}
+            <span className="text-[#9EFF00] am-text-glow">no pierden consultas.</span>
           </h2>
-          <p className="mt-5 text-white/60 text-[15px] leading-relaxed">
-            Cada caso parte de un diagnóstico real y termina con métricas medibles.
-            Sin promesas vacías, sin vanity metrics.
-          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -83,32 +76,29 @@ const SuccessCases = () => {
               transition={{ delay: i * 0.1, duration: 0.7 }}
               className="rounded-2xl border border-white/8 bg-white/[0.02] p-7 flex flex-col"
             >
-              {/* Header */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-[#9EFF00]/15 flex items-center justify-center text-[#9EFF00] font-display font-semibold text-sm">
                   {c.initials}
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold text-white">{c.name}</div>
-                  <div className="text-[12px] text-white/40">{c.location} · {c.industry}</div>
+                  <div className="text-[12px] text-white/40">{c.location}</div>
                 </div>
               </div>
 
-              {/* Before/After main metric */}
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="rounded-xl bg-white/[0.03] border border-white/8 p-3.5 text-center">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-white/40 mb-1">Antes</div>
-                  <div className="font-display text-2xl text-white/40">{c.before.value}</div>
+                  <div className="font-display text-xl text-white/40">{c.before.value}</div>
                   <div className="text-[10px] text-white/30 mt-0.5">{c.before.label}</div>
                 </div>
                 <div className="rounded-xl bg-[#9EFF00]/[0.06] border border-[#9EFF00]/20 p-3.5 text-center">
                   <div className="text-[11px] uppercase tracking-[0.16em] text-[#9EFF00] mb-1">Después</div>
-                  <div className="font-display text-2xl text-[#9EFF00]">{c.after.value}</div>
+                  <div className="font-display text-xl text-[#9EFF00]">{c.after.value}</div>
                   <div className="text-[10px] text-[#9EFF00]/60 mt-0.5">{c.after.label}</div>
                 </div>
               </div>
 
-              {/* Metrics */}
               <div className="space-y-2 mb-6">
                 {c.metrics.map((m) => (
                   <div key={m.label} className="flex items-center justify-between text-[13px]">
@@ -118,13 +108,12 @@ const SuccessCases = () => {
                 ))}
               </div>
 
-              {/* Quote */}
               <blockquote className="mt-auto pt-5 border-t border-white/8 text-[13px] text-white/65 italic leading-relaxed">
                 "{c.quote}"
               </blockquote>
 
               <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#9EFF00]/20 bg-[#9EFF00]/[0.05] px-3 py-1 text-[11px] text-[#9EFF00]">
-                {c.phase}
+                {c.nivel}
               </div>
             </motion.div>
           ))}

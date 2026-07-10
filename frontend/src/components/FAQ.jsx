@@ -1,46 +1,41 @@
 import React from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { openWhatsApp } from "../lib/site";
 
 const DEFAULT_ITEMS = [
   {
-    q: "¿Cuánto tiempo tarda en verse el primer resultado?",
-    a: "En la fase de Quick Wins (semanas 2–4) ya tenés automatizaciones operativas funcionando. Los resultados medibles del sistema completo se ven entre los 30 y 90 días posteriores a la implementación, dependiendo de la complejidad.",
+    q: "¿Qué necesita el negocio para tener el bot?",
+    a: "Solo un número de WhatsApp (puede ser el mismo que ya usan) y acceso a WhatsApp Business API. Nosotros nos encargamos de toda la configuración técnica. El cliente no necesita saber nada de tecnología.",
   },
   {
-    q: "¿Necesito tener conocimientos técnicos o equipo de IT?",
-    a: "No. Nos encargamos de toda la implementación técnica de principio a fin. Solo necesitamos acceso a tus sistemas actuales y reuniones de alineación con tu equipo. Al final del proyecto, tu equipo puede operar el sistema sin depender de nosotros.",
+    q: "¿El bot suena a máquina o habla como una persona?",
+    a: "Habla como una persona. No tiene menú de opciones tipo 'presione 1'. Responde con lenguaje natural, usa el tono del negocio y maneja conversaciones reales. Si alguien le pregunta algo fuera de lo esperado, deriva a un humano.",
   },
   {
-    q: "¿Trabajan con cualquier industria o solo con algunas?",
-    a: "Trabajamos con cualquier industria. La metodología de auditoría → quick wins → implementación → autonomía aplica independientemente del sector. Tenemos experiencia especial en inmobiliarias, retail, servicios profesionales, salud y logística, pero el enfoque funciona para cualquier negocio.",
+    q: "¿En cuánto tiempo está listo?",
+    a: "En aproximadamente 15 días desde que recibimos el 50% de adelanto. Eso incluye la construcción, las pruebas y la capacitación del equipo. El primer mes de mantenimiento va gratis.",
   },
   {
-    q: "¿Qué pasa si ya tengo herramientas de software instaladas?",
-    a: "Las integramos. Una parte clave del diagnóstico es identificar qué sistemas ya están usando y cómo conectarlos con las nuevas automatizaciones. No hace falta tirar lo que funciona — la IA se suma encima de tu stack actual.",
+    q: "¿Qué pasa si el cliente quiere cambios después de entregado?",
+    a: "Los ajustes menores (cambio de precios, nuevos productos, modificaciones de tono) están cubiertos en la mensualidad de $200/mes. Si el cliente quiere rehacer la estructura completa o agregar funcionalidades nuevas, eso es un proyecto nuevo.",
   },
   {
-    q: "¿Tienen contratos largos? ¿Hay lock-in?",
-    a: "No. Trabajamos por proyecto o con acuerdos de soporte continuo, sin lock-in. Si el proyecto termina y querés operar de forma autónoma, te entregamos todo documentado y funcionando. Preferimos seguir trabajando porque los resultados lo justifican, no por contrato.",
+    q: "¿Por qué cobran el 50% por adelantado?",
+    a: "Porque es trabajo real que empieza desde el día uno. El 50% adelantado garantiza el compromiso del cliente — si no está dispuesto a poner la mitad, no está listo para avanzar. El otro 50% lo cobra solo cuando el cliente prueba el bot y da el OK.",
   },
   {
-    q: "¿Cómo es el diagnóstico gratuito?",
-    a: "Es una llamada de 30–45 minutos donde analizamos tu operación actual, identificamos los 3–5 puntos de mayor impacto potencial para IA y te presentamos una estimación de resultados. Sin presión, sin compromiso. Si hay fit, avanzamos; si no, igual te llevás el diagnóstico.",
+    q: "¿Funciona con cualquier tipo de negocio?",
+    a: "Sí. Ya lo implementamos en hamburgueserías, clínicas estéticas, agencias de autos, tiendas de ropa y servicios profesionales. Si el negocio recibe consultas por WhatsApp, el bot funciona.",
   },
   {
-    q: "¿Cuánto cuesta implementar IA con Automatik?",
-    a: "Depende del alcance. Cada proyecto se cotiza después del diagnóstico gratuito, con transparencia total. No publicamos precios genéricos porque cada negocio tiene necesidades distintas — pero sí podemos decirte que trabajamos con empresas de diferentes tamaños y ajustamos el alcance al presupuesto disponible.",
+    q: "¿Qué incluye el mantenimiento mensual?",
+    a: "Ajustes del prompt, actualización de precios y productos, corrección de errores y soporte técnico. No incluye rehacer la estructura del bot ni agregar módulos nuevos — eso tiene precio aparte.",
   },
   {
-    q: "¿Qué diferencia a Automatik de una agencia de marketing o un proveedor de software?",
-    a: "Las agencias de marketing generan demanda. Los proveedores de software venden herramientas. Nosotros construimos el sistema operativo de IA de tu negocio: integramos datos, automatizamos procesos, y hacemos que todo funcione junto. No dejamos una herramienta instalada — dejamos un sistema funcionando.",
+    q: "¿El bot puede tomar pedidos o solo informar?",
+    a: "Depende de la integración. En el Nivel 1, el bot informa, asesora y hace seguimiento. Si el negocio quiere que el bot tome pedidos directamente y los registre en un sistema, eso se integra en el Nivel 2 o 3 según el caso.",
   },
 ];
 
@@ -58,8 +53,8 @@ const FAQ = ({ items = DEFAULT_ITEMS }) => {
             Preguntas frecuentes
           </div>
           <h2 className="font-display text-3xl sm:text-[48px] leading-[1.05] tracking-tighter font-semibold">
-            Las preguntas que todos hacen{" "}
-            <span className="text-[#9EFF00] am-text-glow">antes de empezar.</span>
+            Lo que preguntan antes{" "}
+            <span className="text-[#9EFF00] am-text-glow">de arrancar.</span>
           </h2>
         </motion.div>
 
@@ -92,9 +87,7 @@ const FAQ = ({ items = DEFAULT_ITEMS }) => {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-white/50 text-[14px] mb-5">
-            ¿Tenés una pregunta que no está acá?
-          </p>
+          <p className="text-white/50 text-[14px] mb-5">¿Tenés alguna pregunta más específica?</p>
           <button
             onClick={openWhatsApp}
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-6 py-3 text-[13px] text-white hover:bg-white/[0.06] hover:border-white/30 transition"

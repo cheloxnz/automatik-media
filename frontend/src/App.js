@@ -8,7 +8,6 @@ import ImpactMetrics from "./components/ImpactMetrics";
 import Problem from "./components/Problem";
 import WhatWeDo from "./components/WhatWeDo";
 import TheProcess from "./components/TheProcess";
-import ByArea from "./components/ByArea";
 import BySector from "./components/BySector";
 import WhyAutomatik from "./components/WhyAutomatik";
 import SuccessCases from "./components/SuccessCases";
@@ -21,9 +20,9 @@ import Analytics from "./components/Analytics";
 import NichePage from "./pages/NichePage";
 
 const DEFAULT_TITLE =
-  "Automatik Media | Agencia de Inteligencia Artificial para empresas";
+  "Automatik Media | Bot de WhatsApp para tu negocio — 24/7";
 const DEFAULT_DESC =
-  "Construimos sistemas de IA a medida que transforman tu negocio: automatización de procesos, agentes conversacionales e integraciones inteligentes. Metodología en 4 fases, resultados desde la semana 1.";
+  "Instalamos bots de WhatsApp que responden, asesoran y venden solos. 3 niveles desde $1.000 USD. Setup en ~15 días, mantenimiento desde $200/mes. Ninguna consulta sin respuesta.";
 const DEFAULT_CANONICAL = "https://automatikmedia.com/";
 
 const Landing = () => {
@@ -49,7 +48,6 @@ const Landing = () => {
       <Problem />
       <WhatWeDo />
       <TheProcess />
-      <ByArea />
       <BySector />
       <WhyAutomatik />
       <SuccessCases />

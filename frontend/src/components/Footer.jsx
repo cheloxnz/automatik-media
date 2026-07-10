@@ -24,8 +24,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white/55 text-[14px] leading-relaxed max-w-md">
-              Agencia de inteligencia artificial. Construimos sistemas de IA
-              a medida que transforman operaciones y aceleran el crecimiento.
+              Bots de WhatsApp que responden, asesoran y venden solos — 24/7.
+              3 niveles desde $1.000 USD. Setup en ~15 días.
             </p>
 
             <div className="mt-6 flex gap-3">
@@ -34,7 +34,7 @@ const Footer = () => {
                 data-testid="footer-cta-agendar"
                 className="rounded-full bg-[#9EFF00] text-black px-5 py-2.5 text-[13px] font-semibold hover:bg-[#b8ff3a] transition"
               >
-                Diagnóstico gratuito →
+                Quiero mi bot →
               </button>
               <button
                 onClick={openWhatsApp}
@@ -53,9 +53,9 @@ const Footer = () => {
             <ul className="space-y-2.5 text-[14px]">
               {[
                 ["El problema", "problema"],
-                ["Qué hacemos", "que-hacemos"],
-                ["El proceso", "proceso"],
-                ["Verticales", "verticales"],
+                ["Los niveles", "niveles"],
+                ["Cómo funciona", "como-funciona"],
+                ["Sectores", "verticales"],
                 ["Casos", "casos"],
               ].map(([label, id]) => (
                 <li key={id}>

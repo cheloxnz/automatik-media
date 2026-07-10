@@ -1,59 +1,46 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Search, Zap, Cpu, TrendingUp } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 import { openCalendly } from "../lib/site";
 
-const phases = [
+const steps = [
   {
     num: "01",
-    icon: Search,
-    label: "Auditoría",
-    title: "Entendemos tu negocio antes de proponer cualquier solución",
-    body:
-      "Analizamos tus procesos actuales, identificamos los puntos de mayor fricción y cuantificamos el impacto potencial de la IA en tu operación. Sin promesas vacías, solo diagnóstico real.",
-    duration: "1–2 semanas",
-    deliverable: "Mapa de oportunidades + priorización de impacto",
+    title: "50% para arrancar",
+    body: "El cliente paga la mitad del setup y recién ahí empezamos a trabajar. Siempre por adelantado — garantiza compromiso de ambos lados.",
+    detail: "Transferencia, tarjeta o USDT",
   },
   {
     num: "02",
-    icon: Zap,
-    label: "Quick Wins",
-    title: "Resultados tangibles en las primeras semanas",
-    body:
-      "Implementamos automatizaciones de alto impacto y bajo riesgo que generan valor inmediato. Esto valida la metodología y libera recursos para la implementación completa.",
-    duration: "2–4 semanas",
-    deliverable: "3–5 automatizaciones operativas y funcionando",
+    title: "Entregamos en ~15 días",
+    body: "Con el 50% adentro, construimos y entregamos el sistema funcionando en dos semanas. El cliente lo prueba en su propio WhatsApp.",
+    detail: "Bot activo + capacitación incluida",
   },
   {
     num: "03",
-    icon: Cpu,
-    label: "Implementación completa",
-    title: "Construimos el sistema de IA de tu negocio",
-    body:
-      "Desarrollamos e integramos el stack completo: agentes conversacionales, flujos de automatización, dashboards e integraciones con tus sistemas existentes.",
-    duration: "4–12 semanas",
-    deliverable: "Sistema de IA personalizado en producción",
+    title: "El cliente prueba y paga el otro 50%",
+    body: "Testea el bot, da el OK, y ahí cobra el resto del setup. Nadie paga a ciegas — eso saca fricción en la venta.",
+    detail: "Solo paga si está conforme",
   },
   {
     num: "04",
-    icon: TrendingUp,
-    label: "Autonomía",
-    title: "Tu equipo toma el control, nosotros seguimos mejorando",
-    body:
-      "Formamos a tu equipo, documentamos cada proceso y establecemos métricas de seguimiento. El sistema sigue evolucionando con el negocio.",
-    duration: "Ongoing",
-    deliverable: "KPIs, dashboards de impacto y soporte continuo",
+    title: "Primer mes de mantenimiento gratis",
+    body: "Ya pagó el setup: el primer mes va de regalo. Se acostumbra al sistema, ve los primeros resultados y entiende el valor.",
+    detail: "Ajustes y soporte incluido",
+  },
+  {
+    num: "05",
+    title: "Desde el 2do mes: $200/mes",
+    body: "Cubre mantenimiento, ajustes del prompt, cambios de ofertas y correcciones. El negocio de verdad es el recurrente.",
+    detail: "El setup es el arranque. La mensualidad es el negocio.",
+    highlight: true,
   },
 ];
 
 const TheProcess = () => {
-  const [active, setActive] = useState(0);
-  const p = phases[active];
-
   return (
-    <section id="proceso" className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="como-funciona" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="absolute bottom-0 left-0 w-[600px] h-[400px] rounded-full bg-[#9EFF00]/4 blur-[160px] pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,101 +48,82 @@ const TheProcess = () => {
           className="max-w-2xl mb-16"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-6">
-            El proceso
+            Cómo funciona
           </div>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tighter font-semibold">
-            4 fases.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Resultados</span>{" "}
-            <span className="italic font-light text-white/60">desde la semana 1.</span>
+            Así se cobra.{" "}
+            <span className="text-[#9EFF00] am-text-glow">Así se entrega.</span>
           </h2>
+          <p className="mt-5 text-white/60 text-[15px] leading-relaxed">
+            Un modelo de pago claro, sin sorpresas, diseñado para que el cliente
+            confíe antes de poner el primer peso.
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-8">
-          {/* Phase selector */}
-          <div className="lg:col-span-4 flex lg:flex-col gap-3">
-            {phases.map((ph, i) => (
-              <button
-                key={ph.num}
-                onClick={() => setActive(i)}
-                className={`flex items-center gap-4 p-4 rounded-xl border text-left transition-all duration-200 ${
-                  active === i
-                    ? "border-[#9EFF00]/40 bg-[#9EFF00]/5"
-                    : "border-white/8 bg-white/[0.02] hover:border-white/20"
+        <div className="relative">
+          {/* Línea vertical */}
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#9EFF00]/30 via-[#9EFF00]/10 to-transparent hidden sm:block" />
+
+          <div className="space-y-5">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.num}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className={`relative sm:ml-14 rounded-2xl border p-6 sm:p-7 transition-all ${
+                  s.highlight
+                    ? "border-[#9EFF00]/30 bg-[#9EFF00]/[0.04]"
+                    : "border-white/8 bg-white/[0.02]"
                 }`}
               >
-                <span
-                  className={`font-display text-2xl font-semibold w-12 flex-shrink-0 transition ${
-                    active === i ? "text-[#9EFF00]" : "text-white/20"
-                  }`}
-                >
-                  {ph.num}
-                </span>
-                <div>
-                  <div className={`text-[11px] uppercase tracking-[0.18em] mb-0.5 transition ${active === i ? "text-[#9EFF00]" : "text-white/40"}`}>
-                    {ph.label}
-                  </div>
-                  <div className="text-[13px] text-white/70 hidden sm:block leading-snug">
-                    {ph.duration}
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
+                {/* Dot en la línea */}
+                <div className={`absolute -left-[3.35rem] top-7 w-3 h-3 rounded-full border-2 hidden sm:block ${
+                  s.highlight ? "bg-[#9EFF00] border-[#9EFF00]" : "bg-[#050505] border-[#9EFF00]/40"
+                }`} />
 
-          {/* Phase detail */}
-          <div className="lg:col-span-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -16 }}
-                transition={{ duration: 0.35 }}
-                className="rounded-2xl border border-white/8 bg-white/[0.02] p-8 sm:p-10 h-full"
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#9EFF00]/10 flex items-center justify-center text-[#9EFF00] flex-shrink-0">
-                    <p.icon size={22} />
-                  </div>
-                  <div>
-                    <div className="text-[11px] uppercase tracking-[0.2em] text-[#9EFF00] mb-1">
-                      Fase {p.num} · {p.label}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className={`font-display text-[12px] tracking-widest mb-1 ${s.highlight ? "text-[#9EFF00]" : "text-white/30"}`}>
+                      {s.num}
                     </div>
-                    <h3 className="font-display text-xl sm:text-2xl font-semibold leading-snug">
-                      {p.title}
-                    </h3>
+                    <h3 className="font-display text-lg font-semibold mb-2">{s.title}</h3>
+                    <p className="text-white/60 text-[14px] leading-relaxed">{s.body}</p>
+                  </div>
+                  <div className={`text-right text-[11px] rounded-lg px-3 py-2 flex-shrink-0 hidden sm:block ${
+                    s.highlight
+                      ? "bg-[#9EFF00]/10 text-[#9EFF00] border border-[#9EFF00]/20"
+                      : "bg-white/[0.03] text-white/40 border border-white/8"
+                  }`}>
+                    {s.detail}
                   </div>
                 </div>
 
-                <p className="text-white/65 text-[15px] leading-relaxed mb-8">{p.body}</p>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="rounded-xl bg-white/[0.03] border border-white/8 p-4">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/40 mb-1.5">
-                      Duración
-                    </div>
-                    <div className="text-white font-medium">{p.duration}</div>
+                {s.highlight && (
+                  <div className="mt-4 pt-4 border-t border-[#9EFF00]/15 text-[13px] text-white/50">
+                    💡 5 clientes de Nivel 1 = <span className="text-white">$5.000 de setup</span> + <span className="text-[#9EFF00]">$1.000/mes recurrente</span> que entran solos, todos los meses.
                   </div>
-                  <div className="rounded-xl bg-white/[0.03] border border-white/8 p-4">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/40 mb-1.5">
-                      Entregable
-                    </div>
-                    <div className="text-white font-medium text-[14px] leading-snug">{p.deliverable}</div>
-                  </div>
-                </div>
-
-                {active === 0 && (
-                  <button
-                    onClick={openCalendly}
-                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#9EFF00] text-black px-6 py-3 text-[13px] font-semibold hover:bg-[#b8ff3a] transition shadow-[0_0_30px_rgba(158,255,0,0.3)]"
-                  >
-                    Empezar con la auditoría gratuita →
-                  </button>
                 )}
               </motion.div>
-            </AnimatePresence>
+            ))}
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <button
+            onClick={openCalendly}
+            className="inline-flex items-center gap-2 rounded-full bg-[#9EFF00] text-black px-8 py-4 text-[14px] font-semibold hover:bg-[#b8ff3a] transition shadow-[0_0_40px_rgba(158,255,0,0.3)]"
+          >
+            Empecemos →
+          </button>
+          <p className="mt-4 text-[12px] text-white/35">30 min · sin costo · sin compromiso</p>
+        </motion.div>
       </div>
     </section>
   );

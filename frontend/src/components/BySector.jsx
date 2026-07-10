@@ -56,12 +56,12 @@ const BySector = () => {
             Por sector
           </div>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tighter font-semibold">
-            Tu industria.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Nuestra experiencia.</span>
+            Si recibís consultas por WhatsApp,{" "}
+            <span className="text-[#9EFF00] am-text-glow">el bot funciona.</span>
           </h2>
           <p className="mt-5 text-white/60 text-[15px] leading-relaxed">
-            Trabajamos con cualquier industria. Cada implementación parte desde cero,
-            diseñada para los procesos y desafíos específicos de tu sector.
+            No importa la industria. Si perdés ventas porque no respondés a tiempo,
+            el sistema aplica.
           </p>
         </motion.div>
 
