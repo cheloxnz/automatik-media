@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageSquare, Database, BarChart3 } from "lucide-react";
+import { MessageSquare, Database, BarChart3, Zap } from "lucide-react";
 import { openCalendly } from "../lib/site";
 
 const niveles = [
@@ -59,6 +59,24 @@ const niveles = [
     ideal: "Querés números y control — pedís métricas, querés saber qué pasa cuando no estás, te gusta ver todo de un vistazo.",
     highlight: false,
   },
+  {
+    num: "N4",
+    icon: Zap,
+    name: "Automatización Proactiva",
+    price: "",
+    tag: "Máximo nivel",
+    tagColor: "border-[#9EFF00]/40 bg-[#9EFF00]/[0.06] text-[#9EFF00]",
+    pitch: '"El sistema trabaja solo. Vos solo mirás los resultados."',
+    features: [
+      "Todo lo del Nivel 3",
+      "Reactivación automática de leads fríos — el bot detecta y vuelve a contactar solo",
+      "Campañas segmentadas por comportamiento — cada cliente recibe lo que le interesa",
+      "Integración con Meta Ads — cierra el loop entre publicidad y venta",
+      "Seguimiento post-venta: reseñas, productos complementarios, retención",
+    ],
+    ideal: "Ya tenés el bot y el CRM funcionando — ahora querés que el sistema salga a buscar clientes solo, sin que vos estés.",
+    highlight: false,
+  },
 ];
 
 const WhatWeDo = () => {
@@ -77,17 +95,18 @@ const WhatWeDo = () => {
           </div>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-tighter font-semibold">
             El mismo sistema.{" "}
-            <span className="text-[#9EFF00] am-text-glow">Tres tamaños.</span>
+            <span className="text-[#9EFF00] am-text-glow">Cuatro niveles.</span>
           </h2>
           <p className="mt-5 text-white/60 text-[15px] leading-relaxed">
             Cada nivel incluye al anterior. El cliente entra por lo que necesita hoy y escala después —
             venderle de nuevo a un cliente contento es mucho más fácil que conseguir uno nuevo.
+            El N4 convierte el sistema en algo que trabaja solo, sin que el dueño intervenga.
           </p>
         </motion.div>
 
         {/* Aviso */}
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-4 gap-6">
           {niveles.map((n, i) => (
             <motion.div
               key={n.name}
@@ -155,7 +174,7 @@ const WhatWeDo = () => {
           className="mt-8 text-center text-[13px] text-white/35"
         >
           ¿No sabés por cuál empezar? Arrancá por el Nivel 1 y escalá cuando veas los resultados.
-          El upsell se vende solo.
+          Cada nivel es un upsell natural al anterior.
         </motion.p>
       </div>
     </section>

@@ -25,7 +25,7 @@ const Footer = () => {
             </div>
             <p className="text-white/55 text-[14px] leading-relaxed max-w-md">
               Bots de WhatsApp que responden, asesoran y venden solos — 24/7.
-              3 niveles de implementación. Setup en ~15 días.
+              4 niveles de implementación. Setup en ~15 días.
             </p>
 
             <div className="mt-6 flex gap-3">

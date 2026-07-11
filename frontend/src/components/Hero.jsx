@@ -130,7 +130,7 @@ const Hero = () => {
             {[
               { k: "24/7", v: "sin días libres" },
               { k: "~15 días", v: "entrega del sistema" },
-              { k: "3 niveles", v: "de implementación" },
+              { k: "4 niveles", v: "de implementación" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl text-[#9EFF00]">{s.k}</div>
